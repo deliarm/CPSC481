@@ -18,7 +18,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Button Grid.Column="0" Background="#FF0D2F89">
+        <Button Grid.Column="0" Background="yellow">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -29,11 +29,11 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Image Source="Icons\home.png" Grid.Column="0" Grid.Row="0" />
-                <TextBlock Text="Home" Grid.Column="0" Grid.Row="1" Foreground="White" FontSize="16"/>
+                <TextBlock Text="Home" Grid.Column="0" Grid.Row="1"  FontSize="16"/>
             </Grid>
         </Button>
         
-        <Button Grid.Column="1" Background="#FF0D2F89">
+        <Button Grid.Column="1" Background="yellow">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -44,15 +44,15 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Image Source="Icons/food.png" Grid.Column="0" Grid.Row="0" />
-                <TextBlock Text="Food" Grid.Column="0" Grid.Row="1" Foreground="White" FontSize="16"/>
+                <TextBlock Text="Food" Grid.Column="0" Grid.Row="1" FontSize="16"/>
             </Grid>
         </Button>
-        <Button Grid.Column="2" Background="#FF0D2F89">
+        <Button Grid.Column="2" Background="yellow">
             <StackPanel VerticalAlignment="Center">
                 <Image Source="Icons/add.png" Width="55"/>
             </StackPanel>
         </Button>
-        <Button Grid.Column="3" Background="#FF0D2F89">
+        <Button Grid.Column="3" Background="yellow">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -63,10 +63,10 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Image Source="Icons\activity.png" Grid.Column="0" Grid.Row="0" />
-                <TextBlock Text="Activity" Grid.Column="0" Grid.Row="1" Foreground="White" FontSize="16"/>
+                <TextBlock Text="Activity" Grid.Column="0" Grid.Row="1"  FontSize="16"/>
             </Grid>
         </Button>
-        <Button Grid.Column="4" Background="#FF0D2F89">
+        <Button Grid.Column="4" Background="yellow">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -77,7 +77,7 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Image Source="Icons\graph.png" Grid.Column="0" Grid.Row="0" />
-                <TextBlock Text="Profile" Grid.Column="0" Grid.Row="1" Foreground="White" FontSize="16"/>
+                <TextBlock Text="Profile" Grid.Column="0" Grid.Row="1"  FontSize="16"/>
             </Grid>
             
         </Button>

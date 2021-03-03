@@ -1,0 +1,164 @@
+﻿<Window x:Class="WPFUserData.FoodWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFUserData"
+        mc:Ignorable="d"
+        Title="FoodWindow" Height="740" Width="360">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="70" />
+        </Grid.RowDefinitions>
+    
+
+        <!--Header/Logo -->
+        <Grid Grid.Column="0" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock
+                Text="Food" 
+                Background="Yellow"           
+                FontSize="36" 
+                HorizontalAlignment="Stretch" 
+                TextAlignment="Center"
+                FontFamily="Segoe UI Black" />
+        </Grid>
+
+        <!-- Body - Food stuff -->
+        <ScrollViewer Grid.Column="0" Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+            <StackPanel>
+                <!-- Today-->
+                <Grid Width="220">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="90" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0"  FontSize="20">Today: </Label>
+                    <Label Grid.Column="1" Grid.Row="0" HorizontalContentAlignment="Right" FontSize="20">Aug 5, 2020</Label>
+                    <Label Grid.Column="0" Grid.Row="1"  FontSize="20">Calories: </Label>
+                    <Label Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Right" FontSize="20">250 cal</Label>
+                </Grid>
+                
+                <!-- Ugly Separator -->
+                <Rectangle Fill="LightGray" Height="1" />
+                
+                <!-- Macros-->
+                <StackPanel  Margin="10 0 10 0 ">
+                    <Label FontSize="24">Macros</Label>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Center" BorderBrush="LightGray" BorderThickness="1">Protein</Label>
+                        <Label Grid.Row="0" Grid.Column="1" HorizontalContentAlignment="Center" BorderBrush="LightGray" BorderThickness="1">Fat</Label>
+                        <Label Grid.Row="0" Grid.Column="2" HorizontalContentAlignment="Center" BorderBrush="LightGray" BorderThickness="1">Carb</Label>
+
+                        <Label Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Center">35%</Label>
+                        <Label Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center">40%</Label>
+                        <Label Grid.Row="1" Grid.Column="2" HorizontalContentAlignment="Center">25%</Label>
+                    </Grid>
+                </StackPanel>
+
+                <!-- Ugly Separator -->
+                <Rectangle Fill="LightGray" Height="1" />
+
+                <!-- Meals-->
+                <StackPanel Margin="10 0 10 0 ">
+                    <Label FontSize="24">Meals</Label>
+                    <StackPanel> <!-- List Container -->
+                        <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="2"  Margin="0 0 0 10"> <!-- List Item-->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Label Grid.Column="0" Grid.Row="0" VerticalContentAlignment="Center" FontSize="16">Breakfast</Label>
+                                <Label Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" FontSize="16" HorizontalContentAlignment="Right">200cal</Label>
+                                <Label Grid.Column="2" Grid.Row="0" VerticalContentAlignment="Center" FontSize="24" FontWeight="Bold">></Label>
+                            </Grid>
+                        </Border>
+                        <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="2" Margin="0 0 0 10"> <!-- List Item-->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Label Grid.Column="0" Grid.Row="0" VerticalContentAlignment="Center" FontSize="16">Snacks</Label>
+                                <Label Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" FontSize="16" HorizontalContentAlignment="Right">50cal</Label>
+                                <Label Grid.Column="2" Grid.Row="0" VerticalContentAlignment="Center" FontSize="24" FontWeight="Bold">></Label>
+                            </Grid>
+                        </Border>
+                        <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="2" Margin="0 0 0 10"> <!-- List Item-->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Label Grid.Column="0" Grid.Row="0" VerticalContentAlignment="Center" FontSize="16">Dinner</Label>
+                                <Label Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" FontSize="16" HorizontalContentAlignment="Right">1000cal</Label>
+                                <Label Grid.Column="2" Grid.Row="0" VerticalContentAlignment="Center" FontSize="24" FontWeight="Bold">></Label>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+                
+                <!-- Report Buttons-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Margin" Value="10 10 10 10" />
+                            <Setter Property="FontSize" Value="20" />
+                        </Style>
+                    </Grid.Resources>
+
+                    <Button Grid.Row="0" Grid.Column="0">Create Report</Button>
+                    <Button Grid.Row="0" Grid.Column="1">Add Meal</Button>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+
+
+        <local:TabBar Grid.Column="0" Grid.Row="2" />
+    </Grid>
+</Window>
