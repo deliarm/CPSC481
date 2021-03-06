@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WPFUserData
 {
     /// <summary>
-    /// Interaction logic for FoodWindow.xaml
+    /// Interaction logic for FoodPage.xaml
     /// </summary>
-    public partial class FoodWindow : Window
+    public partial class FoodPage : Page
     {
-        public FoodWindow()
+        public FoodPage()
         {
             InitializeComponent();
         }

@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WPFUserData
 {
     /// <summary>
-    /// Interaction logic for AddMealWindow.xaml
+    /// Interaction logic for AddMealPage.xaml
     /// </summary>
-    public partial class AddMealWindow : Window
+    public partial class AddMealPage : Page
     {
-        public AddMealWindow()
+        public AddMealPage()
         {
             InitializeComponent();
         }
