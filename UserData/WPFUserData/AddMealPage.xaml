@@ -177,7 +177,11 @@
                         </Grid.Resources>
 
 
-                        <Button Grid.Column="0" Grid.Row= "0">Add Item</Button>
+                        <Button Grid.Column="0" Grid.Row= "0">
+                            <Hyperlink NavigateUri="AddMealAddItemPage.xaml">
+                                Add Item
+                            </Hyperlink>
+                        </Button>
                         <Button Grid.Column="0" Grid.Row= "1">FINISH</Button>
                     </Grid>
                 </Grid>

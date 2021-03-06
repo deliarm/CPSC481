@@ -17,6 +17,12 @@
         <Grid.RowDefinitions>
             <RowDefinition />
         </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="Padding" Value="0" />
+            </Style>
+        </Grid.Resources>
 
         <Button Grid.Column="0" Background="yellow">
             <Grid>
