@@ -25,5 +25,9 @@ namespace WPFUserData
             InitializeComponent();
         }
 
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            add_popup.IsOpen = !add_popup.IsOpen;
+        }
     }
 }
