@@ -70,6 +70,9 @@
     <Compile Include="TabBar.xaml.cs">
       <DependentUpon>TabBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TestPage.xaml.cs">
+      <DependentUpon>TestPage.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddMealAddItemPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -99,6 +102,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="TabBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -145,6 +152,15 @@
     <Resource Include="Icons\home.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\dish.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\running.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\bar-chart.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
