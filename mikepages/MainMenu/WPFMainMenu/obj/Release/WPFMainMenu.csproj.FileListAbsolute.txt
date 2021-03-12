@@ -1,0 +1,47 @@
+\\CS-fs01\Profiles\ug\mdrediro\Documents\Projects\MainMenu\WPFMainMenu\obj\Release\CircleProgessBar.g.cs
+\\CS-fs01\Profiles\ug\mdrediro\Documents\Projects\MainMenu\WPFMainMenu\obj\Release\MainWindow.g.cs
+\\CS-fs01\Profiles\ug\mdrediro\Documents\Projects\MainMenu\WPFMainMenu\obj\Release\App.g.cs
+\\CS-fs01\Profiles\ug\mdrediro\Documents\Projects\MainMenu\WPFMainMenu\obj\Release\GeneratedInternalTypeHelper.g.cs
+\\CS-fs01\Profiles\ug\mdrediro\Documents\Projects\MainMenu\WPFMainMenu\obj\Release\WPFMainMenu_MarkupCompile.cache
+\\CS-fs01\Profiles\ug\mdrediro\Documents\Projects\MainMenu\WPFMainMenu\obj\Release\WPFMainMenu_MarkupCompile.lref
+C:\Users\mike\Desktop\MainMenu\WPFMainMenu\bin\Release\WPFMainMenu.exe.config
+C:\Users\mike\Desktop\MainMenu\WPFMainMenu\bin\Release\WPFMainMenu.exe
+C:\Users\mike\Desktop\MainMenu\WPFMainMenu\bin\Release\WPFMainMenu.pdb
+C:\Users\mike\Desktop\MainMenu\WPFMainMenu\bin\Release\Microsoft.Expression.Drawing.dll
+C:\Users\mike\Desktop\MainMenu\WPFMainMenu\obj\Release\CircleProgessBar.g.cs
+C:\Users\mike\Desktop\MainMenu\WPFMainMenu\obj\Release\MainWindow.g.cs
+C:\Users\mike\Desktop\MainMenu\WPFMainMenu\obj\Release\App.g.cs
+C:\Users\mike\Desktop\MainMenu\WPFMainMenu\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\mike\Desktop\MainMenu\WPFMainMenu\obj\Release\WPFMainMenu_MarkupCompile.cache
+C:\Users\mike\Desktop\MainMenu\WPFMainMenu\obj\Release\WPFMainMenu_MarkupCompile.lref
+C:\Users\mike\Desktop\MainMenu\WPFMainMenu\obj\Release\CircleProgessBar.baml
+C:\Users\mike\Desktop\MainMenu\WPFMainMenu\obj\Release\MainWindow.baml
+C:\Users\mike\Desktop\MainMenu\WPFMainMenu\obj\Release\WPFMainMenu.g.resources
+C:\Users\mike\Desktop\MainMenu\WPFMainMenu\obj\Release\WPFMainMenu.Properties.Resources.resources
+C:\Users\mike\Desktop\MainMenu\WPFMainMenu\obj\Release\WPFMainMenu.csproj.GenerateResource.cache
+C:\Users\mike\Desktop\MainMenu\WPFMainMenu\obj\Release\WPFMainMenu.csproj.CoreCompileInputs.cache
+C:\Users\mike\Desktop\MainMenu\WPFMainMenu\obj\Release\WPFMainMenu.csproj.CopyComplete
+C:\Users\mike\Desktop\MainMenu\WPFMainMenu\obj\Release\WPFMainMenu.exe
+C:\Users\mike\Desktop\MainMenu\WPFMainMenu\obj\Release\WPFMainMenu.pdb
+C:\Users\mike\Documents\Visual Studio 2019\Projects\MainMenu\WPFMainMenu\bin\Release\WPFMainMenu.exe.config
+C:\Users\mike\Documents\Visual Studio 2019\Projects\MainMenu\WPFMainMenu\bin\Release\WPFMainMenu.exe
+C:\Users\mike\Documents\Visual Studio 2019\Projects\MainMenu\WPFMainMenu\bin\Release\WPFMainMenu.pdb
+C:\Users\mike\Documents\Visual Studio 2019\Projects\MainMenu\WPFMainMenu\bin\Release\Microsoft.Expression.Drawing.dll
+C:\Users\mike\Documents\Visual Studio 2019\Projects\MainMenu\WPFMainMenu\obj\Release\CircleProgessBar.g.cs
+C:\Users\mike\Documents\Visual Studio 2019\Projects\MainMenu\WPFMainMenu\obj\Release\MainWindow.g.cs
+C:\Users\mike\Documents\Visual Studio 2019\Projects\MainMenu\WPFMainMenu\obj\Release\TabBar.g.cs
+C:\Users\mike\Documents\Visual Studio 2019\Projects\MainMenu\WPFMainMenu\obj\Release\App.g.cs
+C:\Users\mike\Documents\Visual Studio 2019\Projects\MainMenu\WPFMainMenu\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\mike\Documents\Visual Studio 2019\Projects\MainMenu\WPFMainMenu\obj\Release\WPFMainMenu_MarkupCompile.cache
+C:\Users\mike\Documents\Visual Studio 2019\Projects\MainMenu\WPFMainMenu\obj\Release\WPFMainMenu_MarkupCompile.lref
+C:\Users\mike\Documents\Visual Studio 2019\Projects\MainMenu\WPFMainMenu\obj\Release\CircleProgessBar.baml
+C:\Users\mike\Documents\Visual Studio 2019\Projects\MainMenu\WPFMainMenu\obj\Release\MainWindow.baml
+C:\Users\mike\Documents\Visual Studio 2019\Projects\MainMenu\WPFMainMenu\obj\Release\TabBar.baml
+C:\Users\mike\Documents\Visual Studio 2019\Projects\MainMenu\WPFMainMenu\obj\Release\WPFMainMenu.g.resources
+C:\Users\mike\Documents\Visual Studio 2019\Projects\MainMenu\WPFMainMenu\obj\Release\WPFMainMenu.Properties.Resources.resources
+C:\Users\mike\Documents\Visual Studio 2019\Projects\MainMenu\WPFMainMenu\obj\Release\WPFMainMenu.csproj.GenerateResource.cache
+C:\Users\mike\Documents\Visual Studio 2019\Projects\MainMenu\WPFMainMenu\obj\Release\WPFMainMenu.csproj.CoreCompileInputs.cache
+C:\Users\mike\Documents\Visual Studio 2019\Projects\MainMenu\WPFMainMenu\obj\Release\WPFMainMenu.csproj.CopyComplete
+C:\Users\mike\Documents\Visual Studio 2019\Projects\MainMenu\WPFMainMenu\obj\Release\WPFMainMenu.exe
+C:\Users\mike\Documents\Visual Studio 2019\Projects\MainMenu\WPFMainMenu\obj\Release\WPFMainMenu.pdb
+C:\Users\mike\Documents\Visual Studio 2019\Projects\MainMenu\WPFMainMenu\obj\Release\WPFMainMenu.csprojAssemblyReference.cache

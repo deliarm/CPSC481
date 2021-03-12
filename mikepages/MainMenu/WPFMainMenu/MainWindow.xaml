@@ -1,0 +1,159 @@
+﻿<Window x:Class="WPFMainMenu.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFMainMenu"
+        mc:Ignorable="d"
+        Title="MainMenu" Height="725" Width="360">
+    
+    <StackPanel Background="Black">
+        <!--Header/Logo -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="300"/>
+            </Grid.RowDefinitions>
+
+            <!--Header-->
+            <Rectangle Fill="Yellow" Grid.Row="0"/>
+            <TextBlock Text="U-Fit"
+                       FontSize="36" HorizontalAlignment="Center" 
+                       FontFamily="Segoe UI Black" Grid.Row="0"
+                       VerticalAlignment="Center"/>
+            
+            <Line X1="0" Y1="50"
+                    X2="360" Y2="50"
+                    Stroke="White"
+                    StrokeThickness="1"/>
+            
+            <!--Progress Section Color-->
+            <Rectangle Fill="#0449c7" Grid.Row="1"
+                       Grid.RowSpan="2"/>
+            
+            <!--Calorie Progess Label-->
+            <TextBlock Text="Calorie Goal: 2000" Foreground="white"
+                        FontSize="26" HorizontalAlignment="Center" 
+                        Margin="0 10 0 10" FontWeight="Bold"
+                        Grid.Row="1"/>
+
+                <!--Current Calories-->
+            <TextBlock Text="Current: 1200/2000  " Foreground="white"
+                        FontSize="22" HorizontalAlignment="Center" 
+                        Margin="0 0 0 0" FontWeight="Bold"
+                        Grid.Row="2"/>
+            
+            <!--Calorie Progress Circle-->
+            <local:CircleProgessBar Value="60" Thickness="30"
+                                    AThickness="30"
+                                    IndicatorBrush="#FF37DBFF"
+                                    PercentFontSize="44" BackgroundBrush="#FF1B1A1A"
+                                    Margin="42 40 42 35" Grid.Row="2"/>
+            
+            <!--Remaining Calorie-->
+            <TextBlock Text="2000 Goal - 1400 Food + 200 Exercise = 800 Remaining"
+                        FontSize="12" HorizontalAlignment="Center" 
+                        Margin="0 10" FontWeight="Bold"
+                        Grid.Row="2" VerticalAlignment="Bottom"
+                        Foreground="White"/>
+        </Grid>
+
+        <!--7 Day Progress Label-->
+        <TextBlock Text="7 Day Progress"
+                        FontSize="26" HorizontalAlignment="Center" 
+                        Margin="0 5 0 6" FontWeight="Bold"
+                        Grid.Row="2" VerticalAlignment="Bottom"
+                        Foreground="white"/>
+
+        <!--7 Day Progress Data-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Rectangle Fill="LightGray" Grid.Column="0" Grid.Row="0"/>
+            <TextBlock Text="Sun" Grid.Column="0" Grid.Row="0" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="DarkGray" Grid.Column="1" Grid.Row="0"/>
+            <TextBlock Text="Mon" Grid.Column="1" Grid.Row="0" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="LightGray" Grid.Column="2" Grid.Row="0" />
+            <TextBlock Text="Tue" Grid.Column="2" Grid.Row="0" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="DarkGray" Grid.Column="3" Grid.Row="0"/>
+            <TextBlock Text="Wed" Grid.Column="3" Grid.Row="0" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="LightGray" Grid.Column="4" Grid.Row="0"/>
+            <TextBlock Text="Thu" Grid.Column="4" Grid.Row="0" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="DarkGray" Grid.Column="5" Grid.Row="0"/>
+            <TextBlock Text="Fri" Grid.Column="5" Grid.Row="0" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="LightGray" Grid.Column="6" Grid.Row="0"/>
+            <TextBlock Text="Sat" Grid.Column="6" Grid.Row="0" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <Line X1="0" Y1="20" Grid.Row="0"
+                    X2="360" Y2="20"
+                    Stroke="#FF8F8E8E"
+                    StrokeThickness="1.1" Grid.ColumnSpan="7"/>
+            <Rectangle Fill="LightGray" Grid.Column="0" Grid.Row="1"/>
+            <TextBlock Text="100%" Grid.Column="0" Grid.Row="1" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="DarkGray" Grid.Column="1" Grid.Row="1"/>
+            <TextBlock Text="50%" Grid.Column="1" Grid.Row="1" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="LightGray" Grid.Column="2" Grid.Row="1" />
+            <TextBlock Text="95%" Grid.Column="2" Grid.Row="1" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="DarkGray" Grid.Column="3" Grid.Row="1"/>
+            <TextBlock Text="100%" Grid.Column="3" Grid.Row="1" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="LightGray" Grid.Column="4" Grid.Row="1"/>
+            <TextBlock Text="0%" Grid.Column="4" Grid.Row="1" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="DarkGray" Grid.Column="5" Grid.Row="1"/>
+            <TextBlock Text="80%" Grid.Column="5" Grid.Row="1" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="LightGray" Grid.Column="6" Grid.Row="1"/>
+            <TextBlock Text="110%" Grid.Column="6" Grid.Row="1" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        
+        <!--Steps-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <!--Steps Label-->
+            <Rectangle Fill="#0449c7" Grid.Row="0" Grid.RowSpan="2"/>
+            <TextBlock Text="Steps: 1950/3000" Grid.Row="0" FontSize="24"
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       FontWeight="Bold" Foreground="White"
+                       Margin="20 10 20 0"/>
+            
+            <!--Steps Progress Bar-->
+            <ProgressBar HorizontalAlignment="Left" VerticalAlignment="Center"
+                         Grid.Row="1" Width="340" Height="40" Margin="20 10 20 25"
+                         Background="Black" Maximum="100" Value="60" Foreground="#FF37DBFF"/>
+        </Grid>
+        <local:TabBar Grid.Column="0" Grid.Row="2" Height="76"/>
+
+    </StackPanel>
+</Window>
