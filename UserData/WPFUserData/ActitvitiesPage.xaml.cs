@@ -16,19 +16,13 @@ using System.Windows.Shapes;
 namespace WPFUserData
 {
     /// <summary>
-    /// Interaction logic for TabBar.xaml
+    /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class TabBar : UserControl
+    public partial class Page1 : Page
     {
-        public TabBar()
+        public Page1()
         {
             InitializeComponent();
         }
-
-        private void Add_Click(object sender, RoutedEventArgs e)
-        {
-            add_popup.IsOpen = !add_popup.IsOpen;
-        }
-
     }
 }
