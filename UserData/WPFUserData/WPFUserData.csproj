@@ -55,6 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ActitvitiesPage.xaml.cs">
+      <DependentUpon>ActitvitiesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddActivityPage.xaml.cs">
+      <DependentUpon>AddActivityPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddMealAddItemPage.xaml.cs">
       <DependentUpon>AddMealAddItemPage.xaml</DependentUpon>
     </Compile>
@@ -73,6 +79,17 @@
     <Compile Include="TestPage.xaml.cs">
       <DependentUpon>TestPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TrackerOptions.xaml.cs">
+      <DependentUpon>TrackerOptions.xaml</DependentUpon>
+    </Compile>
+    <Page Include="ActitvitiesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AddActivityPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AddMealAddItemPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -108,6 +125,10 @@
     <Page Include="TestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TrackerOptions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
