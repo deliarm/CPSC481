@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:WPFUserData"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        
+        <!-- Main grids should be white so we can actually read text during design time. -->
+        <Style x:Key="MainGrid" TargetType="Grid">
+            <Setter Property ="Background" Value ="White"/>
+        </Style>
     </Application.Resources>
 </Application>

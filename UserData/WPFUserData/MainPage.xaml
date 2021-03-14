@@ -5,235 +5,156 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPFUserData"
       mc:Ignorable="d" 
-      
       d:DesignHeight="740" d:DesignWidth="360"
       Title="MainPage">
 
-    <!-- HACK: Only include the white background to make design time easier (otherwise it is transparent)-->
-    <Grid Background="White">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="70" />
-        </Grid.RowDefinitions>
-
+    <StackPanel Background="Black">
         <!--Header/Logo -->
-        <Grid Grid.Column="0" Grid.Row="0">
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="300"/>
             </Grid.RowDefinitions>
 
-            <Rectangle Fill="#FF0D2F89"/>
-            <TextBlock Text="U-Fit" Foreground="White"
+            <!--Header-->
+            <Rectangle Fill="Yellow" Grid.Row="0"/>
+            <TextBlock Text="U-Fit"
                        FontSize="36" HorizontalAlignment="Center" 
-                       FontFamily="Segoe UI Black"/>
+                       FontFamily="Segoe UI Black" Grid.Row="0"
+                       VerticalAlignment="Center"/>
+            
+            <Line X1="0" Y1="50"
+                    X2="360" Y2="50"
+                    Stroke="White"
+                    StrokeThickness="1"/>
+            
+            <!--Progress Section Color-->
+            <Rectangle Fill="#0449c7" Grid.Row="1"
+                       Grid.RowSpan="2"/>
+            
+            <!--Calorie Progess Label-->
+            <TextBlock Text="Calorie Goal: 2000" Foreground="white"
+                        FontSize="26" HorizontalAlignment="Center" 
+                        Margin="0 10 0 10" FontWeight="Bold"
+                        Grid.Row="1"/>
+
+                <!--Current Calories-->
+            <TextBlock Text="Current: 1200/2000  " Foreground="white"
+                        FontSize="22" HorizontalAlignment="Center" 
+                        Margin="0 0 0 0" FontWeight="Bold"
+                        Grid.Row="2"/>
+            
+            <!--Calorie Progress Circle-->
+            <!--<local:CircleProgessBar Value="60" Thickness="30"
+                                    AThickness="30"
+                                    IndicatorBrush="#FF37DBFF"
+                                    PercentFontSize="44" BackgroundBrush="#FF1B1A1A"
+                                    Margin="42 40 42 35" Grid.Row="2"/>-->
+            
+            <!--Remaining Calorie-->
+            <TextBlock Text="2000 Goal - 1400 Food + 200 Exercise = 800 Remaining"
+                        FontSize="12" HorizontalAlignment="Center" 
+                        Margin="0 10" FontWeight="Bold"
+                        Grid.Row="2" VerticalAlignment="Bottom"
+                        Foreground="White"/>
         </Grid>
 
-        <StackPanel  Grid.Column="0" Grid.Row="1">
-            <!--Age/Sex Grid-->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="3*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+        <!--7 Day Progress Label-->
+        <TextBlock Text="7 Day Progress"
+                        FontSize="26" HorizontalAlignment="Center" 
+                        Margin="0 5 0 6" FontWeight="Bold"
+                        Grid.Row="2" VerticalAlignment="Bottom"
+                        Foreground="white"/>
 
-                <!--Age Input-->
-                <TextBlock Text="Age:" FontSize="20"
-                        Grid.Column="0" Margin="20 30 10 15"
-                        FontWeight="Bold"/>
-                <TextBox Width="80" Background="#eee"
-                        Grid.Column="1" HorizontalAlignment="Left"
-                        Margin="10 30 10 15"/>
+        <!--7 Day Progress Data-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
 
-                <!--Sex Input-->
-                <TextBlock Text="Sex:" FontSize="20"
-                        Grid.Column="0" Grid.Row="1"
-                        Margin="20 10 10 15" FontWeight="Bold"/>
-                <TextBox Width="80" Background="#eee"
-                        Grid.Column="1" Grid.Row="1" 
-                        HorizontalAlignment="Left" Margin="10 10 10 15"/>
-            </Grid>
+            <Rectangle Fill="LightGray" Grid.Column="0" Grid.Row="0"/>
+            <TextBlock Text="Sun" Grid.Column="0" Grid.Row="0" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="DarkGray" Grid.Column="1" Grid.Row="0"/>
+            <TextBlock Text="Mon" Grid.Column="1" Grid.Row="0" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="LightGray" Grid.Column="2" Grid.Row="0" />
+            <TextBlock Text="Tue" Grid.Column="2" Grid.Row="0" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="DarkGray" Grid.Column="3" Grid.Row="0"/>
+            <TextBlock Text="Wed" Grid.Column="3" Grid.Row="0" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="LightGray" Grid.Column="4" Grid.Row="0"/>
+            <TextBlock Text="Thu" Grid.Column="4" Grid.Row="0" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="DarkGray" Grid.Column="5" Grid.Row="0"/>
+            <TextBlock Text="Fri" Grid.Column="5" Grid.Row="0" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="LightGray" Grid.Column="6" Grid.Row="0"/>
+            <TextBlock Text="Sat" Grid.Column="6" Grid.Row="0" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-            <!--Weight/Height Grid-->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1.5*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+            <Line X1="0" Y1="20" Grid.Row="0"
+                    X2="360" Y2="20"
+                    Stroke="#FF8F8E8E"
+                    StrokeThickness="1.1" Grid.ColumnSpan="7"/>
+            <Rectangle Fill="LightGray" Grid.Column="0" Grid.Row="1"/>
+            <TextBlock Text="100%" Grid.Column="0" Grid.Row="1" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="DarkGray" Grid.Column="1" Grid.Row="1"/>
+            <TextBlock Text="50%" Grid.Column="1" Grid.Row="1" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="LightGray" Grid.Column="2" Grid.Row="1" />
+            <TextBlock Text="95%" Grid.Column="2" Grid.Row="1" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="DarkGray" Grid.Column="3" Grid.Row="1"/>
+            <TextBlock Text="100%" Grid.Column="3" Grid.Row="1" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="LightGray" Grid.Column="4" Grid.Row="1"/>
+            <TextBlock Text="0%" Grid.Column="4" Grid.Row="1" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="DarkGray" Grid.Column="5" Grid.Row="1"/>
+            <TextBlock Text="80%" Grid.Column="5" Grid.Row="1" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Rectangle Fill="LightGray" Grid.Column="6" Grid.Row="1"/>
+            <TextBlock Text="110%" Grid.Column="6" Grid.Row="1" FontSize="15"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        
+        <!--Steps-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
 
-                <!--Weight Input-->
-                <TextBlock Text="Weight:" FontSize="20"
-                        Grid.Column="0" Grid.Row="0"
-                        Margin="20 10 10 15" FontWeight="Bold"/>
-                <TextBox Width="80"  Background="#eee"
-                        Grid.Column="1" Grid.Row="0" 
-                        HorizontalAlignment="Center" Margin="0 10 0 15"/>
-                <ComboBox Width="70"  Background="#eee"
-                        Grid.Column="2" Grid.Row="0" 
-                        HorizontalAlignment="Center" Margin="0 10 0 15"
-                        SelectedIndex="0" FontSize="20"
-                        VerticalContentAlignment="Center">
-                    <ComboBoxItem Content="lbs" FontSize="16"/>
-                    <ComboBoxItem Content="kg" FontSize="16"/>
-                </ComboBox>
+            <!--Steps Label-->
+            <Rectangle Fill="#0449c7" Grid.Row="0" Grid.RowSpan="2"/>
+            <TextBlock Text="Steps: 1950/3000" Grid.Row="0" FontSize="24"
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       FontWeight="Bold" Foreground="White"
+                       Margin="20 10 20 0"/>
+            
+            <!--Steps Progress Bar-->
+            <ProgressBar HorizontalAlignment="Left" VerticalAlignment="Center"
+                         Grid.Row="1" Width="340" Height="40" Margin="20 10 20 25"
+                         Background="Black" Maximum="100" Value="60" Foreground="#FF37DBFF"/>
+        </Grid>
+        <local:TabBar Grid.Column="0" Grid.Row="2" Height="76"/>
 
-                <!--Height Input-->
-                <TextBlock Text="Height:" FontSize="20"
-                        Grid.Column="0" Grid.Row="1"
-                        Margin="20 10 10 15" FontWeight="Bold"/>
-                <TextBox Width="80"  Background="#eee"
-                        Grid.Column="1" Grid.Row="1" 
-                        HorizontalAlignment="Center" Margin="0 10 0 15"/>
-                <ComboBox Width="70"  Background="#eee"
-                        Grid.Column="2" Grid.Row="1" 
-                        HorizontalAlignment="Center" Margin="0 10 0 15"
-                        SelectedIndex="0" FontSize="20"
-                        VerticalContentAlignment="Center">
-                    <ComboBoxItem Content="cm" FontSize="16"/>
-                    <ComboBoxItem Content="inch" FontSize="16"/>
-                </ComboBox>
-            </Grid>
-
-            <!--Activity Level Grid-->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width=".9*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <!--Age Input-->
-                <TextBlock Text="Activity Level:" FontSize="20"
-                        Grid.Column="0" Margin="20 10 10 15"
-                        FontWeight="Bold"/>
-                <ComboBox Width="162.5" Background="#eee"
-                        Grid.Column="1" Margin="0 10 10 15"
-                        SelectedIndex="0" FontSize="12"
-                        VerticalContentAlignment="Center">
-                    <ComboBoxItem Content="Sedentry (Office Job)"/>
-                    <ComboBoxItem Content="Light Exercise (1-2/week)"/>
-                    <ComboBoxItem Content="Medium Exercise (3-5/week)"/>
-                    <ComboBoxItem Content="Heavy Exercise (6-7/week)"/>
-                </ComboBox>
-            </Grid>
-
-            <!--Goal Label-->
-            <TextBlock Text="Goal:" FontSize="26"
-                        Grid.Column="0" Margin="20 30 10 10"
-                        FontWeight="Bold"/>
-
-            <!--Goal Weight Grid-->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1.5*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <!--Goal Weight Input-->
-                <TextBlock Text="Weight:" FontSize="20"
-                        Grid.Column="0" Margin="20 10 10 15" 
-                        FontWeight="Bold"/>
-                <TextBox Width="80"  Background="#eee"
-                        Grid.Column="1" HorizontalAlignment="Center" 
-                        Margin="0 10 0 15"/>
-                <ComboBox Width="70"  Background="#eee"
-                        Grid.Column="2" HorizontalAlignment="Center" 
-                        Margin="0 10 0 15" SelectedIndex="0" 
-                      FontSize="20" VerticalContentAlignment="Center">
-                    <ComboBoxItem Content="lbs" FontSize="16"/>
-                    <ComboBoxItem Content="kg" FontSize="16"/>
-                </ComboBox>
-            </Grid>
-
-            <!--Goal Time Grid-->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width=".5*"/>
-                    <ColumnDefinition Width=".5*"/>
-                    <ColumnDefinition Width=".5*"/>
-                    <ColumnDefinition Width=".5*"/>
-                </Grid.ColumnDefinitions>
-
-                <!--Goal Amount Input-->
-                <TextBlock Text="Lose:" FontSize="20"
-                        Grid.Column="0" Margin="20 10 10 15" 
-                       FontWeight="Bold"/>
-                <ComboBox Width="70"  Background="#eee"
-                        Grid.Column="1" HorizontalAlignment="Center" 
-                        Margin="0 10 0 15" SelectedIndex="0" 
-                      FontSize="20" VerticalContentAlignment="Center">
-                    <ComboBoxItem Content="0.5" FontSize="16"/>
-                    <ComboBoxItem Content="1" FontSize="16"/>
-                    <ComboBoxItem Content="1.5" FontSize="16"/>
-                    <ComboBoxItem Content="2" FontSize="16"/>
-                </ComboBox>
-                <ComboBox Width="70"  Background="#eee"
-                        Grid.Column="2" HorizontalAlignment="Center" 
-                        Margin="0 10 0 15" SelectedIndex="0" 
-                      FontSize="20" VerticalContentAlignment="Center">
-                    <ComboBoxItem Content="lbs" FontSize="16"/>
-                    <ComboBoxItem Content="kg" FontSize="16"/>
-                </ComboBox>
-                <TextBlock Text="Per Week" FontSize="15"
-                        Grid.Column="3" HorizontalAlignment="Center" 
-                        Margin="0 10 20 15" VerticalAlignment="Center"/>
-            </Grid>
-
-            <!--Daily Steps Grid-->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1.5*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <!--Goal Weight Input-->
-                <TextBlock Text="Daily Steps:" FontSize="20"
-                        Grid.Column="0" Margin="20 10 10 15" 
-                        FontWeight="Bold"/>
-                <TextBox Width="80"  Background="#eee"
-                        Grid.Column="1" HorizontalAlignment="Center" 
-                        Margin="0 7 0 15"/>
-            </Grid>
-
-            <!--Button Grid-->
-            <Grid VerticalAlignment="Center">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-
-                <!--Buttons-->
-                <Button Grid.Column="0"
-                    Content="SAVE" Width="120"
-                    Height="30" FontSize="18"/>
-                <Button Grid.Column="1" 
-                    Content="SKIP" Width="120"
-                    Height="30" FontSize="18"
-                    VerticalContentAlignment="Center"/>
-            </Grid>
-
-        </StackPanel>
-
-        <local:TabBar Grid.Column="0" Grid.Row="2" />
-    </Grid>
+    </StackPanel>
 </Page>
