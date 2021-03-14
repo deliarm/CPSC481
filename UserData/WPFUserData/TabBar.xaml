@@ -116,7 +116,7 @@
                 <Image Source="Icons\running.png" Grid.Column="0" Grid.Row="0" />
                 <TextBlock Grid.Column="0" Grid.Row="1"  FontSize="16">
                     <Hyperlink NavigateUri="ActivitiesPage.xaml">
-                    Activity
+                        Activity
                     </Hyperlink>
                 </TextBlock>
             </Grid>
@@ -133,7 +133,12 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Image Source="Icons\bar-chart.png" Grid.Column="0" Grid.Row="0" />
-                <TextBlock Text="Profile" Grid.Column="0" Grid.Row="1"  FontSize="16"/>
+                <TextBlock  Grid.Column="0" Grid.Row="1"  FontSize="16">
+                    <Hyperlink NavigateUri="ProfilePage.xaml">
+                        Profile
+                    </Hyperlink>
+                </TextBlock>
+
             </Grid>
             
         </Button>

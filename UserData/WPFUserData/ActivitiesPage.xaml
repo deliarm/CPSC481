@@ -1,4 +1,4 @@
-﻿<Page x:Class="WPFUserData.Page1"
+﻿<Page x:Class="WPFUserData.ActivitiesPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:WPFUserData"
       mc:Ignorable="d" 
      d:DesignHeight="740" d:DesignWidth="360"
-      Title="Page1">
+      Title="ActivitiesPage">
 
     <Grid Background="White">
         <Grid.ColumnDefinitions>

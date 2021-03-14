@@ -18,9 +18,9 @@ namespace WPFUserData
     /// <summary>
     /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class ActivitiesPage : Page
     {
-        public Page1()
+        public ActivitiesPage()
         {
             InitializeComponent();
         }

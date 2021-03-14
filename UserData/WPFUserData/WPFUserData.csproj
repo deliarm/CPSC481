@@ -55,8 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ActitvitiesPage.xaml.cs">
-      <DependentUpon>ActitvitiesPage.xaml</DependentUpon>
+    <Compile Include="ActivitiesPage.xaml.cs">
+      <DependentUpon>ActivitiesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddActivityPage.xaml.cs">
       <DependentUpon>AddActivityPage.xaml</DependentUpon>
@@ -73,6 +73,9 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProfilePage.xaml.cs">
+      <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TabBar.xaml.cs">
       <DependentUpon>TabBar.xaml</DependentUpon>
     </Compile>
@@ -82,7 +85,7 @@
     <Compile Include="TrackerOptions.xaml.cs">
       <DependentUpon>TrackerOptions.xaml</DependentUpon>
     </Compile>
-    <Page Include="ActitvitiesPage.xaml">
+    <Page Include="ActivitiesPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -118,6 +121,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TabBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
