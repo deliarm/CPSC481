@@ -60,6 +60,9 @@
     <Compile Include="ActivitiesPage.xaml.cs">
       <DependentUpon>ActivitiesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ActivityReportPage.xaml.cs">
+      <DependentUpon>ActivityReportPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddActivityPage.xaml.cs">
       <DependentUpon>AddActivityPage.xaml</DependentUpon>
     </Compile>
@@ -71,6 +74,9 @@
     </Compile>
     <Compile Include="FoodPage.xaml.cs">
       <DependentUpon>FoodPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FoodReportPage.xaml.cs">
+      <DependentUpon>FoodReportPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
@@ -94,6 +100,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="ActivityReportPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddActivityPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -107,6 +117,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FoodPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FoodReportPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
