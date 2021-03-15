@@ -1,0 +1,147 @@
+﻿<Page x:Class="WPFUserData.NewAddMealPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFUserData"
+      mc:Ignorable="d" 
+      d:DesignHeight="740" d:DesignWidth="360"
+      Title="NewAddMealPage">
+
+    <Grid Style="{StaticResource MainGrid}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="70" />
+        </Grid.RowDefinitions>
+        <local:HeaderControl Grid.Column="0" Grid.Row= "0" Title="Add Meal"/>
+
+        <!-- Main Content -->
+        <ScrollViewer Grid.Column="0" Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="80"/>
+                </Grid.RowDefinitions>
+                
+                <!-- Scrollable section of main content-->
+                <ScrollViewer Grid.Row="0" Grid.Column="0" VerticalScrollBarVisibility="Hidden">
+                    <StackPanel>
+                        
+                        
+                        <!-- Meal selection section-->
+                        <Grid Margin="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0"
+                                Style="{StaticResource Header1}">
+                                Meal:
+                            </TextBlock>
+                            <ComboBox Grid.Row="0" Grid.Column="1"
+                                      Style="{StaticResource ComboBox1}">
+                                <ComboBoxItem Content="Breakfast" IsSelected="True"/>
+                                <ComboBoxItem Content="Lunch"/>
+                                <ComboBoxItem Content="Dinner"/>
+                                <ComboBoxItem Content="Snack"/>
+                            </ComboBox>
+                        </Grid>
+                        
+                        <!-- Current items section -->
+                        <StackPanel Margin="16">
+                            <TextBlock Style="{StaticResource Header2}" Margin="0 0 0 8">
+                                Current Foods: 
+                            </TextBlock>
+                            
+                            <ListBox Name="currentFoodList" HorizontalContentAlignment="Stretch">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid HorizontalAlignment="Stretch">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+
+                                            <!-- TODO: The margin should be a style? -->
+                                            <TextBlock Grid.Row="0" Grid.Column="0" 
+                                                       Margin="16" 
+                                                       Style="{StaticResource BodyText}"
+                                                       Text="{Binding FoodName}" />
+                                            <TextBlock Grid.Row="0" Grid.Column="1" 
+                                                       Margin="16" 
+                                                       Style="{StaticResource BodyText}"
+                                                       Text="{Binding Quantity}" />
+                                            <TextBlock Grid.Row="0" Grid.Column="2" 
+                                                       Margin="16" 
+                                                       Style="{StaticResource BodyText}"
+                                                       Text="{Binding CaloriesStr}" />
+                                            <Button Grid.Row="0" Grid.Column="3"
+                                                    Style="{StaticResource InvisibleButton}"
+                                                    HorizontalAlignment="Right">
+                                                <Image Source="Icons\baseline_highlight_off_black_48.png" Height="30" />
+                                            </Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </StackPanel>
+                        
+                        <!-- Search section -->
+                        <Grid Margin="16">
+                            <Grid.ColumnDefinitions>
+                                
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0"
+                                       Style="{StaticResource Header2}"
+                                       Margin="0 0 0 8"
+                                       VerticalAlignment="Center">
+                                Search for foods to add:
+                            </TextBlock>
+                            <TextBox Grid.Row="1" Grid.Column="0"></TextBox>
+                        </Grid>
+                    </StackPanel>
+                </ScrollViewer>
+                
+                <!-- Sticky Buttons -->
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Button Grid.Row="0" Grid.Column="0"
+                            Style="{StaticResource Button1}">Cancel</Button>
+                    <Button Grid.Row="0" Grid.Column="1"
+                            Style="{StaticResource Button1}">Add Meal</Button>
+                </Grid>
+            </Grid>
+           
+        </ScrollViewer>
+
+        <local:TabBar Grid.Column="0" Grid.Row= "2" />
+    </Grid>
+</Page>
