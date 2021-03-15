@@ -44,6 +44,9 @@ namespace WPFUserData
             */
 
             currentFoodList.ItemsSource = foodItems;
+
+            //TEMP: OBVIOUSLY THEY SHOULDN'T HAVE THE SAME CONTENTS
+            FoodOptionsList.ItemsSource = foodItems;
         }
     }
 

@@ -72,9 +72,6 @@
     <Compile Include="AddMealPage.xaml.cs">
       <DependentUpon>AddMealPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FoodItemControl.xaml.cs">
-      <DependentUpon>FoodItemControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="FoodPage.xaml.cs">
       <DependentUpon>FoodPage.xaml</DependentUpon>
     </Compile>
@@ -122,10 +119,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddMealPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="FoodItemControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -241,6 +234,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\baseline_highlight_off_black_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\baseline_add_task_white_48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
