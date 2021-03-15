@@ -8,7 +8,7 @@
       d:DesignHeight="740" d:DesignWidth="360"
       Title="AddMealPage">
 
-    <Grid>
+    <Grid Style="{StaticResource MainGrid}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
