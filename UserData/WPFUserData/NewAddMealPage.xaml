@@ -120,7 +120,9 @@
                                             VerticalAlignment="Center">
                                     Search for foods to add:
                             </TextBlock>
-                            <TextBox Grid.Row="1" Grid.Column="0"></TextBox>
+                            <TextBox x:Name="FakeSearchBox" Grid.Row="1" Grid.Column="0"
+                                     GotFocus="FakeSearchBox_GotFocus">
+                            </TextBox>
                         </Grid>
                     </StackPanel>
                 </ScrollViewer>
@@ -141,9 +143,12 @@
                 </Grid>
             </Grid>
             <!-- This is the Add Food search (fake) popup -->
-            <Grid Visibility="Hidden">
-                <Grid Background="Black" Opacity="0.4">
-                   
+            <Grid x:Name="SearchPopup" Visibility="Hidden">
+                <Grid x:Name="OverlayBackground" 
+                      Background="Black" 
+                      Opacity="0.4"
+                      UIElement.MouseUp="OverlayBackground_MouseUp">
+                
                 </Grid>
                 <Border Margin="32" Background="#606192" CornerRadius="8">
                     <Grid>
@@ -170,9 +175,8 @@
                                        Style="{StaticResource Header2}">
                                 Search: 
                             </TextBlock>
-                            <TextBox Grid.Row="0" Grid.Column="1"
+                            <TextBox x:Name="RealSearchBox" Grid.Row="0" Grid.Column="1"
                                      Margin="16">
-                                waf
                             </TextBox>
                         </Grid>
                         <ListBox Grid.Row="1" Grid.Column="0" 
@@ -224,10 +228,8 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <Button Grid.Row="0" Grid.Column="1"
-                                Style="{StaticResource Button1_Light}"
-                                
-                            >
+                            <Button x:Name="SearchCancelButton" Grid.Row="0" Grid.Column="1"
+                                Style="{StaticResource Button1_Light}" Click="SearchCancelButton_Click">
                                 Cancel
                             </Button>
                         </Grid>

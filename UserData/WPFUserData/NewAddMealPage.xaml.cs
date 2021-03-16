@@ -48,6 +48,22 @@ namespace WPFUserData
             //TEMP: OBVIOUSLY THEY SHOULDN'T HAVE THE SAME CONTENTS
             FoodOptionsList.ItemsSource = foodItems;
         }
+
+        private void SearchCancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            SearchPopup.Visibility = Visibility.Hidden;
+        }
+
+        private void FakeSearchBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            SearchPopup.Visibility = Visibility.Visible;
+            RealSearchBox.Focus();
+        }
+
+        private void OverlayBackground_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            SearchPopup.Visibility = Visibility.Hidden;
+        }
     }
 
     public class FoodItem
