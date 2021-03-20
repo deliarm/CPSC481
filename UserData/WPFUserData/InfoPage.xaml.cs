@@ -24,5 +24,28 @@ namespace WPFUserData
         {
             InitializeComponent();
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Goal_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (goalCombo.SelectedItem.ToString()  == "Maintain"){
+                weightGoalPanel.Visibility = Visibility.Collapsed;
+            } else  {
+                weightGoalPanel.Visibility = Visibility.Visible;
+
+                if (goalCombo.SelectedItem.ToString() == "Lose")
+                {
+                    weightLabel.Text = "Lose";
+                }
+                else
+                {
+                    weightLabel.Text = "Gain";
+                } ;
+            }
+        }
     }
 }
