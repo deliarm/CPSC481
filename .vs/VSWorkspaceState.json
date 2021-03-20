@@ -1,16 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\mikepages\\Profile",
     "\\RyansPages",
-    "\\RyansPages\\Project",
-    "\\RyansPages\\Project\\Icons",
     "\\UserData",
     "\\UserData\\WPFUserData",
-    "\\UserData\\WPFUserData\\Icons",
-    "\\UserData\\WPFUserData\\Properties",
     "\\WPF_proj"
   ],
-  "SelectedNode": "\\UserData\\WPFUserData\\WPFUserData.csproj",
+  "SelectedNode": "\\UserData\\UserData.sln",
   "PreviewInSolutionExplorer": false
 }
