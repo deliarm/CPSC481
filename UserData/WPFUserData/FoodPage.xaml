@@ -18,50 +18,39 @@
             <RowDefinition Height="70" />
         </Grid.RowDefinitions>
 
-
-        <!--Header/Logo -->
-        <Grid Grid.Column="0" Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
-
-            <TextBlock
-                Text="Food" 
-                Background="Yellow"           
-                FontSize="36" 
-                HorizontalAlignment="Stretch" 
-                TextAlignment="Center"
-                FontFamily="Segoe UI Black" />
-        </Grid>
+        <local:HeaderControl Title="Food" Grid.Column="0" Grid.Row="0" />
+        
 
         <!-- Body - Food stuff -->
         <ScrollViewer Grid.Column="0" Grid.Row="1" VerticalScrollBarVisibility="Hidden">
             <StackPanel>
                 <!-- Today-->
-                <Grid Width="220">
+                <Grid Margin="16 16 16 16">
                     <Grid.RowDefinitions>
-                        <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="90" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" Grid.Row="0"  FontSize="20">Today:</Label>
-                    <Label Grid.Column="1" Grid.Row="0" HorizontalContentAlignment="Right" FontSize="20">Aug 5, 2020</Label>
-                    <Label Grid.Column="0" Grid.Row="1"  FontSize="20">Calories:</Label>
-                    <Label Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Right" FontSize="20">250 cal</Label>
+                    <TextBlock Grid.Column="0" Grid.Row="0"
+                               Style="{StaticResource Header1}">
+                        Calories
+                    </TextBlock>
+                    <TextBlock Grid.Column="1" Grid.Row="0" 
+                               HorizontalAlignment="Right" 
+                               VerticalAlignment="Center"
+                               Style="{StaticResource BodyText}">
+                        250 cal
+                    </TextBlock>
                 </Grid>
 
                 <!-- Ugly Separator -->
                 <Rectangle Fill="LightGray" Height="1" />
 
                 <!-- Macros-->
-                <StackPanel  Margin="10 0 10 0 ">
-                    <Label FontSize="24">Macros</Label>
+                <StackPanel Margin="16 8 16 0 ">
+                    <TextBlock Style="{StaticResource Header1}">Macros</TextBlock>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -87,11 +76,11 @@
                 <Rectangle Fill="LightGray" Height="1" />
 
                 <!-- Meals-->
-                <StackPanel Margin="10 0 10 0 ">
-                    <Label FontSize="24">Meals</Label>
+                <StackPanel Margin="16 8 16 0">
+                    <TextBlock  Style="{StaticResource Header1}">Meals</TextBlock>
                     <StackPanel>
                         <!-- List Container -->
-                        <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="2"  Margin="0 0 0 10">
+                        <Border Style="{StaticResource SingleItem}">
                             <!-- List Item-->
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -107,7 +96,7 @@
                                 <Label Grid.Column="2" Grid.Row="0" VerticalContentAlignment="Center" FontSize="24" FontWeight="Bold">></Label>
                             </Grid>
                         </Border>
-                        <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="2" Margin="0 0 0 10">
+                        <Border Style="{StaticResource SingleItem}">
                             <!-- List Item-->
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -123,7 +112,7 @@
                                 <Label Grid.Column="2" Grid.Row="0" VerticalContentAlignment="Center" FontSize="24" FontWeight="Bold">></Label>
                             </Grid>
                         </Border>
-                        <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="2" Margin="0 0 0 10">
+                        <Border Style="{StaticResource SingleItem}">
                             <!-- List Item-->
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -158,11 +147,14 @@
                         </Style>
                     </Grid.Resources>
 
-                    <Button Grid.Row="0" Grid.Column="0">Create Report</Button>
-                    <Button Grid.Row="0" Grid.Column="1">
-                        <Hyperlink NavigateUri="AddMealPage.xaml">
-                            Add Meal
-                        </Hyperlink>
+                    <Button Grid.Row="0" Grid.Column="0"
+                            Style="{StaticResource Button1}">
+                        Create Report
+                    </Button>
+                    <Button Grid.Row="0" Grid.Column="1"
+                            Style="{StaticResource Button1}"
+                            Click="AddMeal_Click">
+                        Add Meal
                     </Button>
                 </Grid>
             </StackPanel>
