@@ -66,12 +66,6 @@
     <Compile Include="AddActivityPage.xaml.cs">
       <DependentUpon>AddActivityPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddMealAddItemPage.xaml.cs">
-      <DependentUpon>AddMealAddItemPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AddMealPage.xaml.cs">
-      <DependentUpon>AddMealPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="FoodPage.xaml.cs">
       <DependentUpon>FoodPage.xaml</DependentUpon>
     </Compile>
@@ -87,8 +81,8 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NewAddMealPage.xaml.cs">
-      <DependentUpon>NewAddMealPage.xaml</DependentUpon>
+    <Compile Include="AddMealPage.xaml.cs">
+      <DependentUpon>AddMealPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
@@ -113,14 +107,6 @@
     <Page Include="AddActivityPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="AddMealAddItemPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AddMealPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FoodPage.xaml">
       <SubType>Designer</SubType>
@@ -154,7 +140,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="NewAddMealPage.xaml">
+    <Page Include="AddMealPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
