@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-U:\Desktop\CPSC481\UserData\WPFUserData\obj\Release\
+C:\Users\ryan9\Desktop\CPSC481\UserData\WPFUserData\obj\Release\
 WPFUserData
 none
 false
 TRACE
-U:\Desktop\CPSC481\UserData\WPFUserData\App.xaml
-7-1373562020
+C:\Users\ryan9\Desktop\CPSC481\UserData\WPFUserData\App.xaml
+16-1859717298
 
-111368519296
-131569487696
-AddMealAddItemPage.xaml;AddMealPage.xaml;FoodPage.xaml;MainPage.xaml;MainWindow.xaml;TabBar.xaml;TestPage.xaml;
+20-1132342508
+151984215308
+ActivitiesPage.xaml;ActivityReportPage.xaml;AddActivityPage.xaml;AddMealAddItemPage.xaml;AddMealPage.xaml;FoodPage.xaml;FoodReportPage.xaml;HeaderControl.xaml;InfoPage.xaml;MainPage.xaml;MainWindow.xaml;NewAddMealPage.xaml;ProfilePage.xaml;TabBar.xaml;TestPage.xaml;TrackerOptions.xaml;
 
 True
 

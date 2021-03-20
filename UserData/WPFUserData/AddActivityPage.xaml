@@ -19,16 +19,16 @@
         </Grid.RowDefinitions>
         <Grid.Resources>
             <Style TargetType="{x:Type Label}">
-                <Setter Property="FontSize" Value="30" />
+                <Setter Property="FontSize" Value="24" />
             </Style>
             <Style TargetType="{x:Type TextBox}">
-                <Setter Property="FontSize" Value="30" />
+                <Setter Property="FontSize" Value="24" />
             </Style>
             <Style TargetType="{x:Type Button}">
-                <Setter Property="FontSize" Value="30" />
+                <Setter Property="FontSize" Value="20" />
             </Style>
             <Style TargetType="{x:Type ComboBox}">
-                <Setter Property="FontSize" Value="30" />
+                <Setter Property="FontSize" Value="24" />
             </Style>
 
         </Grid.Resources>
@@ -53,19 +53,29 @@
         <!-- Add Activity Content -->
         <ScrollViewer Grid.Column="0" Grid.Row="1" VerticalScrollBarVisibility="Hidden" Padding="10">
             <StackPanel>
-
+				
                 <!-- Activity Type -->
                 <DockPanel Margin="0 30 0 0">
                     <Label DockPanel.Dock="Left">Activity Type:</Label>
-                    <TextBox DockPanel.Dock="Right" Name="DurationTextBox">Run</TextBox>
+					<ComboBox DockPanel.Dock="Right">
+						<ComboBoxItem IsSelected="True">Run</ComboBoxItem>
+						<ComboBoxItem>Walk</ComboBoxItem>
+						<ComboBoxItem>Bike</ComboBoxItem>
+						<ComboBoxItem>Hike</ComboBoxItem>
+						<ComboBoxItem>Swim</ComboBoxItem>
+					</ComboBox>
                 </DockPanel>
-
-                <!-- Duration -->
+				
+				<Line X1="0" Y1="10" X2="360" Y2="10" Stroke="LightGray" StrokeThickness="2" />
+               
+				<!-- Duration -->
                 <DockPanel Margin="0 30 0 0">
                     <Label DockPanel.Dock="Left">Duration:</Label>
-                    <TextBox DockPanel.Dock="Right" Name="NameTextBox">0:26:17</TextBox>
+                    <TextBox DockPanel.Dock="Right" Name="DurationTextBox">0:26:17</TextBox>
                 </DockPanel>
 
+				<Line X1="0" Y1="10" X2="360" Y2="10" Stroke="LightGray" StrokeThickness="2" />
+				
                 <!-- Distance -->
                 <DockPanel Margin="0 30 0 0">
                     <Label DockPanel.Dock="Left">Distance:</Label>
@@ -76,11 +86,15 @@
                     </ComboBox>
                 </DockPanel>
 
+				<Line X1="0" Y1="10" X2="360" Y2="10" Stroke="LightGray" StrokeThickness="2" />
+
                 <!-- Calories Burned -->
                 <DockPanel Margin="0 30 0 0">
                     <Label DockPanel.Dock="Left">Calories Burned:</Label>
                     <TextBox DockPanel.Dock="Right" Name="CaloriesBurnedTextBox">500</TextBox>
                 </DockPanel>
+
+				<Line X1="0" Y1="10" X2="360" Y2="10" Stroke="LightGray" StrokeThickness="2" />
 
                 <!-- Cancel/Save Buttons -->
                 <Grid>
@@ -93,12 +107,12 @@
                     </Grid.RowDefinitions>
 
                     <Button Margin="10 10 10 10" Grid.Row="0" Grid.Column="0">
-                        <Hyperlink NavigateUri="TrackerOptions.xaml">
+                        <Hyperlink NavigateUri="ActivitiesPage.xaml">
                             Cancel
                         </Hyperlink>
                     </Button>
                     <Button Margin="10 10 10 10" Grid.Row="0" Grid.Column="1">
-                        <Hyperlink NavigateUri="TrackerOptions.xaml">
+                        <Hyperlink NavigateUri="ActivitiesPage.xaml">
                             Save
                         </Hyperlink>
                     </Button>

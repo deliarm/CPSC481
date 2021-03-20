@@ -20,16 +20,16 @@
         </Grid.RowDefinitions>
         <Grid.Resources>
             <Style TargetType="{x:Type Label}">
-                <Setter Property="FontSize" Value="30" />
+                <Setter Property="FontSize" Value="24" />
             </Style>
             <Style TargetType="{x:Type TextBox}">
-                <Setter Property="FontSize" Value="30" />
+                <Setter Property="FontSize" Value="24" />
             </Style>
             <Style TargetType="{x:Type Button}">
                 <Setter Property="FontSize" Value="20" />
             </Style>
             <Style TargetType="{x:Type ComboBox}">
-                <Setter Property="FontSize" Value="30" />
+                <Setter Property="FontSize" Value="24" />
             </Style>
 
         </Grid.Resources>
@@ -55,7 +55,7 @@
         <!-- Tracker Content -->
         <ScrollViewer Grid.Column="0" Grid.Row="1" VerticalScrollBarVisibility="Hidden" Padding="10">
             <StackPanel>
-
+				
                 <!-- Track Distance -->
                 <DockPanel>
                     <Label DockPanel.Dock="Left">Track Distance</Label>
@@ -65,11 +65,13 @@
                     </ComboBox>
                 </DockPanel>
 
-                <!-- Timer -->
+				<Line X1="0" Y1="10" X2="360" Y2="10" Stroke="LightGray" StrokeThickness="2" />
+
+				<!-- Timer -->
                 <Label Margin="0 15 0 0">Timer</Label>
                 <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="2" Width="280" Padding="5">
                     <StackPanel>
-                        <Label HorizontalAlignment="Center" Content="0:00.00"/>
+                        <Label x:Name="ClockLabel" HorizontalAlignment="Center" Content="0:00.00"/>
                         <Grid >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -85,13 +87,16 @@
                                     <Setter Property="BorderThickness" Value="0 0 0 1" />
                                 </Style>
                             </Grid.Resources>
-                            <Button Grid.Row="0" Grid.Column="0">Reset</Button>
-                            <Button Grid.Row="0" Grid.Column="1">Start</Button>
+                            <Button Name="ResetButton" Grid.Row="0" Grid.Column="0" Click="startbtn_Click">Reset </Button>
+                            <Button Name="StartButton" Grid.Row="0" Grid.Column="1" Click="resetbtn_Click">Start</Button>
                         </Grid>
                     </StackPanel>
                 </Border>
 
-                <!-- Distance -->
+				<Line X1="0" Y1="10" X2="360" Y2="10" Stroke="LightGray" StrokeThickness="2" />
+
+
+				<!-- Distance -->
                 <Label Margin="0 15 0 0">Distance</Label>
                 <Border Margin ="0 0 0 20" BorderBrush="LightGray" BorderThickness="2" CornerRadius="2" Width="280" Padding="5">
                     <Grid Margin="10">
@@ -112,6 +117,8 @@
 
                 <!-- Map -->
                 <Image Width="300"  Source="Icons/SampleMap.png"></Image>
+
+				<Line X1="0" Y1="10" X2="360" Y2="10" Stroke="LightGray" StrokeThickness="2" />
 
                 <!-- Manual Add and Finish Buttons -->
                 <Grid Margin="0 20 0 0">

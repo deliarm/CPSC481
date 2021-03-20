@@ -91,7 +91,12 @@
                                         </Style>
                                     </Grid.Resources>
                                     <Button Grid.Row="0" Grid.Column="0">Add Food</Button>
-                                    <Button Grid.Row="0" Grid.Column="1">Add Exercise</Button>
+                                    <Button Grid.Row="0" Grid.Column="1">
+										<Hyperlink NavigateUri="TrackerOptions.xaml">
+											Add Activity
+										</Hyperlink>
+									</Button>
+									
                                     <Button Grid.Row="0" Grid.Column="2">Add Sleep</Button>
                                 </Grid>
                             </StackPanel>

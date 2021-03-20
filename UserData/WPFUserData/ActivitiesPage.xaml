@@ -19,16 +19,16 @@
         </Grid.RowDefinitions>
         <Grid.Resources>
             <Style TargetType="{x:Type Label}">
-                <Setter Property="FontSize" Value="30" />
+                <Setter Property="FontSize" Value="24" />
             </Style>
             <Style TargetType="{x:Type TextBox}">
-                <Setter Property="FontSize" Value="30" />
+                <Setter Property="FontSize" Value="24" />
             </Style>
             <Style TargetType="{x:Type Button}">
                 <Setter Property="FontSize" Value="20" />
             </Style>
             <Style TargetType="{x:Type ComboBox}">
-                <Setter Property="FontSize" Value="30" />
+                <Setter Property="FontSize" Value="24" />
             </Style>
 
         </Grid.Resources>
@@ -59,10 +59,16 @@
                 <DockPanel>
                     <Label DockPanel.Dock="Left">Date</Label>
                     <ComboBox DockPanel.Dock="Right">
-                        <ComboBoxItem IsSelected="True">March 7, 2021</ComboBoxItem>
-                        <ComboBoxItem>March 6, 2021</ComboBoxItem>
-                        <ComboBoxItem>March 5, 2021</ComboBoxItem>
-                        <ComboBoxItem>March 4, 2021</ComboBoxItem>
+                        <ComboBoxItem IsSelected="True">March 19, 2021</ComboBoxItem>
+                        <ComboBoxItem>March 18, 2021</ComboBoxItem>
+                        <ComboBoxItem>March 17, 2021</ComboBoxItem>
+                        <ComboBoxItem>March 16, 2021</ComboBoxItem>
+						<ComboBoxItem>March 15, 2021</ComboBoxItem>
+						<ComboBoxItem>March 14, 2021</ComboBoxItem>
+						<ComboBoxItem>March 13, 2021</ComboBoxItem>
+						<ComboBoxItem>March 12, 2021</ComboBoxItem>
+						<ComboBoxItem>March 11, 2021</ComboBoxItem>
+						<ComboBoxItem>March 10, 2021</ComboBoxItem>
                     </ComboBox>
                 </DockPanel>
 
@@ -76,7 +82,7 @@
 
                 <!-- Activity List -->
                 <Label Margin="0 15 0 0">Activities</Label>
-                <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="2" Width="280" Padding="5">
+                <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="2" Width="280" Padding="5" Margin ="0 0 0 10">
                     <Grid >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>
@@ -90,7 +96,7 @@
                         </Grid.RowDefinitions>
                         <Grid.Resources>
                             <Style TargetType="{x:Type Label}">
-                                <Setter Property="FontSize" Value="20" />
+                                <Setter Property="FontSize" Value="16" />
                                 <Setter Property="BorderBrush" Value="LightGray" />
                                 <Setter Property="BorderThickness" Value="0 0 0 1" />
                             </Style>
@@ -103,7 +109,7 @@
                     </Grid>
                 </Border>
 
-                <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="2" Width="280" Padding="5">
+                <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="2" Width="280" Padding="5" Margin ="0 0 0 10">
                     <Grid >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>
@@ -117,7 +123,7 @@
                         </Grid.RowDefinitions>
                         <Grid.Resources>
                             <Style TargetType="{x:Type Label}">
-                                <Setter Property="FontSize" Value="20" />
+                                <Setter Property="FontSize" Value="16" />
                                 <Setter Property="BorderBrush" Value="LightGray" />
                                 <Setter Property="BorderThickness" Value="0 0 0 1" />
                             </Style>
@@ -130,6 +136,8 @@
                     </Grid>
                 </Border>
 
+				<Line X1="0" Y1="10" X2="360" Y2="10" Stroke="LightGray" StrokeThickness="2" />
+
                 <!-- Create Report/Add Activity Buttons-->
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -140,7 +148,7 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <Button Margin="10 10 10 10" Grid.Row="0" Grid.Column="0">
-                        <Hyperlink>
+                        <Hyperlink NavigateUri="ActivityReportPage.xaml">
                             Create Report
                         </Hyperlink>
                     </Button>
