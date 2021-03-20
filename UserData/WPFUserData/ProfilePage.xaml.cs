@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 namespace WPFUserData
 {
@@ -23,6 +25,20 @@ namespace WPFUserData
         public ProfilePage()
         {
             InitializeComponent();
+
+            Series = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Values = new ChartValues<double> { 1, 3, 5 }
+                },
+            };
+
+            AxisLabels = new[] { "Jan", "Feb", "Mar" };
+            DataContext = this;
         }
+
+        public SeriesCollection Series { get;  set; }
+        public string[] AxisLabels { get; set; }
     }
 }

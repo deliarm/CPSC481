@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:local="clr-namespace:WPFUserData"
       mc:Ignorable="d" 
       d:DesignHeight="740" d:DesignWidth="360"
@@ -25,27 +26,11 @@
         </Grid.Resources>
 
         <!--Header/Logo -->
-        <Grid Grid.Column="0" Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
-
-            <TextBlock
-                Text="Activity Report" 
-                Background="Yellow"           
-                FontSize="36" 
-                HorizontalAlignment="Stretch" 
-                TextAlignment="Center"
-                FontFamily="Segoe UI Black" />
-        </Grid>
+        <local:HeaderControl Grid.Column="0" Grid.Row= "0"
+                             Title="Activity Report"/>
 
         <StackPanel Grid.Column="0" Grid.Row="1">
-
-
-            <Grid Margin="20 5 20 0">
+            <Grid Margin="20 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -72,7 +57,7 @@
                            FontSize="18" Margin="0 5" TextDecorations="Underline"/>
             </Grid>
 
-            <Grid Margin="20 10 20 5">
+            <Grid Margin="20 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width=".3*"/>
@@ -135,15 +120,19 @@
                     <ComboBoxItem Content="Km"/>
                 </ComboBox>
             </Grid>
-            <Grid Margin="20 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-                <Image Source="C:\Users\mike\Documents\Visual Studio 2019\Projects\ActivtyReport\ActivtyReport\Icons\line-graph-4.png"
-                       Grid.Row="0"/>
+            <!--https://lvcharts.net/App/examples/v1/Wpf/Line-->
+            <Grid Height="260px" Margin="20 10 20 5">
+                <lvc:CartesianChart Series="{Binding Series}" >
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Labels="{Binding AxisLabels}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                </lvc:CartesianChart>
             </Grid>
 
-            <Grid Margin="20 0">
+            <Grid Margin="20 20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
@@ -151,17 +140,25 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-
+                
+                <TextBlock Text="Average:  8 Km" Grid.Row="0"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           FontSize="18" Margin="0 5"/>
                 <TextBlock Text="Best Entry:  8 Km" Grid.Row="1"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
                            FontSize="18" Margin="0 5"/>
-                <TextBlock Text="Latest Entry:  5 Km" Grid.Row="0"
+                <TextBlock Text="Latest Entry:  5 Km" Grid.Row="2"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
                            FontSize="18" Margin="0 5"/>
-                <TextBlock Text="View All Entries >" Grid.Row="2"
+                <TextBlock Text="View All Entries >" Grid.Row="3"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
                            FontSize="15" Margin="0 5"

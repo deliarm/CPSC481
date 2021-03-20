@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:local="clr-namespace:WPFUserData"
       mc:Ignorable="d" 
       d:DesignHeight="740" d:DesignWidth="360"
@@ -110,25 +111,20 @@
                 </ComboBox>
             </Grid>
 
-            <Grid>
-                <Image Source="Icons\line-graph-1.png" />
+            <!--https://lvcharts.net/App/examples/v1/Wpf/Line-->
+            <Grid Height="180px" Margin="10 8 20 5">
+                <lvc:CartesianChart Series="{Binding Series}" >
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="Lbs"></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Labels="{Binding AxisLabels}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                </lvc:CartesianChart>
             </Grid>
 
-            <Grid>
+            <Grid Margin="20 0" Background="LightGray">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Text="Profile"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontSize="24" Margin="0 5"
-                           FontWeight="Bold"/>
-            </Grid>
-
-            <Grid Margin="20 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
@@ -138,61 +134,55 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Age: 24"
+                <TextBlock Text="Profile" Grid.Row="0"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
-                           FontSize="18" Margin="0 5"/>
+                           FontSize="24" Margin="0 2 0 0"
+                           FontWeight="Bold"/>
 
-                <TextBlock Text="Sex: Male" Grid.Column="1"
+                <TextBlock Text="Age: 24" Grid.Row="1"
                            VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontSize="18" Margin="0 5"/>
+                           HorizontalAlignment="Left"
+                           FontSize="17" Margin="10 5"/>
 
-                <TextBlock Text="Weight: 199 lbs" Grid.Row="1"
+                <TextBlock Text="Sex: Male" Grid.Row="2"
                            VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontSize="18" Margin="0 5"/>
+                           HorizontalAlignment="Left"
+                           FontSize="17" Margin="10 5"/>
 
-                <TextBlock Text="Height: 159 cm" Grid.Column="1" Grid.Row="1"
+                <TextBlock Text="Weight: 199 lbs" Grid.Row="3"
                            VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontSize="18" Margin="0 5"/>
+                           HorizontalAlignment="Left"
+                           FontSize="17" Margin="10 5"/>
 
-                <TextBlock Text="Activitiy Level: " Grid.Row="2"
+                <TextBlock Text="Height: 159 cm" Grid.Row="4"
                            VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontSize="18" Margin="0 5"/>
+                           HorizontalAlignment="Left"
+                           FontSize="17" Margin="10 5"/>
 
-                <TextBlock Text="Sedentry (Office Job)" Grid.Column="1" Grid.Row="2"
+                <TextBlock Text="Activity Level: Sedentry (Office Job)" Grid.Row="5"
                            VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontSize="14" Margin="0 5"/>
+                           HorizontalAlignment="Left"
+                           FontSize="17" Margin="10 5"/>
 
-                <TextBlock Text="Weight Goal:" Grid.Row="3"
+                <TextBlock Text="Weight Goal: 180lbs" Grid.Row="6"
                            VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontSize="18" Margin="0 5"/>
+                           HorizontalAlignment="Left"
+                           FontSize="17" Margin="10 5"/>
 
-                <TextBlock Text="180 Lbs" Grid.Column="2" Grid.Row="3"
+                <TextBlock Text="Step Goal: 6000" Grid.Row="7"
                            VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontSize="18" Margin="0 5"/>
-
-                <TextBlock Text="Step Goal:" Grid.Row="4"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontSize="18" Margin="0 5"/>
-
-                <TextBlock Text="6000" Grid.Column="2" Grid.Row="4"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontSize="18" Margin="0 5"/>
+                           HorizontalAlignment="Left"
+                           FontSize="17" Margin="10 5"/>
             </Grid>
 
 
-            <Grid Margin="20">
+            <Grid Margin="0 8 0 0">
                 <Button Content="Update Profile" Width="122"
                         Height="30" FontSize="18"/>
             </Grid>

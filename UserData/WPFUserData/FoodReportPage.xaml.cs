@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 namespace WPFUserData
 {
@@ -23,6 +25,19 @@ namespace WPFUserData
         public FoodReportPage()
         {
             InitializeComponent();
+
+            Series = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Values = new ChartValues<double> { 2, 5, 1 }
+                },
+            };
+
+            AxisLabels = new[] { "Jan", "Feb", "Mar" };
+            DataContext = this;
         }
+        public SeriesCollection Series { get; set; }
+        public string[] AxisLabels { get; set; }
     }
 }

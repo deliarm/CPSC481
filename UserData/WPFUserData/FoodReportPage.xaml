@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:local="clr-namespace:WPFUserData"
       mc:Ignorable="d" 
       d:DesignHeight="740" d:DesignWidth="360"
@@ -25,22 +26,8 @@
         </Grid.Resources>
 
         <!--Header/Logo -->
-        <Grid Grid.Column="0" Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
-
-            <TextBlock
-                Text="Meals Report" 
-                Background="Yellow"           
-                FontSize="36" 
-                HorizontalAlignment="Stretch" 
-                TextAlignment="Center"
-                FontFamily="Segoe UI Black" />
-        </Grid>
+        <local:HeaderControl Grid.Column="0" Grid.Row= "0"
+                             Title="Meals Report"/>
 
         <StackPanel Grid.Column="0" Grid.Row="1">
             <Grid>
@@ -82,7 +69,7 @@
                            FontSize="18" Margin="0 5" TextDecorations="Underline"/>
             </Grid>
 
-            <Grid Margin="20 10 20 5">
+            <Grid Margin="20 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width=".3*"/>
@@ -110,15 +97,19 @@
                 </ComboBox>
             </Grid>
 
-            <Grid Margin="20 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-                <Image Source="C:\Users\mike\Documents\Visual Studio 2019\Projects\Foodreport\Foodreport\Icons\line-graph-2.png"
-                       Grid.Row="0"/>
+            <!--https://lvcharts.net/App/examples/v1/Wpf/Line-->
+            <Grid Height="260px" Margin="10 10 20 5">
+                <lvc:CartesianChart Series="{Binding Series}" >
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="Calories"></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Labels="{Binding AxisLabels}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                </lvc:CartesianChart>
             </Grid>
 
-            <StackPanel Margin="20 0">
+            <StackPanel Margin="20 20 20 0">
                 <TextBlock Text="Average Calorie Intake:       2267 cal"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
@@ -126,29 +117,33 @@
                 <TextBlock Text="Macros"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
-                           FontSize="24" Margin="0 5 0 0" 
+                           FontSize="24" Margin="0 5" 
                            FontWeight="Bold"/>
             </StackPanel>
 
-            <Grid Margin="20 5 20 0">
+            <!-- Macros-->
+            <StackPanel  Margin="10 0 10 0 ">
+                
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Center" BorderBrush="LightGray" BorderThickness="1">Protein</Label>
+                    <Label Grid.Row="0" Grid.Column="1" HorizontalContentAlignment="Center" BorderBrush="LightGray" BorderThickness="1">Fat</Label>
+                    <Label Grid.Row="0" Grid.Column="2" HorizontalContentAlignment="Center" BorderBrush="LightGray" BorderThickness="1">Carb</Label>
 
-                <TextBlock Text="Protein: 35%" Grid.Row="0"
-                           VerticalAlignment="Center"
-                           FontSize="18" Margin="0 5"/>
-                <TextBlock Text="Fat: 45%" Grid.Row="1"
-                           VerticalAlignment="Center"
-                           FontSize="18" Margin="0 5"/>
-                <TextBlock Text="Carbs: 20%" Grid.Row="2"
-                           VerticalAlignment="Center"
-                           FontSize="18" Margin="0 5" />
-            </Grid>
-
+                    <Label Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Center">35%</Label>
+                    <Label Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center">40%</Label>
+                    <Label Grid.Row="1" Grid.Column="2" HorizontalContentAlignment="Center">25%</Label>
+                </Grid>
+            </StackPanel> 
         </StackPanel>
         <local:TabBar Grid.Column="0" Grid.Row="2" />
     </Grid>

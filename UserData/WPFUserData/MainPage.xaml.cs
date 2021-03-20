@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LiveCharts;
+using LiveCharts.Wpf;
+using LiveCharts.Defaults;
+using LiveCharts.Configurations;
+
 
 namespace WPFUserData
 {
@@ -23,6 +30,10 @@ namespace WPFUserData
         public MainPage()
         {
             InitializeComponent();
+            
+           
         }
+
+        public Func<Double, string> Percent { get; set; }
     }
 }
