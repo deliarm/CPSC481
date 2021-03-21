@@ -17,7 +17,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="70" />
         </Grid.RowDefinitions>
 
         <!--Header/Logo -->
@@ -49,7 +49,7 @@
                 <TextBlock Text="Age" Style="{StaticResource Header2}"
                         FontWeight="Bold"
                         Grid.Column="0" 
-                        Margin="20 20 10 10"/>
+                        Margin="20 20 10 10" />
                 <TextBox Width="80" Background="#eee"
                         Grid.Column="1" HorizontalAlignment="Left"
                         Margin="10 20 20 10"/>
@@ -64,12 +64,10 @@
                             Orientation="Horizontal"
                     Margin="10,10,20,10">
                     <Label/>
-                    <RadioButton FontSize="20"
-                                 GroupName="sex" Width="96">
+                    <RadioButton GroupName="sex" FontSize="20" Width="96">
                         Female
                     </RadioButton>
-                    <RadioButton FontSize="20" Width="84"
-                                 >
+                    <RadioButton GroupName="sex"  FontSize="20" Width="84">
                         Male
                     </RadioButton>
                 </StackPanel>
@@ -95,11 +93,11 @@
                 <TextBox Width="80"  Background="#eee"
                         Grid.Column="1" Grid.Row="0" 
                         HorizontalAlignment="Left" 
-                         Margin="10 10 10 10"/>
+                         Margin="10,10,0,10"/>
                 <ComboBox Width="70"  Background="#eee"
                         Grid.Column="2" Grid.Row="0" 
                         HorizontalAlignment="Right" 
-                          Margin="10 10 20 10"
+                          Margin="0,10,20,10"
                         SelectedIndex="0" FontSize="20"
                         VerticalContentAlignment="Center">
                     <ComboBoxItem Content="lbs" FontSize="16"/>
@@ -114,11 +112,11 @@
                 <TextBox Width="80"  Background="#eee"
                         Grid.Column="1" Grid.Row="1" 
                         HorizontalAlignment="Left"
-                         Margin="10 10 10 10"/>
+                         Margin="10,10,0,10"/>
                 <ComboBox Width="70"  Background="#eee"
                         Grid.Column="2" Grid.Row="1" 
                         HorizontalAlignment="Right" 
-                          Margin="10 10 20 10"
+                          Margin="0,10,20,10"
                         SelectedIndex="0" FontSize="20"
                         VerticalContentAlignment="Center">
                     <ComboBoxItem Content="cm" FontSize="16"/>
@@ -140,7 +138,7 @@
                 <TextBlock Text="Activity Level" Style="{StaticResource Header2}"
                         FontWeight="Bold"
                         Grid.Column="0"
-                        Margin="20 10 10 10" />
+                        Margin="20,10,0,10" />
                 <ComboBox Width="Auto" Background="#eee"
                         Grid.Column="1" 
                           Margin="10 10 20 10"
@@ -161,11 +159,19 @@
                        Grid.Column="0"
                        Margin="20 10 10 5"/>
             <Border Style="{StaticResource SingleItem}"
-                    Margin="16 10 16 0">
-                <StackPanel>
+                    Margin="16 0 16 16">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition  Height="2*"/>
+                    </Grid.RowDefinitions>
 
                     <!--Daily Steps Grid-->
-                    <Grid>
+                    <Grid Grid.Column="0" Grid.Row="0">
                         <Grid.ColumnDefinitions >
                             <ColumnDefinition Width="1.5*"/>
                             <ColumnDefinition Width="2*"/>
@@ -184,7 +190,68 @@
                                  Margin="10 10 0 10"/>
                     </Grid>
 
-                    <Grid>
+                    <!--Goal Weight Grid-->
+
+                    <StackPanel Grid.Column="0" Grid.Row="2"
+                        x:Name="weightGoalPanel"  Visibility="Visible">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="135*"/>
+                                <ColumnDefinition Width="92*"/>
+                                <ColumnDefinition Width="87*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--Goal Weight Input-->
+                            <TextBlock Text="Goal"
+                                   Style="{StaticResource Header2}"
+                                   Grid.Column="0" 
+                                   Margin="30,10,0,10" HorizontalAlignment="Left" Width="40" />
+                            <TextBox Background="#eee"
+                                 Grid.Column="1"
+                                 Margin="10,10,16,10"/>
+
+                            <ComboBox  Background="#eee"
+                                Grid.Column="2" 
+                                Margin="13,10,10,0" SelectedIndex="0" 
+                      FontSize="20" VerticalContentAlignment="Center" Height="39" VerticalAlignment="Top">
+                                <ComboBoxItem Content="lbs" FontSize="16"/>
+                                <ComboBoxItem Content="kg" FontSize="16"/>
+                            </ComboBox>
+                        </Grid>
+
+                        <!--Goal Time Grid-->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="136*"/>
+                                <ColumnDefinition Width="89*"/>
+                                <ColumnDefinition Width="42*"/>
+                                <ColumnDefinition Width="47*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--Goal Amount Input-->
+                            <TextBlock Text="Lose" x:Name="weightLabel"
+                                       FontSize="20"
+                                   Grid.Column="0"
+                                    HorizontalAlignment="Left"
+                                   Margin="30,10,0,15" Width="40" />
+                            <ComboBox  Background="#eee"
+                                Grid.Column="1" 
+                                Margin="10,10,13,15" SelectedIndex="0"
+                                FontSize="20" 
+                                VerticalContentAlignment="Center">
+                                <ComboBoxItem Content="0.5" FontSize="16"/>
+                                <ComboBoxItem Content="1" FontSize="16"/>
+                                <ComboBoxItem Content="1.5" FontSize="16"/>
+                                <ComboBoxItem Content="2" FontSize="16"/>
+                            </ComboBox>
+
+                            <TextBlock Text="Per Week" FontSize="15"
+                                   Grid.Column="2"
+                                   Margin="10,18,10,22" Grid.ColumnSpan="2"/>
+                        </Grid>
+                    </StackPanel>
+
+                    <Grid Grid.Column="0" Grid.Row="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1.5*"/>
                             <ColumnDefinition Width="2*"/>
@@ -197,11 +264,11 @@
                                  Margin="4 10  0 10"/>
 
                         <!--Goal Weight Input-->
-                        <ComboBox Name="goalCombo"
+                        <ComboBox x:Name="goalCombo"
                                   SelectedIndex="0"
                                   Grid.Column="1"
                                   FontSize="14"
-                                  Margin="10 10 20 10"
+                                  Margin="10 10 10 10"
                                   
                               SelectionChanged="Goal_SelectionChanged">
                             <ComboBoxItem Content="Maintain"/>
@@ -211,70 +278,7 @@
 
                     </Grid>
 
-                    <!--Goal Weight Grid-->
-
-                    <StackPanel Name="weightGoalPanel"  Visibility="Collapsed">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1.5*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <!--Goal Weight Input-->
-                            <TextBlock Text="Goal"
-                                   Style="{StaticResource Header2}"
-                                   
-                                   HorizontalAlignment="Left"
-                                   Grid.Column="0" 
-                                   Margin="30 10 10 10" />
-                            <TextBox Background="#eee"
-                                     Width="70"
-                                 Grid.Column="1" HorizontalAlignment="Center"
-                                 Margin="10 10 10 15"/>
-
-                            <ComboBox Width="70"  Background="#eee"
-                        Grid.Column="2" HorizontalAlignment="Center" 
-                        Margin="0 10 0 15" SelectedIndex="0" 
-                      FontSize="20" VerticalContentAlignment="Center">
-                                <ComboBoxItem Content="lbs" FontSize="16"/>
-                                <ComboBoxItem Content="kg" FontSize="16"/>
-                            </ComboBox>
-                        </Grid>
-
-                        <!--Goal Time Grid-->
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1.5*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-
-                            <!--Goal Amount Input-->
-                            <TextBlock Text="Lose" Name="weightLabel"
-                                       FontSize="20"
-                                   Grid.Column="0"
-                                    HorizontalAlignment="Left"
-                                   Margin="30,10,0,15" />
-                            <ComboBox Width="70"  Background="#eee"
-                                Grid.Column="1" HorizontalAlignment="Center" 
-                                Margin="10,10,10,15" SelectedIndex="0"
-                                FontSize="20" 
-                                VerticalContentAlignment="Center">
-                                <ComboBoxItem Content="0.5" FontSize="16"/>
-                                <ComboBoxItem Content="1" FontSize="16"/>
-                                <ComboBoxItem Content="1.5" FontSize="16"/>
-                                <ComboBoxItem Content="2" FontSize="16"/>
-                            </ComboBox>
-
-                            <TextBlock Text="Per Week" FontSize="15"
-                                   Grid.Column="2" HorizontalAlignment="Center"
-                                   Margin="4,18,23,22" VerticalAlignment="Center"/>
-                        </Grid>
-                    </StackPanel>
-
-
-                </StackPanel>
+                </Grid>
             </Border>
 
 
@@ -291,8 +295,8 @@
             <!--Buttons-->
             <Button Style="{StaticResource Button1}"
                     Grid.Column="1"
-                    Content="SAVE" FontSize="18"
-                        Margin="20"/>
+                    Content="SAVE" 
+                        Margin="20,0,20,20"/>
             <!--<Button Style="{StaticResource Button1}"
                     Grid.Column="1" 
                     Content="SKIP" 

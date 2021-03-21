@@ -32,12 +32,11 @@ namespace WPFUserData
 
         private void Goal_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (goalCombo.SelectedItem.ToString()  == "Maintain"){
+            if (goalCombo.SelectedItem.ToString()  == "System.Windows.Controls.ComboBoxItem: Maintain"){
                 weightGoalPanel.Visibility = Visibility.Collapsed;
             } else  {
                 weightGoalPanel.Visibility = Visibility.Visible;
-
-                if (goalCombo.SelectedItem.ToString() == "Lose")
+                if (goalCombo.SelectedItem.ToString() == "System.Windows.Controls.ComboBoxItem: Lose")
                 {
                     weightLabel.Text = "Lose";
                 }

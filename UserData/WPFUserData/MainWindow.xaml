@@ -8,5 +8,5 @@
         Title="User Data" Height="740" Width="360">
 
     <!-- https://stackoverflow.com/a/17071514 -->
-    <Frame x:Name="_NavigationFrame" NavigationUIVisibility="Hidden" Source="MainPage.xaml" />
+    <Frame x:Name="_NavigationFrame" NavigationUIVisibility="Hidden" Source="InfoPage.xaml" />
 </Window>
