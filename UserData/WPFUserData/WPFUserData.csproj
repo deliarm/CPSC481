@@ -90,6 +90,22 @@
     <Compile Include="AddMealPage.xaml.cs">
       <DependentUpon>AddMealPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Activity.cs" />
+    <Compile Include="Model\ActivityLevel.cs" />
+    <Compile Include="Model\ActivityType.cs" />
+    <Compile Include="Model\BiologicalSex.cs" />
+    <Compile Include="Model\FoodItem.cs" />
+    <Compile Include="Model\Goal.cs" />
+    <Compile Include="Model\Height.cs" />
+    <Compile Include="Model\HeightUnit.cs" />
+    <Compile Include="Model\Info.cs" />
+    <Compile Include="Model\Meal.cs" />
+    <Compile Include="Model\MealType.cs" />
+    <Compile Include="Model\Step.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\Weight.cs" />
+    <Compile Include="Model\WeightChange.cs" />
+    <Compile Include="Model\WeightUnit.cs" />
     <Compile Include="ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
