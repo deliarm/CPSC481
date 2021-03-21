@@ -24,24 +24,12 @@ namespace WPFUserData
         {
             InitializeComponent();
 
-            List<FoodItem> foodItems = new List<FoodItem>();
-            foodItems.Add(new FoodItem() { FoodName = "Waffles", Quantity = "x3", Calories=400 });
-            foodItems.Add(new FoodItem() { FoodName = "Apples", Quantity = "x1", Calories = 100 });
-            foodItems.Add(new FoodItem() { FoodName = "Eggs", Quantity = "x30", Calories = 2000 });
+            List<FoodItemOld> foodItems = new List<FoodItemOld>();
+            foodItems.Add(new FoodItemOld() { FoodName = "Waffles", Quantity = "x3", Calories=400 });
+            foodItems.Add(new FoodItemOld() { FoodName = "Apples", Quantity = "x1", Calories = 100 });
+            foodItems.Add(new FoodItemOld() { FoodName = "Eggs", Quantity = "x30", Calories = 2000 });
 
-            /*
-            foodItems.Add(new FoodItem() { FoodName = "Waffles", Quantity = "x3", Calories = 400 });
-            foodItems.Add(new FoodItem() { FoodName = "Apples", Quantity = "x1", Calories = 100 });
-            foodItems.Add(new FoodItem() { FoodName = "Eggs", Quantity = "x30", Calories = 2000 });
-
-            foodItems.Add(new FoodItem() { FoodName = "Waffles", Quantity = "x3", Calories = 400 });
-            foodItems.Add(new FoodItem() { FoodName = "Apples", Quantity = "x1", Calories = 100 });
-            foodItems.Add(new FoodItem() { FoodName = "Eggs", Quantity = "x30", Calories = 2000 });
-
-            foodItems.Add(new FoodItem() { FoodName = "Waffles", Quantity = "x3", Calories = 400 });
-            foodItems.Add(new FoodItem() { FoodName = "Apples", Quantity = "x1", Calories = 100 });
-            foodItems.Add(new FoodItem() { FoodName = "Eggs", Quantity = "x30", Calories = 2000 });
-            */
+            
 
             currentFoodList.ItemsSource = foodItems;
 
@@ -66,7 +54,7 @@ namespace WPFUserData
         }
     }
 
-    public class FoodItem
+    public class FoodItemOld
     {
         public string FoodName { get; set; }
         public string Quantity { get; set; }
