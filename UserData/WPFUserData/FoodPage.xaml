@@ -40,8 +40,8 @@
                     <TextBlock Grid.Column="1" Grid.Row="0" 
                                HorizontalAlignment="Right" 
                                VerticalAlignment="Center"
-                               Style="{StaticResource BodyText}">
-                        250 cal
+                               Style="{StaticResource BodyText}"
+                               Text="{Binding CaloriesStr}">
                     </TextBlock>
                 </Grid>
 
@@ -66,9 +66,21 @@
                         <Label Grid.Row="0" Grid.Column="1" HorizontalContentAlignment="Center" BorderBrush="LightGray" BorderThickness="1">Fat</Label>
                         <Label Grid.Row="0" Grid.Column="2" HorizontalContentAlignment="Center" BorderBrush="LightGray" BorderThickness="1">Carb</Label>
 
-                        <Label Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Center">35%</Label>
-                        <Label Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center">40%</Label>
-                        <Label Grid.Row="1" Grid.Column="2" HorizontalContentAlignment="Center">25%</Label>
+                        <TextBlock Grid.Row="1" Grid.Column="0" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource BodyText}"
+                                  Text="{Binding ProteinStr}">
+                        </TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="1" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource BodyText}"
+                                   Text="{Binding FatStr}">
+                            </TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="2" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource BodyText}"
+                                   Text="{Binding CarbsStr}">
+                        </TextBlock>
                     </Grid>
                 </StackPanel>
 
@@ -78,59 +90,32 @@
                 <!-- Meals-->
                 <StackPanel Margin="16 8 16 0">
                     <TextBlock  Style="{StaticResource Header1}">Meals</TextBlock>
-                    <StackPanel>
-                        <!-- List Container -->
-                        <Border Style="{StaticResource SingleItem}">
-                            <!-- List Item-->
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
-                                <Label Grid.Column="0" Grid.Row="0" VerticalContentAlignment="Center" FontSize="16">Breakfast</Label>
-                                <Label Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" FontSize="16" HorizontalContentAlignment="Right">200cal</Label>
-                                <Label Grid.Column="2" Grid.Row="0" VerticalContentAlignment="Center" FontSize="24" FontWeight="Bold">></Label>
-                            </Grid>
-                        </Border>
-                        <Border Style="{StaticResource SingleItem}">
-                            <!-- List Item-->
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
-                                <Label Grid.Column="0" Grid.Row="0" VerticalContentAlignment="Center" FontSize="16">Snacks</Label>
-                                <Label Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" FontSize="16" HorizontalContentAlignment="Right">50cal</Label>
-                                <Label Grid.Column="2" Grid.Row="0" VerticalContentAlignment="Center" FontSize="24" FontWeight="Bold">></Label>
-                            </Grid>
-                        </Border>
-                        <Border Style="{StaticResource SingleItem}">
-                            <!-- List Item-->
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
-                                <Label Grid.Column="0" Grid.Row="0" VerticalContentAlignment="Center" FontSize="16">Dinner</Label>
-                                <Label Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" FontSize="16" HorizontalContentAlignment="Right">1000cal</Label>
-                                <Label Grid.Column="2" Grid.Row="0" VerticalContentAlignment="Center" FontSize="24" FontWeight="Bold">></Label>
-                            </Grid>
-                        </Border>
-                    </StackPanel>
-                </StackPanel>
+                    <ListBox Name="MealsList" HorizontalContentAlignment="Stretch">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
 
+                                    <!-- TODO: The margin should be a style? -->
+                                    <TextBlock Grid.Row="0" Grid.Column="0" 
+                                                            Margin="16" 
+                                                            Style="{StaticResource BodyText}"
+                                                            Text="{Binding Type}" />
+                                    <TextBlock Grid.Row="0" Grid.Column="1" 
+                                                            Margin="16" 
+                                                            Style="{StaticResource BodyText}"
+                                                            Text="{Binding CaloriesStr}" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
                 <!-- Report Buttons-->
                 <Grid>
                     <Grid.ColumnDefinitions>
