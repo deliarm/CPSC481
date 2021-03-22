@@ -6,8 +6,7 @@
       xmlns:local="clr-namespace:WPFUserData"
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       mc:Ignorable="d" 
-      d:DesignHeight="740" d:DesignWidth="360"
-      Title="StepView">
+      d:DesignHeight="740" d:DesignWidth="360">
 
    
 
@@ -17,7 +16,7 @@
     </Grid.ColumnDefinitions>
     <Grid.RowDefinitions>
         <RowDefinition Height="50" />
-        <RowDefinition Height="50" />
+        <RowDefinition Height="70" />
         <RowDefinition Height="*" />
         <RowDefinition Height="98" />
         <RowDefinition Height="70" />
