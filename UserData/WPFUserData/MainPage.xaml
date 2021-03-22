@@ -69,7 +69,7 @@
                         FontSize="18" HorizontalAlignment="Center" 
                         Margin="0 0 0 0" FontWeight="Bold"
                         Grid.Column="0"/>
-                        <TextBlock Text="Remaining: 1200"
+                        <TextBlock Text="Remaining: 800"
                         FontSize="18" HorizontalAlignment="Center" 
                         Margin="0 0 0 0" FontWeight="Bold"
                         Grid.Column="1"/>
@@ -83,8 +83,8 @@
 
                     <!--https://lvcharts.net/App/examples/v1/Wpf/Solid%20Gauge-->
                     <lvc:Gauge Grid.Row="3" Margin="10"
-                       Uses360Mode="True" 
-                       From="0" To="100" Value="44" LabelFormatter="{Binding Percent}" >
+                       Uses360Mode="True" x:Name="Gauge"
+                       From="0" To="100" Value="60" LabelFormatter="{Binding Percent}" >
                         <lvc:Gauge.GaugeRenderTransform>
                             <TransformGroup>
                                 <RotateTransform Angle="90"></RotateTransform>
@@ -163,21 +163,28 @@
                     <TextBlock Text="110%" Grid.Column="6" Grid.Row="1" FontSize="15"
                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Grid>
-                <Grid>
+                <Grid Margin="20 0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
 
                     <!--Steps Label-->
-                    <Rectangle Grid.Row="0" Grid.RowSpan="2"/>
-                    <TextBlock Text="Steps: 1950/3000" Grid.Row="0" FontSize="24"
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Steps: 1950/3000" Grid.Row="0" FontSize="22"
                        HorizontalAlignment="Left" VerticalAlignment="Center"
-                       FontWeight="Bold" Margin="20 10 20 0"/>
-
-                    <!--Steps Progress Bar-->
+                       FontWeight="Bold" Margin="0 10 0 0"/>
+                        <TextBlock Grid.Row="0" FontSize="16"
+                       HorizontalAlignment="Right" VerticalAlignment="Center"
+                       FontWeight="Bold" Margin="40 10 20 0">
+                        <Hyperlink NavigateUri="StepView.xaml">
+                            View Steps
+                        </Hyperlink>    
+                        </TextBlock>
+                    </StackPanel>
+                     <!--Steps Progress Bar-->
                     <ProgressBar HorizontalAlignment="Left" VerticalAlignment="Center"
-                         Grid.Row="1" Width="340" Height="40" Margin="20 10 20 25"
+                         Grid.Row="1" Width="340" Height="40"
                          Background="#e8f5ff" Maximum="100" Value="60" Foreground="#1564bf"/>
                 </Grid>
             </StackPanel>

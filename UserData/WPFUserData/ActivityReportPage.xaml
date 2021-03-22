@@ -30,62 +30,31 @@
                              Title="Activity Report"/>
 
         <StackPanel Grid.Column="0" Grid.Row="1">
-            <Grid Margin="20 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Text="Period:" Grid.Column="0"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontSize="18" Margin="0 5"/>
-                <TextBlock Text="Week" Grid.Column="1"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontSize="18" Margin="0 5" TextDecorations="Underline"/>
-                <TextBlock Text="Month" Grid.Column="2"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontSize="18" Margin="0 5" 
-                           TextDecorations="Underline" Foreground="blue"/>
-                <TextBlock Text="Custom" Grid.Column="3"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontSize="18" Margin="0 5" TextDecorations="Underline"/>
-            </Grid>
-
-            <Grid Margin="20 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width=".3*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-
-                <ComboBox SelectedIndex="0" Grid.Column="0"
-                          HorizontalContentAlignment="Center"
-                          VerticalContentAlignment="Center"
-                          FontSize="16">
-                    <ComboBoxItem Content="January 2021"/>
-                </ComboBox>
-
-                <TextBlock Text="to" Grid.Column="1"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontSize="18" Margin="0 5"/>
-
-
-                <ComboBox SelectedIndex="0" Grid.Column="2"
-                          HorizontalContentAlignment="Center"
-                          VerticalContentAlignment="Center"
-                          FontSize="16">
-                    <ComboBoxItem Content="March 2021"/>
-                </ComboBox>
-            </Grid>
-
             <Grid Margin="20 5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Style="{StaticResource Button1}" 
+                    Margin="4 4 4 4" 
+                    Grid.Column="0" 
+                    Content="Week"
+                    Click="week_view"/>
+                <Button Style="{StaticResource Button1}"
+                    Margin="4 4 4 4"
+                    Grid.Column="1" 
+                    Content="Month"
+                    Click="month_view"/>
+                <Button Style="{StaticResource Button1}" 
+                    Margin="4 4 4 4" 
+                    Grid.Column="2" 
+                    Content="Year"
+                    Click="year_view"/>
+            </Grid>
+
+            <Grid Margin="20 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1.4*"/>
@@ -98,37 +67,71 @@
                 <TextBlock Text="Activity:" Grid.Column="0"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
-                           FontSize="18" Margin="0 5"/>
+                           FontSize="18" Margin="0 10"/>
 
                 <ComboBox SelectedIndex="0" Grid.Column="1"
                           HorizontalContentAlignment="Center"
                           VerticalContentAlignment="Center"
-                          FontSize="18" Margin="0 5 0 2">
+                          FontSize="18" Margin="0 10">
                     <ComboBoxItem Content="Run"/>
                 </ComboBox>
 
                 <TextBlock Text="Unit Measure:" Grid.Column="0" Grid.Row="1"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
-                           FontSize="18" Margin="0 5"/>
+                           FontSize="18" Margin="0 10"/>
 
                 <ComboBox SelectedIndex="0" Grid.Column="1" Grid.Row="1"
                           HorizontalContentAlignment="Center"
                           VerticalContentAlignment="Center"
                           HorizontalAlignment="Left"
-                          FontSize="18" Width="100" Margin="0 5">
+                          FontSize="18" Width="100" Margin="0 10">
                     <ComboBoxItem Content="Km"/>
                 </ComboBox>
             </Grid>
             <!--https://lvcharts.net/App/examples/v1/Wpf/Line-->
-            <Grid Height="260px" Margin="20 10 20 5">
-                <lvc:CartesianChart Series="{Binding Series}" >
-                    <lvc:CartesianChart.AxisY>
-                        <lvc:Axis></lvc:Axis>
-                    </lvc:CartesianChart.AxisY>
+            <Grid x:Name="graph1" Height="220px" Visibility="Visible" Margin="20 10 20 5">
+                <lvc:CartesianChart Name="c1" Series="{Binding SeriesCollection}" >
                     <lvc:CartesianChart.AxisX>
-                        <lvc:Axis Labels="{Binding AxisLabels}"></lvc:Axis>
+                        <lvc:Axis Labels="{Binding CurrentLabels, UpdateSourceTrigger=PropertyChanged}" >
+                            <lvc:Axis.Separator>
+                                <lvc:Separator Step="1" />
+                            </lvc:Axis.Separator>
+                        </lvc:Axis>
                     </lvc:CartesianChart.AxisX>
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis ShowLabels="True"></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                </lvc:CartesianChart>
+            </Grid>
+
+            <Grid x:Name="graph2" Height="260px" Visibility="Collapsed" Margin="20 10 20 5">
+                <lvc:CartesianChart Name="c2" Series="{Binding SeriesCollection}" >
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Labels="{Binding MonthLabels}" >
+                            <lvc:Axis.Separator>
+                                <lvc:Separator Step="1" />
+                            </lvc:Axis.Separator>
+                        </lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis ShowLabels="True"></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                </lvc:CartesianChart>
+            </Grid>
+
+            <Grid x:Name="graph3" Height="260px" Visibility="Collapsed" Margin="20 10 20 5">
+                <lvc:CartesianChart Name="c3" Series="{Binding SeriesCollection}" >
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Labels="{Binding YearLabels}" >
+                            <lvc:Axis.Separator>
+                                <lvc:Separator Step="1" />
+                            </lvc:Axis.Separator>
+                        </lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis ShowLabels="True"></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
                 </lvc:CartesianChart>
             </Grid>
 
@@ -140,10 +143,7 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
+                    
                 </Grid.RowDefinitions>
                 
                 <TextBlock Text="Average:  8 Km" Grid.Row="0"
@@ -158,12 +158,6 @@
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
                            FontSize="18" Margin="0 5"/>
-                <TextBlock Text="View All Entries >" Grid.Row="3"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           FontSize="15" Margin="0 5"
-                           TextDecorations="Underline"
-                           Foreground="blue"/>
             </Grid>
         </StackPanel>
         <local:TabBar Grid.Column="0" Grid.Row="2" />

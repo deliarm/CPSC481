@@ -30,8 +30,9 @@ namespace WPFUserData
         public MainPage()
         {
             InitializeComponent();
-            
-           
+            Percent = value => value.ToString() + "%";
+            Gauge.LabelFormatter = Percent;
+
         }
 
         public Func<Double, string> Percent { get; set; }
