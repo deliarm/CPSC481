@@ -29,7 +29,7 @@ namespace WPFUserData
             {
                 DataLabels = true,
                 Title = "day",
-                Values = new ChartValues<double> { 598, 1199, 2001, 3343, 3412, 3666, 4714 }
+                Values = new ChartValues<double> { 598, 1199, 2001, 3343, 3412, 3668, 4714 }
             };
 
             week = new ColumnSeries

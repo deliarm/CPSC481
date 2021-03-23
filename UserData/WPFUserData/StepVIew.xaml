@@ -18,7 +18,7 @@
         <RowDefinition Height="50" />
         <RowDefinition Height="70" />
         <RowDefinition Height="*" />
-        <RowDefinition Height="98" />
+        <RowDefinition Height="120" />
         <RowDefinition Height="70" />
     </Grid.RowDefinitions>
 
@@ -62,7 +62,7 @@
             <lvc:CartesianChart.AxisX>
                 <lvc:Axis Labels="{Binding CurrentLabels, UpdateSourceTrigger=PropertyChanged}" >
                     <lvc:Axis.Separator>
-                        <lvc:Separator Step="1" />
+                            <lvc:Separator Step="1" StrokeThickness="1" IsEnabled="False"/>
                     </lvc:Axis.Separator>
                 </lvc:Axis>
             </lvc:CartesianChart.AxisX>
@@ -77,7 +77,7 @@
             <lvc:CartesianChart.AxisX>
                 <lvc:Axis Labels="{Binding WeekLabels}" >
                     <lvc:Axis.Separator>
-                        <lvc:Separator Step="1" />
+                        <lvc:Separator Step="1" StrokeThickness="1" IsEnabled="False" />
                     </lvc:Axis.Separator>
                 </lvc:Axis>
             </lvc:CartesianChart.AxisX>
@@ -92,61 +92,63 @@
             <lvc:CartesianChart.AxisX>
                 <lvc:Axis Labels="{Binding MonthLabels}" >
                     <lvc:Axis.Separator>
-                        <lvc:Separator Step="1" />
+                            <lvc:Separator Step="1" StrokeThickness="1" IsEnabled="False"/>
                     </lvc:Axis.Separator>
                 </lvc:Axis>
             </lvc:CartesianChart.AxisX>
             <lvc:CartesianChart.AxisY>
-                <lvc:Axis ShowLabels="True"></lvc:Axis>
+                    <lvc:Axis ShowLabels="True"> </lvc:Axis>
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
     </Grid>
 
 
     <!-- Text -->
-    <Grid Margin="20 0" Grid.Row="3">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+    <Border Style="{StaticResource SingleItem}" Grid.Row="3" 
+            Margin="16 0 16 16">
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <TextBlock Text="Total"
+            <TextBlock Text="Total"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="18" Margin="0 5"/>
 
-        <TextBlock Text="2100" Grid.Column="1"
+            <TextBlock Text="4242" Grid.Column="1"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="18" Margin="0 5"/>
 
-        <TextBlock Text="Remaining" Grid.Row="1"
+            <TextBlock Text="Remaining" Grid.Row="1"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="18" Margin="0 5"/>
 
-        <TextBlock Text="2900" Grid.Column="1" Grid.Row="1"
+            <TextBlock Text="758" Grid.Column="1" Grid.Row="1"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="18" Margin="0 5"/>
 
-        <TextBlock Text="Goal " Grid.Row="2"
+            <TextBlock Text="Goal " Grid.Row="2"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="20" Margin="0 5"/>
 
-        <TextBlock Text="5000" Grid.Column="1" Grid.Row="2"
+            <TextBlock Text="5000" Grid.Column="1" Grid.Row="2"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="20" Margin="0 5"/>
-    </Grid>
-
+        </Grid>
+    </Border>
 
     <!-- Footer -->
     <local:TabBar Grid.Row="4" Loaded="TabBar_Loaded"/>
