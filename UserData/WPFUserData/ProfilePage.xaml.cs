@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LiveCharts;
 using LiveCharts.Wpf;
+using WPFUserData.Model;
 
 namespace WPFUserData
 {
@@ -22,9 +23,29 @@ namespace WPFUserData
     /// </summary>
     public partial class ProfilePage : Page
     {
+        public User user { get; set; }
         public ProfilePage()
         {
             InitializeComponent();
+            this.DataContext = this;
+
+            //-------------Profile binding-------//
+            user = User.getInstance();
+            
+            ageVal.Text = user.Info.Age + "";
+            sexVal.Text = Enum.GetName(typeof(BiologicalSex), user.Info.Sex) ;
+
+            weightVal.Text = user.Info.Weight.Number + "" + user.Info.Weight.Unit;
+
+            heightVal.Text = user.Info.Height.Number + "" + user.Info.Height.Unit;
+
+            activityLvlVal.Text = user.Info.ActivityLevel;
+
+            stepGoalVal.Text = user.Goal.Steps + "";
+
+            weightGoalVal.Text = user.Goal.Weight.Number + "" + user.Info.Weight.Unit;
+
+            //-----------------------------------//
 
             week = new LineSeries
             {
@@ -76,7 +97,7 @@ namespace WPFUserData
             };
             c3.Series.Add(year);
 
-            DataContext = this;
+            
         }
 
         public SeriesCollection SeriesCollection { get; set; }
@@ -134,5 +155,10 @@ namespace WPFUserData
             return rect.Contains(bounds);
         }
 
+        private void updateProfileClick(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("UpdateInfoPage.xaml", UriKind.Relative));
+
+        }
     }
 }

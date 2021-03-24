@@ -8,7 +8,7 @@ namespace WPFUserData.Model
 {
     public class Weight
     {
-        public int Number;
-        public WeightUnit Unit;
+        public double Number;
+        public string Unit;
     }
 }

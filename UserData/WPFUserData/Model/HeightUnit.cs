@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WPFUserData.Model
 {
-    public enum HeightUnit
+    public static class HeightUnit
     {
-        Centimeters,
-        Inches
+        public const string Centimeters = "cm";
+        public const string Feet = "ft";
     }
 }

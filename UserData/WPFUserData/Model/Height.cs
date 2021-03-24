@@ -9,6 +9,6 @@ namespace WPFUserData.Model
     public class Height
     {
         public int Number;
-        public HeightUnit Unit;
+        public String Unit;
     }
 }

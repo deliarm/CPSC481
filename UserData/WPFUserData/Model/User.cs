@@ -26,8 +26,8 @@ namespace WPFUserData.Model
         public List<Step> Steps;
         public List<Activity> Activities;
 
-        public Info Info;
-        public Goal Goal;
+        public Info Info = new Info();
+        public Goal Goal = new Goal();
 
         public User()
         {
@@ -41,7 +41,38 @@ namespace WPFUserData.Model
 
         private void FillHistoricData()
         {
+            FillUserInfo();
             FillHistoricMeals();
+        }
+
+        private void FillUserInfo()
+        {
+            this.Info.Age = 24;
+            this.Info.Sex = BiologicalSex.Male;
+
+            this.Info.Height = new Height();
+            this.Info.Height.Number = 169;
+            this.Info.Height.Unit = HeightUnit.Centimeters;
+
+            this.Info.Weight = new Weight();
+            this.Info.Weight.Number = 199;
+            this.Info.Weight.Unit = WeightUnit.Pounds;
+
+
+            this.Info.ActivityLevel = ActivityLevel.None;
+
+            this.Goal.Weight = new Weight();
+            this.Goal.Weight.Number = 180;
+            this.Goal.Weight.Unit = this.Info.Weight.Unit;
+
+            this.Goal.WeightChange = new WeightChange();
+            this.Goal.WeightChange.PerWeekWeight = new Weight();
+            this.Goal.WeightChange.PerWeekWeight.Number = 0.5;
+            this.Goal.WeightChange.PerWeekWeight.Unit = this.Info.Weight.Unit;
+
+
+            this.Goal.Steps = 6000;
+
         }
 
         private void FillHistoricMeals()

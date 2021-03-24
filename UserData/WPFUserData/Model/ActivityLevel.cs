@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace WPFUserData.Model
 {
-    public enum ActivityLevel
+    public static class ActivityLevel
     {
-        None,
-        Light,
-        Medium,
-        Heavy
+        public const string None = "Sedentry(Office Job)";
+        public const string Light = "Light Exercise (1-2/week)";
+        public const string Medium = "Medium Exercise (3-5/week)";
+        public const string Heavy = "Heavy Exercise (6-7/week)";
     }
 }

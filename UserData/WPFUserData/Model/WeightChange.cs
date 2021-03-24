@@ -8,7 +8,8 @@ namespace WPFUserData.Model
 {
     public class WeightChange
     {
-        public Weight Weight;
-        public TimeSpan TimePeriod;
+        private Weight perWeekWeight;
+
+        public Weight PerWeekWeight { get => perWeekWeight; set => perWeekWeight = value; }
     }
 }

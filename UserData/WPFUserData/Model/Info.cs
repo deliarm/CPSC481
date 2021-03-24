@@ -12,6 +12,6 @@ namespace WPFUserData.Model
         public BiologicalSex Sex;
         public Weight Weight;
         public Height Height;
-        public ActivityLevel ActivityLevel;
+        public String ActivityLevel;
     }
 }

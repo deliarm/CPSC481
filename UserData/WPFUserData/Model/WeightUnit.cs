@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WPFUserData.Model
 {
-    public enum WeightUnit
+    public static class WeightUnit
     {
-        Pounds,
-        Kilograms
+        public const string Pounds = "lbs";
+        public const string Kilograms = "kg";
     }
 }

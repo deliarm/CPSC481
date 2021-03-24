@@ -34,13 +34,10 @@
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
-            <TextBlock
+            <TextBlock Style="{StaticResource HeaderBanner}"
                 Text="Profile" 
-                Background="Yellow"           
-                FontSize="36" 
                 HorizontalAlignment="Stretch" 
-                TextAlignment="Center"
-                FontFamily="Segoe UI Black" />
+                TextAlignment="Center" />
         </Grid>
 
         <StackPanel Grid.Column="0" Grid.Row="1">
@@ -126,7 +123,7 @@
                 </lvc:CartesianChart>
             </Grid>
 
-            <Grid Margin="20 0" Background="LightGray">
+            <!--<Grid Margin="20 0" Background="LightGray">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
@@ -185,9 +182,167 @@
             </Grid>
 
 
-            <Grid Margin="0 8 0 0">
-                <Button Content="Update Profile" Width="122"
-                        Height="30" FontSize="18"/>
+            -->
+            <Border Style="{StaticResource SingleItem}"
+                    Margin="10 0 10 0" Height="228">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" 
+                           Style="{StaticResource Header1}"
+                        HorizontalAlignment="Center" >
+                Profile
+                    </TextBlock>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70*"/>
+                            <ColumnDefinition Width="83*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0"
+                            Style="{StaticResource BodyText}"
+                                   FontWeight="DemiBold"
+                                   Margin="10,0,0,0">
+                            Age
+                        </TextBlock>
+                        <TextBlock Name = "ageVal"
+                                   Style="{StaticResource BodyText}"
+                            Grid.Column="1" Margin="0,0,10,0"/>
+
+                    </Grid>
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70*"/>
+                            <ColumnDefinition Width="83*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0"
+                            Style="{StaticResource  BodyText}"
+                                   FontWeight="DemiBold"
+                                   Margin="10,0,0,0">
+                            Sex
+                        </TextBlock>
+                        <TextBlock Name ="sexVal"
+                                   Style="{StaticResource BodyText}"
+                            Grid.Column="1"
+                                    Margin="0,0,10,0"/>
+                    </Grid>
+
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70*"/>
+                            <ColumnDefinition Width="83*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0"
+                            Style="{StaticResource  BodyText}"
+                                   FontWeight="DemiBold"
+                                   Margin="10,0,0,0">
+                            Weight
+                        </TextBlock>
+                        <TextBlock  Name ="weightVal"
+                                    Style="{StaticResource BodyText}"
+                            Grid.Column="1"
+                                    Margin="0,0,10,0"/>
+                    </Grid>
+
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70*"/>
+                            <ColumnDefinition Width="83*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0"
+                            Style="{StaticResource  BodyText}"
+                                   FontWeight="DemiBold"
+                                   Margin="10,0,0,0">
+                            Height
+                        </TextBlock>
+                        <TextBlock Name ="heightVal"
+                                   Style="{StaticResource BodyText}"
+                            Grid.Column="1"
+                                    Margin="0,0,10,0"/>
+                    </Grid>
+
+                    <Grid Grid.Row="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70*"/>
+                            <ColumnDefinition Width="83*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0"
+                            Style="{StaticResource  BodyText}"
+                                   FontWeight="DemiBold"
+                                   Margin="10,0,0,0">
+                            Activity Level
+                        </TextBlock>
+                        <TextBlock Name ="activityLvlVal"
+                                   Style="{StaticResource BodyText}"
+                            Grid.Column="1"
+                                    Margin="0,0,10,0"/>
+                    </Grid>
+
+                    <Grid Grid.Row="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70*"/>
+                            <ColumnDefinition Width="83*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0"
+                            Style="{StaticResource  BodyText}"
+                                   FontWeight="DemiBold"
+                                   Margin="10,0,0,0">
+                           Weight Goal
+                        </TextBlock>
+                        <TextBlock Name ="weightGoalVal"
+                                   Style="{StaticResource BodyText}"
+                            Grid.Column="1"
+                                    Margin="0,0,10,0"/>
+                    </Grid>
+
+                    <Grid Grid.Row="7">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70*"/>
+                            <ColumnDefinition Width="83*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0"
+                            Style="{StaticResource  BodyText}"
+                                   FontWeight="DemiBold"
+                                   Margin="10,0,0,0">
+                            Step Goal
+                        </TextBlock>
+                        <TextBlock Name ="stepGoalVal"
+                                   Style="{StaticResource BodyText}"
+                            Grid.Column="1"
+                                    Margin="0,0,10,0"/>
+                    </Grid>
+
+
+                </Grid>
+            </Border>
+
+            <Grid Margin="0 0 0 0">
+                <Button Style="{StaticResource Button1}"
+                    Content="Update Profile" Width="122"
+                        Click="updateProfileClick"
+                        FontSize="18"/>
             </Grid>
 
         </StackPanel>
