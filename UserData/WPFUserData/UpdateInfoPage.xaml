@@ -158,10 +158,10 @@
                         FontSize="14"
                         VerticalContentAlignment="Center" 
                         SelectedValuePath="Content">
-                    <ComboBoxItem Content="Sedentry (Office Job)"/>
-                    <ComboBoxItem Content="Light Exercise (1-2/week)"/>
-                    <ComboBoxItem Content="Medium Exercise (3-5/week)"/>
-                    <ComboBoxItem Content="Heavy Exercise (6-7/week)"/>
+                    <ComboBoxItem Content="{Binding None}"/>
+                    <ComboBoxItem Content="{Binding Light}"/>
+                    <ComboBoxItem Content="{Binding Medium}"/>
+                    <ComboBoxItem Content="{Binding Heavy}"/>
                 </ComboBox>
             </Grid>
 
