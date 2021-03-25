@@ -21,6 +21,7 @@ namespace WPFUserData
     public partial class UpdateInfoPage : Page
     {
         public User user;
+        
         public UpdateInfoPage()
         {
             InitializeComponent();
@@ -39,71 +40,133 @@ namespace WPFUserData
                 Male.IsChecked = true;
             }
 
-            weightVal.Text = user.Info.Weight.Number + "";
+            // Binding for Weight and Weight unit
 
-            if (user.Info.Weight.Unit == "lbs")
-            {
-                Pounds.IsSelected = true;
-            } else {
-                Kilogram.IsSelected = true;
-            }
+            weightVal.Text = user.Info.Weight.Number + "";
+            string[] initialWU = LoadWeightUnitBoxData();
+            weightUnit.ItemsSource = initialWU;
+            weightUnit.SelectedIndex = Array.IndexOf(initialWU, user.Info.Weight.Unit);
+
+            // Binding for Height and Height unit
 
             heightVal.Text = user.Info.Height.Number + "";
+            string[] initialHU = LoadHeightUnitBoxData();
+            heightUnit.ItemsSource = initialHU;
+            heightUnit.SelectedIndex = Array.IndexOf(initialHU, user.Info.Height.Unit);
 
-            if (user.Info.Height.Unit == "cm")
+            // Binding Actitvity Level
+            string[] initialAL = LoadActivtityLevelComboBoxData();
+            activityLvlVal.ItemsSource = initialAL;
+            activityLvlVal.SelectedIndex = Array.IndexOf(initialAL, user.Info.ActivityLevel) ;
+
+            // Binding for Steps Goal
+            stepGoalVal.Text = user.Goal.Steps + "";
+
+            // Binding for Weight Goals
+            if (user.Goal.Weight.Number == user.Info.Weight.Number)
             {
-                Centimeters.IsSelected = true;
+                weightGoalPanel.Visibility = Visibility.Collapsed;
+                goalCombo.SelectedIndex = 0;
             }
             else
             {
-                Feet.IsSelected = true;
+                weightGoalPanel.Visibility = Visibility.Visible;
+                if (user.Goal.Weight.Number < user.Info.Weight.Number)
+                {
+                    weightLabel.Text = "Lose";
+                    goalCombo.SelectedIndex = 1;
+                }
+                else
+                {
+                    weightLabel.Text = "Gain";
+                    goalCombo.SelectedIndex = 2;
+                }
             }
 
+            double[] initialWC = LoadWeigthChangeComboBoxData();
+            weightChange.ItemsSource = initialWC;
+            weightChange.SelectedIndex = Array.IndexOf(initialWC, user.Goal.WeightChange.PerWeekWeight);
 
-            activityLvlVal.Text = user.Info.ActivityLevel;
-
-            stepGoalVal.Text = user.Goal.Steps + "";
-
-            if (user.Goal.Weight.Number == user.Info.Weight.Number)
-            {
-                goalCombo.SelectedIndex = 0;
-            } else if (user.Goal.Weight.Number < user.Info.Weight.Number)
-            {
-                goalCombo.SelectedIndex = 1;
-            }  else
-            {
-                goalCombo.SelectedIndex = 2;
-            }
 
             weightChange.Text = user.Goal.WeightChange.PerWeekWeight.Number + "";
 
             weightGoalVal.Text = user.Goal.Weight.Number + "";
 
             goalUnit.Text = user.Info.Weight.Unit;
-            
-
             //-----------------------------------//
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private string[] LoadWeightUnitBoxData()
         {
+            string[] strArray = {
+            WeightUnit.Kilograms,
+            WeightUnit.Pounds
+            };
+            return strArray;
+        }
+
+        private string[] LoadHeightUnitBoxData()
+        {
+            string[] strArray = {
+            HeightUnit.Centimeters,
+            HeightUnit.Feet
+            };
+            return strArray;
+        }
+
+        private string[] LoadActivtityLevelComboBoxData()
+        {
+            string[] strArray = {
+            ActivityLevel.None,
+            ActivityLevel.Light,
+            ActivityLevel.Medium,
+            ActivityLevel.Heavy
+            };
+            return strArray;
+        }
+
+
+        private double[] LoadWeigthChangeComboBoxData()
+        {
+            double[] dblArray = { 0.5, 1.0, 1.5, 2.0};
+            if (user.Info.Weight.Unit == WeightUnit.Kilograms)
+            {
+                dblArray[0] = 0.25;
+                dblArray[1] = 0.5;
+                dblArray[1] = 0.75;
+                dblArray[1] = 1;
+
+            }
+            return dblArray;
+        }
+
+        private void WeightUnit_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            goalUnit.Text = weightUnit.SelectedItem.ToString();
+            double[] newWC = LoadWeigthChangeComboBoxData();
+
+            weightChange.ItemsSource = newWC;
+            weightChange.SelectedIndex = Array.IndexOf(newWC, user.Goal.WeightChange.PerWeekWeight);
 
         }
 
         private void Goal_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (goalCombo.SelectedItem.ToString()  == "Maintain"){
+            if (goalCombo.SelectedValue.ToString() == "Maintain")
+            {
                 weightGoalPanel.Visibility = Visibility.Collapsed;
-            } else  {
+            }
+            else
+            {
                 weightGoalPanel.Visibility = Visibility.Visible;
-                if (goalCombo.SelectedItem.ToString() == "Lose")
+                if (goalCombo.SelectedValue.ToString() == "Lose")
                 {
                     weightLabel.Text = "Lose";
                 }
                 else
                 {
                     weightLabel.Text = "Gain";
-                } ;
+                };
             }
         }
 
@@ -130,7 +193,7 @@ namespace WPFUserData
 
             user.Info.Weight.Number = Double.Parse(weightVal.Text);
 
-            if (Pounds.IsSelected == true)
+            if (weightUnit.SelectedItem.ToString() == WeightUnit.Pounds)
             {
                 user.Info.Weight.Unit = WeightUnit.Pounds;
                 user.Goal.Weight.Unit = WeightUnit.Pounds;
@@ -146,7 +209,7 @@ namespace WPFUserData
 
             user.Info.Height.Number = Int32.Parse(heightVal.Text);
 
-            if (Centimeters.IsSelected == true )
+            if (heightUnit.SelectedItem.ToString() == HeightUnit.Centimeters)
             {
                 user.Info.Height.Unit = HeightUnit.Centimeters;
             }
@@ -154,19 +217,18 @@ namespace WPFUserData
             {
                 user.Info.Height.Unit = HeightUnit.Feet;
             }
+            
 
-            Console.Write(activityLvlVal.SelectedItem.ToString());
-
-            if (activityLvlVal.SelectedItem.ToString() == "Sedentry (Office Job)")
+            if (activityLvlVal.SelectedItem.ToString() == ActivityLevel.None)
             {
                 user.Info.ActivityLevel = ActivityLevel.None;
             }
-            else if (activityLvlVal.SelectedItem.ToString() == "Light Exercise(1-2/week)")
+            else if (activityLvlVal.SelectedItem.ToString() == ActivityLevel.Light)
             {
                 user.Info.ActivityLevel = ActivityLevel.Light;
 
             }
-            else if (activityLvlVal.SelectedItem.ToString() == "Medium Exercise(3-5/week)")
+            else if (activityLvlVal.SelectedItem.ToString() == ActivityLevel.Medium)
             {
                 user.Info.ActivityLevel = ActivityLevel.Medium;
             }
@@ -178,25 +240,20 @@ namespace WPFUserData
 
             user.Goal.Steps = Int32.Parse(stepGoalVal.Text);
 
-            if (user.Goal.Weight.Number == user.Info.Weight.Number)
+            if (goalCombo.SelectedValue.ToString() == "Maintain")
             {
-                goalCombo.SelectedIndex = 0;
-            }
-            else if (user.Goal.Weight.Number < user.Info.Weight.Number)
-            {
-                goalCombo.SelectedIndex = 1;
+                user.Goal.Weight.Number = user.Info.Weight.Number;
+                user.Goal.WeightChange.PerWeekWeight.Number = 0.0;
             }
             else
             {
-                goalCombo.SelectedIndex = 2;
+                user.Goal.Weight.Number = Double.Parse(weightGoalVal.Text);
+                user.Goal.WeightChange.PerWeekWeight.Number = Double.Parse(weightChange.SelectedItem.ToString());
             }
-
-            user.Goal.Weight.Number = Double.Parse(weightGoalVal.Text);
-
-            //user.Goal.WeightChange.PerWeekWeight.Number = Double.Pare
 
             //-----------------------------------//
             this.NavigationService.Navigate(new Uri("ProfilePage.xaml", UriKind.Relative));
         }
-}
+
+    }
 }
