@@ -26,6 +26,8 @@ namespace WPFUserData.Model
         public List<Step> Steps;
         public List<Activity> Activities;
 
+        public List<FoodItem> FoodDatabase;
+
         public Info Info = new Info();
         public Goal Goal = new Goal();
 
@@ -35,6 +37,9 @@ namespace WPFUserData.Model
             Steps = new List<Step>();
             Activities = new List<Activity>();
 
+            FoodDatabase = new List<FoodItem>();
+
+            FillFoodDatabase();
 
             FillHistoricData();
         }
@@ -108,6 +113,24 @@ namespace WPFUserData.Model
             };
 
             return item;
+        }
+
+
+        private void FillFoodDatabase()
+        {
+            FoodDatabase.Add(new FoodItem { Name = "Waffles", Quantity = 1, Calories = 101, Protein = 2, Fat = 3, Carbs = 1 });
+            FoodDatabase.Add(new FoodItem { Name = "Apples", Quantity = 1, Calories = 90, Protein = 2, Fat = 3, Carbs = 1 });
+            FoodDatabase.Add(new FoodItem { Name = "Eggs", Quantity = 1, Calories = 60, Protein = 2, Fat = 3, Carbs = 1 });
+            FoodDatabase.Add(new FoodItem { Name = "Pasta", Quantity = 1, Calories = 250, Protein = 2, Fat = 3, Carbs = 1 });
+            FoodDatabase.Add(new FoodItem { Name = "Coffee", Quantity = 1, Calories = 44, Protein = 2, Fat = 3, Carbs = 1 });
+            FoodDatabase.Add(new FoodItem { Name = "BLT Sandwich", Quantity = 1, Calories = 300, Protein = 2, Fat = 3, Carbs = 1 });
+            FoodDatabase.Add(new FoodItem { Name = "Chili", Quantity = 1, Calories = 444, Protein = 2, Fat = 3, Carbs = 1 });
+            FoodDatabase.Add(new FoodItem { Name = "Ice cream", Quantity = 1, Calories = 300, Protein = 2, Fat = 3, Carbs = 1 });
+            FoodDatabase.Add(new FoodItem { Name = "Sushi", Quantity = 1, Calories = 222, Protein = 2, Fat = 3, Carbs = 1 });
+            FoodDatabase.Add(new FoodItem { Name = "Carrots", Quantity = 1, Calories = 6, Protein = 2, Fat = 3, Carbs = 1 });
+            FoodDatabase.Add(new FoodItem { Name = "Bananas", Quantity = 1, Calories = 77, Protein = 2, Fat = 3, Carbs = 1 });
+            FoodDatabase.Add(new FoodItem { Name = "Toast", Quantity = 1, Calories = 101, Protein = 2, Fat = 3, Carbs = 1 });
+            FoodDatabase.Add(new FoodItem { Name = "Cereal", Quantity = 1, Calories = 194, Protein = 2, Fat = 3, Carbs = 1 });
         }
     }
 }

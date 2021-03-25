@@ -4,10 +4,20 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPFUserData"
+      xmlns:model="clr-namespace:WPFUserData.Model"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="740" d:DesignWidth="360"
       Title="AddMealPage">
 
+    <Page.Resources>
+        <ObjectDataProvider x:Key="MealTypeEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="model:MealType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Page.Resources>
+    
     <Grid DockPanel.Dock="Top" Style="{StaticResource MainGrid}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -33,10 +43,8 @@
                 </Grid.RowDefinitions>
                 
                 <!-- Scrollable section of main content-->
-                <ScrollViewer Grid.Row="0" Grid.Column="0" VerticalScrollBarVisibility="Hidden">
+                <ScrollViewer Grid.Row="0" Grid.Column="0" VerticalScrollBarVisibility="Hidden" CanContentScroll="True">
                     <StackPanel>
-
-
                         <!-- Meal selection section-->
                         <Grid Margin="16">
                             <Grid.ColumnDefinitions>
@@ -52,11 +60,11 @@
                                     Meal:
                             </TextBlock>
                             <ComboBox Grid.Row="0" Grid.Column="1"
-                                            Style="{StaticResource ComboBox1}">
-                                <ComboBoxItem Content="Breakfast" IsSelected="True"/>
-                                <ComboBoxItem Content="Lunch"/>
-                                <ComboBoxItem Content="Dinner"/>
-                                <ComboBoxItem Content="Snack"/>
+                                      x:Name="MealTypeCombo"
+                                      ItemsSource="{Binding Source={StaticResource MealTypeEnum}}"
+                                      Style="{StaticResource ComboBox1}"
+                                      SelectedIndex="0">
+                                
                             </ComboBox>
                         </Grid>
 
@@ -86,43 +94,54 @@
                             <TextBlock Style="{StaticResource Header2}" Margin="0 0 0 8">
                                     Current Foods:
                             </TextBlock>
-
-                            <ListBox Name="currentFoodList" HorizontalContentAlignment="Stretch">
+                            
+                            <ListBox Name="CurrentFoodList" 
+                                     HorizontalContentAlignment="Stretch"
+                                     >
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <Grid HorizontalAlignment="Stretch">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="2*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="90"/>
+                                                <ColumnDefinition Width="Auto"/>
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
-                                                <RowDefinition/>
+                                                <RowDefinition Height="40"/>
                                             </Grid.RowDefinitions>
 
                                             <!-- TODO: The margin should be a style? -->
                                             <TextBlock Grid.Row="0" Grid.Column="0" 
-                                                            Margin="16" 
+                                                            Margin="16 0" 
                                                             Style="{StaticResource BodyText}"
-                                                            Text="{Binding FoodName}" />
+                                                       VerticalAlignment="Center"
+                                                            Text="{Binding Name}" />
                                             <TextBlock Grid.Row="0" Grid.Column="1" 
-                                                            Margin="16" 
+                                                            Margin="16 0" 
                                                             Style="{StaticResource BodyText}"
-                                                            Text="{Binding Quantity}" />
+                                                       HorizontalAlignment="Right"
+                                                       VerticalAlignment="Center"
+                                                            Text="{Binding QuantityStr}" />
                                             <TextBlock Grid.Row="0" Grid.Column="2" 
-                                                            Margin="16" 
+                                                            Margin="16 0" 
                                                             Style="{StaticResource BodyText}"
+                                                       VerticalAlignment="Center"
                                                             Text="{Binding CaloriesStr}" />
                                             <Button Grid.Row="0" Grid.Column="3"
                                                         Style="{StaticResource InvisibleButton}"
-                                                        HorizontalAlignment="Right">
+                                                        HorizontalAlignment="Right"
+                                                    Click="CurrentFoodCancel_Click"
+                                                    Tag="{Binding Name}">
                                                 <Image Source="Icons\baseline_highlight_off_black_48.png" Height="30" />
                                             </Button>
                                         </Grid>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
+                            <TextBlock x:Name="CaloriesTotalText"
+                                       Margin="0 16"
+                                       Style="{StaticResource Header2}"></TextBlock>
                         </StackPanel>
 
                         
@@ -139,9 +158,11 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <Button Grid.Row="0" Grid.Column="0"
-                                Style="{StaticResource Button1}">Cancel</Button>
+                                Style="{StaticResource Button1}"
+                            Click="CancelButton_Click">Cancel</Button>
                     <Button Grid.Row="0" Grid.Column="1"
-                                Style="{StaticResource Button1}">Add Meal</Button>
+                            Style="{StaticResource Button1}"
+                            Click="AddMeal_Click">Add Meal</Button>
                 </Grid>
             </Grid>
             <!-- This is the Add Food search (fake) popup -->
@@ -177,45 +198,53 @@
                                        Style="{StaticResource Header2}">
                                 Search: 
                             </TextBlock>
-                            <TextBox x:Name="RealSearchBox" Grid.Row="0" Grid.Column="1"
-                                     Margin="16">
+                            <TextBox x:Name="SearchBox" Grid.Row="0" Grid.Column="1"
+                                     Margin="16"
+                                     KeyUp="SearchBox_KeyUp">
                             </TextBox>
                         </Grid>
                         <ListBox Grid.Row="1" Grid.Column="0" 
                                  Name="FoodOptionsList" 
                                  HorizontalContentAlignment="Stretch"
-                                 Background="Transparent">
+                                 Background="Transparent"
+                                 ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Grid HorizontalAlignment="Stretch">
                                         <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="5*"/>
                                             <ColumnDefinition Width="2*"/>
-                                            <ColumnDefinition Width="2*"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="1.5*"/>
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
                                         <!-- TODO: The margin should be a style? -->
                                         <TextBlock Grid.Row="0" Grid.Column="0" 
-                                                   Margin="16" 
+                                                   Margin="8 16 0 16" 
                                                    Style="{StaticResource BodyText}"
-                                                   Text="{Binding FoodName}"
+                                                   
+                                                   Text="{Binding Name}"
                                                    Foreground="White"/>
                                         <TextBlock Grid.Row="0" Grid.Column="1" 
-                                                   Margin="16" 
+                                                   Margin="8 16" 
                                                    Style="{StaticResource BodyText}"
-                                                   Text="{Binding Quantity}"
+                                                   
+                                                   Text="{Binding QuantityStr}"
                                                    Foreground="White"/>
                                         <TextBlock Grid.Row="0" Grid.Column="2" 
-                                                   Margin="16" 
+                                                   Margin="0 16 16 16" 
                                                    Style="{StaticResource BodyText}"
+                                                   HorizontalAlignment="Right"
                                                    Text="{Binding CaloriesStr}"
                                                    Foreground="White"/>
                                         <Button Grid.Row="0" Grid.Column="3"
-                                                        Style="{StaticResource InvisibleButton}"
-                                                        HorizontalAlignment="Right">
+                                                Style="{StaticResource InvisibleButton}"
+                                                HorizontalAlignment="Right"
+                                                Click="AddItem_Click"
+                                                Tag="{Binding Name}">
                                             <Image Source="Icons\baseline_add_task_white_48.png" Height="30" />
                                         </Button>
                                     </Grid>
