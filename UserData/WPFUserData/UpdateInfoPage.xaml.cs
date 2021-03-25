@@ -21,11 +21,17 @@ namespace WPFUserData
     public partial class UpdateInfoPage : Page
     {
         public User user;
+        public String None { get; set; } = ActivityLevel.None;
+        public String Light { get; set; } = ActivityLevel.Light;
+        public String Medium { get; set; } = ActivityLevel.Medium;
+        public String Heavy { get; set; } = ActivityLevel.Heavy;
+
         public UpdateInfoPage()
         {
             InitializeComponent();
 
             this.DataContext = this;
+
 
             //-------------Profile binding-------//
             user = User.getInstance();
@@ -59,8 +65,13 @@ namespace WPFUserData
                 Feet.IsSelected = true;
             }
 
+            
+            if (user.Info.ActivityLevel == None) activityLvlVal.SelectedIndex = 0;
+            if (user.Info.ActivityLevel == Light) activityLvlVal.SelectedIndex = 1;
+            if (user.Info.ActivityLevel == Medium) activityLvlVal.SelectedIndex = 2;
+            if (user.Info.ActivityLevel == Heavy) activityLvlVal.SelectedIndex = 3;
 
-            activityLvlVal.Text = user.Info.ActivityLevel;
+
 
             stepGoalVal.Text = user.Goal.Steps + "";
 
