@@ -8,11 +8,38 @@ namespace WPFUserData.Model
 {
     public class FoodItem
     {
-        public string Name;
-        public int Quantity;
-        public int Calories;
-        public int Protein;
-        public int Fat;
-        public int Carbs;
+        private static User user = User.getInstance();
+
+        public string Name { get; set; }
+        public int Quantity { get; set; }
+
+        public String QuantityStr
+        {
+            get { return "x" + Quantity; }
+        }
+
+        public int Calories { get; set; }
+
+        public String CaloriesStr
+        {
+            get { return Calories + " cal"; }
+        }
+        public int Protein { get; set; }
+        public int Fat { get; set; }
+        public int Carbs { get; set; }
+
+        public static FoodItem getByName(String foodName)
+        {
+            foreach (FoodItem item in user.FoodDatabase)
+            {
+                if (item.Name == foodName)
+                {
+                    return item;
+                }
+            }
+
+            return null;
+        }
+
     }
 }
