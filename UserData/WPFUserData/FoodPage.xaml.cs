@@ -67,7 +67,6 @@ namespace WPFUserData
 
         private void AddMeal_Click(object sender, RoutedEventArgs e)
         {
-            int x = 1;
             this.NavigationService.Navigate(new Uri("AddMealPage.xaml", UriKind.Relative));
         }
     }
