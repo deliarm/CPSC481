@@ -127,8 +127,9 @@ namespace WPFUserData
             FoodItem selectedItem = FoodItem.getByName(foodName);
 
             CurrentFoods.Remove(selectedItem);
-
             CurrentFoodList.Items.Refresh();
+
+            CaloriesTotalText.Text = CaloriesTotal;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
