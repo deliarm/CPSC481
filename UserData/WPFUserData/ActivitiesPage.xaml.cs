@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFUserData.Model;
 
 namespace WPFUserData
 {
@@ -20,9 +21,56 @@ namespace WPFUserData
     /// </summary>
     public partial class ActivitiesPage : Page
     {
+        public List<String> Dates { get; set; } = new List<String>();
+
+        public List<Activity> CurrentActivities { get; set; } = new List<Activity>();
+
+        public double TotalCaloriesBurned {
+            get
+            {
+                int cal = 0;
+
+                foreach(Activity activity in CurrentActivities)
+                {
+                    cal += activity.CaloriesBurned;
+                }
+                return cal;
+            }
+        }
+
         public ActivitiesPage()
         {
+            
             InitializeComponent();
+            this.DataContext = this;
+
+            DateTime now = DateTime.Now.Date;
+            for(int i = 0; i > -10; i--)
+            {
+                String dateStr = now.AddDays(i).ToString("MMMM dd, yyyy");
+                Dates.Add(dateStr);
+            }
+        }
+
+        private void DateComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DateTime date = DateTime.Parse((string)DateComboBox.SelectedItem);
+            CurrentActivities.Clear();
+            CurrentActivities.AddRange(Activity.getActivitiesByDate(date));
+            CurrentActivitiesList.Items.Refresh();
+
+            //HACK, BREAKS? BINDING?
+            TotalCaloriesBurnedText.Text = TotalCaloriesBurned.ToString();
+        }
+
+        private void ReportButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("ActivityReportPage.xaml", UriKind.Relative));
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("TrackerOptions.xaml", UriKind.Relative));
         }
     }
 }

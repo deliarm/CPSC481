@@ -22,14 +22,14 @@ namespace WPFUserData.Model
             return User.instance;
         }
 
-        public List<Meal> Meals;
-        public List<Step> Steps;
-        public List<Activity> Activities;
+        public List<Meal> Meals { get; set; }
+        public List<Step> Steps { get; set; }
+        public List<Activity> Activities { get; set; }
 
-        public List<FoodItem> FoodDatabase;
+        public List<FoodItem> FoodDatabase { get; set; }
 
-        public Info Info = new Info();
-        public Goal Goal = new Goal();
+        public Info Info { get; set; } = new Info();
+        public Goal Goal { get; set; } = new Goal();
 
         public User()
         {
@@ -48,6 +48,7 @@ namespace WPFUserData.Model
         {
             FillUserInfo();
             FillHistoricMeals();
+            FillHistoricActivities();
         }
 
         private void FillUserInfo()
@@ -113,6 +114,50 @@ namespace WPFUserData.Model
             };
 
             return item;
+        }
+
+        private void FillHistoricActivities()
+        {
+            
+
+            for (int i = 0; i > -100; i--)
+            {
+                int y = Math.Abs(i);
+
+                Activity activity = new Activity
+                {
+                    Type = (ActivityType)(y % 5), //Rotate activities
+                    Date = DateTime.Now.Date.AddDays(i),
+                    StartTime = DateTime.Now.AddDays(i).AddHours(y % 12),
+                    Distance = new Distance
+                    {
+                        Number = 1 + (y % 5) + ((y % 9)/10.0),
+                        Unit = DistanceUnit.Kilometers
+                    },
+                    Duration = TimeSpan.FromMinutes(30 + (y % 15))
+                };
+                Activities.Add(activity);
+            }
+
+            // Add a second, different activity
+            for (int i = 1; i > -100; i--)
+            {
+                int y = Math.Abs(i);
+
+                Activity activity = new Activity
+                {
+                    Type = (ActivityType)(y % 5), //Rotate activities
+                    Date = DateTime.Now.Date.AddDays(i-1),
+                    StartTime = DateTime.Now.AddDays(i).AddHours(y % 12),
+                    Distance = new Distance
+                    {
+                        Number = 1 + (y % 5) + ((y % 9) / 10.0),
+                        Unit = DistanceUnit.Kilometers
+                    },
+                    Duration = TimeSpan.FromMinutes(30 + (y % 5))
+                };
+                Activities.Add(activity);
+            }
         }
 
 

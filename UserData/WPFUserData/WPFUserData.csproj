@@ -81,6 +81,8 @@
     <Compile Include="HeaderControl.xaml.cs">
       <DependentUpon>HeaderControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Distance.cs" />
+    <Compile Include="Model\DistanceUnit.cs" />
     <Compile Include="UpdateInfoPage.xaml.cs">
       <DependentUpon>UpdateInfoPage.xaml</DependentUpon>
     </Compile>
