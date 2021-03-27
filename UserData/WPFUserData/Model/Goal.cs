@@ -8,8 +8,8 @@ namespace WPFUserData.Model
 {
     public class Goal
     {
-        public int Steps;
-        public Weight Weight;
-        public WeightChange WeightChange; 
+        public int Steps { get; set; }
+        public Weight Weight { get; set; }
+        public WeightChange WeightChange { get; set; }
     }
 }

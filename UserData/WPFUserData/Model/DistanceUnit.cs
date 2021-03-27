@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WPFUserData.Model
 {
-    public class Step
+    public class DistanceUnit
     {
-        public DateTime Date { get; set; }
-        public int Steps { get; set; }
+        public const string Kilometers = "km";
+        public const string Miles = "mi";
     }
 }

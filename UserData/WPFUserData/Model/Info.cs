@@ -8,10 +8,10 @@ namespace WPFUserData.Model
 {
     public class Info
     {
-        public int Age;
-        public BiologicalSex Sex;
-        public Weight Weight;
-        public Height Height;
-        public String ActivityLevel;
+        public int Age { get; set; }
+        public BiologicalSex Sex { get; set; }
+        public Weight Weight { get; set; }
+        public Height Height { get; set; }
+        public String ActivityLevel { get; set; }
     }
 }
