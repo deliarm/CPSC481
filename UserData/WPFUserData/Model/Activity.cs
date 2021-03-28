@@ -13,16 +13,24 @@ namespace WPFUserData.Model
         public TimeSpan Duration { get; set; }
         public Distance Distance { get; set; }
         public ActivityType Type { get; set; }
+        public int ManualCaloriesBurned { get; set; } = -1; // Default to indicate that it hasn't been set
         public int CaloriesBurned {
             get {
-                return (int)(Distance.Number / (10 / Duration.TotalMinutes) * 50);
+                if(ManualCaloriesBurned != -1)
+                {
+                    return ManualCaloriesBurned;
+                }
+                else
+                {
+                    return CalcCaloriesBurned(Type, Distance, Duration);
+                }
             }
         }
 
         public String StartTimeStr { 
             get
             {
-                return StartTime.ToString("hh:MM tt");
+                return StartTime.ToString("hh:mm tt");
             } 
         }
 
@@ -30,8 +38,6 @@ namespace WPFUserData.Model
         {
             get
             {
-                //"30 min, 750 cal"
-
                 return Duration.TotalMinutes + " min, " + CaloriesBurned + " cal";
             }
         }
@@ -57,6 +63,14 @@ namespace WPFUserData.Model
             }
 
             return result;
+        }
+
+        /**
+         * The method that is used to determine how many calories an activity burns
+         */
+        static public int CalcCaloriesBurned(ActivityType type, Distance distance, TimeSpan duration)
+        {
+            return (int)(distance.Number / (10 / duration.TotalMinutes) * 50); ;
         }
     }
 }

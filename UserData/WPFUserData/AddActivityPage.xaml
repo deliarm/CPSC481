@@ -5,9 +5,17 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPFUserData"
       mc:Ignorable="d" 
+      xmlns:model="clr-namespace:WPFUserData.Model"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       d:DesignHeight="740" d:DesignWidth="360"
       Title="AddActivitiesPage">
-
+    <Page.Resources>
+        <ObjectDataProvider x:Key="ActivityTypeEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="model:ActivityType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Page.Resources>
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -18,37 +26,17 @@
             <RowDefinition Height="70" />
         </Grid.RowDefinitions>
         <Grid.Resources>
-            <Style TargetType="{x:Type Label}">
-                <Setter Property="FontSize" Value="24" />
-            </Style>
             <Style TargetType="{x:Type TextBox}">
                 <Setter Property="FontSize" Value="24" />
+                <Setter Property="Margin" Value="16 0 0 0" />
             </Style>
             <Style TargetType="{x:Type Button}">
                 <Setter Property="FontSize" Value="20" />
             </Style>
-            <Style TargetType="{x:Type ComboBox}">
-                <Setter Property="FontSize" Value="24" />
-            </Style>
-
         </Grid.Resources>
 
         <!--Header/Logo -->
-        <Grid Grid.Column="0" Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
-            <TextBlock
-                Text="Add Activity" 
-                Background="Yellow"           
-                FontSize="36" 
-                HorizontalAlignment="Stretch" 
-                TextAlignment="Center"
-                FontFamily="Segoe UI Black" />
-        </Grid>
+        <local:HeaderControl Title="Add Activity" Grid.Column="0" Grid.Row="0" />
 
         <!-- Add Activity Content -->
         <ScrollViewer Grid.Column="0" Grid.Row="1" VerticalScrollBarVisibility="Hidden" Padding="10">
@@ -56,33 +44,80 @@
 				
                 <!-- Activity Type -->
                 <DockPanel Margin="0 30 0 0">
-                    <Label DockPanel.Dock="Left">Activity Type:</Label>
-					<ComboBox DockPanel.Dock="Right">
-						<ComboBoxItem IsSelected="True">Run</ComboBoxItem>
-						<ComboBoxItem>Walk</ComboBoxItem>
-						<ComboBoxItem>Bike</ComboBoxItem>
-						<ComboBoxItem>Hike</ComboBoxItem>
-						<ComboBoxItem>Swim</ComboBoxItem>
-					</ComboBox>
+                    <TextBlock DockPanel.Dock="Left"
+                               Style="{StaticResource Header2}">
+                        Activity Type:
+                    </TextBlock>
+                    <ComboBox DockPanel.Dock="Right"
+                              Style="{StaticResource ComboBox1}"
+                              Margin="16 0 0 0"
+                              x:Name="ActivityTypeCombo"
+                              ItemsSource="{Binding Source={StaticResource ActivityTypeEnum}}"
+                              SelectedIndex="0"
+                              SelectionChanged="ActivityTypeCombo_SelectionChanged">
+                    </ComboBox>
                 </DockPanel>
 				
 				<Line X1="0" Y1="10" X2="360" Y2="10" Stroke="LightGray" StrokeThickness="2" />
                
 				<!-- Duration -->
-                <DockPanel Margin="0 30 0 0">
-                    <Label DockPanel.Dock="Left">Duration:</Label>
-                    <TextBox DockPanel.Dock="Right" Name="DurationTextBox">0:26:17</TextBox>
-                </DockPanel>
-
+                <Grid Margin="0 16 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0"
+                               Style="{StaticResource Header2}">
+                        Duration:
+                    </TextBlock>
+                    <TextBox Grid.Row="0" Grid.Column="1"
+                             Name="DurationHoursTextBox"
+                             Margin="0 0 4 0"
+                             Text="0"
+                             TextChanged="DurationHoursTextBox_TextChanged">
+                    </TextBox>
+                    <TextBlock Grid.Row="0" Grid.Column="2"
+                               Style="{StaticResource BodyText}"
+                               VerticalAlignment="Bottom">
+                        Hrs
+                    </TextBlock>
+                    <TextBox Grid.Row="0" Grid.Column="3"
+                             Name="DurationMinutesTextBox"
+                             Margin="0 0 4 0"
+                             Text="0"
+                             TextChanged="DurationMinutesTextBox_TextChanged">
+                    </TextBox>
+                    <TextBlock Grid.Row="0" Grid.Column="4"
+                               Style="{StaticResource BodyText}"
+                               VerticalAlignment="Bottom">
+                        Mins
+                    </TextBlock>
+                </Grid>
+                
 				<Line X1="0" Y1="10" X2="360" Y2="10" Stroke="LightGray" StrokeThickness="2" />
 				
                 <!-- Distance -->
                 <DockPanel Margin="0 30 0 0">
-                    <Label DockPanel.Dock="Left">Distance:</Label>
-                    <TextBox Width ="80" Name="DistanceTextBox">5</TextBox>
-                    <ComboBox DockPanel.Dock="Left" Width="80">
-                        <ComboBoxItem IsSelected="True">km</ComboBoxItem>
-                        <ComboBoxItem>mi</ComboBoxItem>
+                    <TextBlock DockPanel.Dock="Left"
+                               Style="{StaticResource Header2}"
+                               VerticalAlignment="Center">
+                        Distance:
+                    </TextBlock>
+                    <TextBox Width="80" 
+                             Name="DistanceTextBox"
+                             TextChanged="DistanceTextBox_TextChanged">0</TextBox>
+                    <ComboBox DockPanel.Dock="Left" Width="80" 
+                              x:Name="DistanceUnitComboBox"
+                              Style="{StaticResource ComboBox1}"
+                              ItemsSource="{Binding DistanceOptions}"
+                              SelectedIndex="0"
+                              SelectionChanged="DistanceUnitComboBox_SelectionChanged">
                     </ComboBox>
                 </DockPanel>
 
@@ -90,8 +125,13 @@
 
                 <!-- Calories Burned -->
                 <DockPanel Margin="0 30 0 0">
-                    <Label DockPanel.Dock="Left">Calories Burned:</Label>
-                    <TextBox DockPanel.Dock="Right" Name="CaloriesBurnedTextBox">500</TextBox>
+                    <TextBlock DockPanel.Dock="Left"
+                               Style="{StaticResource Header2}">
+                        Calories Burned:
+                    </TextBlock>
+                    <TextBox DockPanel.Dock="Right" 
+                             Name="CaloriesBurnedTextBox"
+                             KeyUp="CaloriesBurnedTextBox_KeyUp">0</TextBox>
                 </DockPanel>
 
 				<Line X1="0" Y1="10" X2="360" Y2="10" Stroke="LightGray" StrokeThickness="2" />
@@ -106,15 +146,17 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
 
-                    <Button Margin="10 10 10 10" Grid.Row="0" Grid.Column="0">
-                        <Hyperlink NavigateUri="ActivitiesPage.xaml">
-                            Cancel
-                        </Hyperlink>
+                    <Button Grid.Row="0" Grid.Column="0"
+                            x:Name="CancelButton"
+                            Style="{StaticResource Button1}"
+                            Click="CancelButton_Click">
+                        Cancel
                     </Button>
-                    <Button Margin="10 10 10 10" Grid.Row="0" Grid.Column="1">
-                        <Hyperlink NavigateUri="ActivitiesPage.xaml">
-                            Save
-                        </Hyperlink>
+                    <Button Grid.Row="0" Grid.Column="1"
+                            x:Name="SaveButton"
+                            Style="{StaticResource Button1}"
+                            Click="SaveButton_Click">
+                        Save
                     </Button>
                 </Grid>
             </StackPanel>
