@@ -21,14 +21,22 @@ namespace WPFUserData
     /// <summary>
     /// Interaction logic for TrackerOptions.xaml
     /// </summary>
+    static class Globals
+    { 
+        public static double distance;
+        public static int timeSeconds;
+        public static int timeMinutes;
+    }
     public partial class TrackerOptions : Page
     {
+        
         DispatcherTimer dt = new DispatcherTimer();
         Stopwatch sw = new Stopwatch();
         string currentTime = string.Empty;
         int distanceIncrement = 0;
         int prevDistanceIncrement = 0;
         double distanceTravelled = 0.0;
+        
 
         public TrackerOptions()
         {
@@ -46,6 +54,9 @@ namespace WPFUserData
                 ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
                 TimeDisplay.Text = currentTime;
                 distanceIncrement = ts.Minutes*4+ts.Seconds/15;
+                Globals.timeSeconds = ts.Seconds;
+                Globals.timeMinutes = ts.Minutes;  
+                Globals.distance = distanceTravelled;
                 if (distanceIncrement > prevDistanceIncrement)
                 {
                     prevDistanceIncrement = distanceIncrement;
@@ -86,12 +97,18 @@ namespace WPFUserData
         }
         private void ManualAddButton_Click(object sender, RoutedEventArgs e)
         {
+            Globals.timeSeconds = 0;
+            Globals.timeMinutes = 0;  
+            Globals.distance = 0.0;
             this.NavigationService.Navigate(new Uri("AddActivityPage.xaml", UriKind.Relative));
         }
 
         private void FinishButton_Click(object sender, RoutedEventArgs e)
         {
+            
+                      
             this.NavigationService.Navigate(new Uri("AddActivityPage.xaml", UriKind.Relative));
         }
+        
     }
 }

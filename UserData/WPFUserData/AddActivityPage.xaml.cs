@@ -21,6 +21,7 @@ namespace WPFUserData
     /// </summary>
     public partial class AddActivitiesPage : Page
     {
+       
         private bool hasCaloriesBeenManuallyAltered { get; set; } = false;
 
         public List<string> DistanceOptions { get; set; } = new List<string> {
@@ -33,6 +34,9 @@ namespace WPFUserData
         public AddActivitiesPage()
         {
             InitializeComponent();
+            DistanceTextBox.Text = Globals.distance.ToString();
+            DurationHoursTextBox.Text = Globals.timeMinutes.ToString();
+            DurationMinutesTextBox.Text = Globals.timeSeconds.ToString();
             this.DataContext = this;
 
             hasFinishedSetup = true;

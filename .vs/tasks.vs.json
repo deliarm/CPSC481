@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "task-map1",
+      "appliesTo": "UserData/WPFUserData/Icons/map1.PNG",
+      "type": "launch"
+    }
+  ]
+}
