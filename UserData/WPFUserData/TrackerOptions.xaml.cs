@@ -49,8 +49,15 @@ namespace WPFUserData
                 if (distanceIncrement > prevDistanceIncrement)
                 {
                     prevDistanceIncrement = distanceIncrement;
-                    distanceTravelled = distanceTravelled + 0.1;
-                    DistanceDisplay.Text = distanceTravelled.ToString();
+                    int selectedIndex = DistanceTrackerEnabled.SelectedIndex;
+                    if(selectedIndex == 0)
+                    {
+                        distanceTravelled = distanceTravelled + 0.1;
+
+                        DistanceDisplay.Text = distanceTravelled.ToString();
+                    }
+                    
+                    //ImageViewer1.Source = new BitmapImage(new Uri(@"\myserver\folder1\Customer Data\sample.png"));
                 }
             }
         }

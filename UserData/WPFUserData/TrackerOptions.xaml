@@ -44,8 +44,8 @@
                 <!-- Track Distance -->
                 <DockPanel>
                     <Label DockPanel.Dock="Left">Track Distance</Label>
-                    <ComboBox DockPanel.Dock="Right">
-                        <ComboBoxItem IsSelected="True">Enabled</ComboBoxItem>
+                    <ComboBox x:Name="DistanceTrackerEnabled" DockPanel.Dock="Right">
+                        <ComboBoxItem x:Name="Enabled" IsSelected="True">Enabled</ComboBoxItem>
                         <ComboBoxItem>Disabled</ComboBoxItem>
                     </ComboBox>
                 </DockPanel>
