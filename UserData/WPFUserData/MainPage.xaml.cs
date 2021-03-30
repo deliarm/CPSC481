@@ -18,6 +18,7 @@ using LiveCharts;
 using LiveCharts.Wpf;
 using LiveCharts.Defaults;
 using LiveCharts.Configurations;
+using WPFUserData.Model;
 
 
 namespace WPFUserData
@@ -27,14 +28,16 @@ namespace WPFUserData
     /// </summary>
     public partial class MainPage : Page
     {
+        public User user= User.getInstance();
         public MainPage()
         {
             InitializeComponent();
             Percent = value => value.ToString() + "%";
             Gauge.LabelFormatter = Percent;
-
+            Goal.Text = user.Goal.CalorieGoal.ToString();
         }
 
         public Func<Double, string> Percent { get; set; }
+        
     }
 }

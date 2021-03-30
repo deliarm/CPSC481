@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace WPFUserData.Model
 {
@@ -76,9 +77,35 @@ namespace WPFUserData.Model
             this.Goal.WeightChange.PerWeekWeight.Number = 0.5;
             this.Goal.WeightChange.PerWeekWeight.Unit = this.Info.Weight.Unit;
 
-
+            this.Goal.CalorieGoal = CalcTDEE();
+            
             this.Goal.Steps = 6000;
 
+        }
+
+        private double GetNeat()
+        {
+            if (this.Info.ActivityLevel == ActivityLevel.Light)
+                return 330;
+            if (this.Info.ActivityLevel == ActivityLevel.Medium)
+                return 410;
+            if (this.Info.ActivityLevel == ActivityLevel.Heavy)
+                return 500;
+            return 250;
+        }
+
+        private int CalcTDEE ()
+        {
+            double weight = this.Info.Weight.Number;
+            if (this.Info.Weight.Unit == WeightUnit.Pounds)
+                weight /= 2.205;
+
+            double bmr = weight * 20;
+            double tef = bmr * 0.1;
+            double neat = GetNeat();
+            double eee = 250;
+
+            return Convert.ToInt32(bmr + tef + neat + eee);   
         }
 
         private void FillHistoricMeals()
