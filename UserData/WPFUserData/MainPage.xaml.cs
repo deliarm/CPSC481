@@ -38,6 +38,10 @@ namespace WPFUserData
         }
 
         public Func<Double, string> Percent { get; set; }
-        
+
+        private void TabBar_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -35,7 +35,7 @@
 
             <TextBlock
                 Text="U-Fit" 
-                Background="Yellow"           
+                Background="#FF1375EA"           
                 FontSize="36" 
                 HorizontalAlignment="Stretch" 
                 TextAlignment="Center"
@@ -196,6 +196,6 @@
                 </Grid>
             </StackPanel>
         </Grid>
-        <local:TabBar Grid.Column="0" Grid.Row="2"/>
+        <local:TabBar Grid.Column="0" Grid.Row="2" Loaded="TabBar_Loaded"/>
     </Grid>
 </Page>

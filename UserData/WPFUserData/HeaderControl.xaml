@@ -20,7 +20,7 @@
         <Button  Grid.Row="0" Grid.Column="0">
             <Button.Style>
                 <Style>
-                    <Setter Property="Button.Background" Value="#FBDA37"/>
+                    <Setter Property="Button.Background" Value="#FF1375EA"/>
                     <Setter Property="Button.BorderThickness" Value="0" />
                 </Style>
             </Button.Style>

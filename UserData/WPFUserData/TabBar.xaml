@@ -22,7 +22,7 @@
             <Style TargetType="{x:Type Button}">
                 <Setter Property="Margin" Value="0" />
                 <Setter Property="Padding" Value="0" />
-                <Setter Property="Background" Value="#FBDA37"/>
+                <Setter Property="Background" Value="#FF1375EA"/>
             </Style>
             <Style TargetType="Image">
                 <Setter Property="RenderOptions.BitmapScalingMode" Value="Fant" />
@@ -68,44 +68,57 @@
             </Grid>
         </Button>
         <Button Grid.Column="2" Click="Add_Click">
-            
-            <StackPanel VerticalAlignment="Center">
-                <Popup x:Name="add_popup" VerticalOffset="-123" HorizontalOffset="-127.5" >
+            <!--<local:Popup x:Name="add_popup"/>-->
+            <Grid VerticalAlignment="Center">
+                <Popup x:Name="add_popup" VerticalOffset="-730" HorizontalOffset="-152" AllowsTransparency="True">
                     <StackPanel Background="Transparent" >
-                        <Border Background="Transparent" BorderThickness="2" BorderBrush="Gray" CornerRadius="2" >
-                            <StackPanel Background="White">
+                        <Border Background="Transparent" BorderThickness="0" BorderBrush="Gray" CornerRadius="2" >
+                            <StackPanel MaxWidth="360" >
+                                <StackPanel.Background>
+                                    <SolidColorBrush Color="Black" Opacity=".65"></SolidColorBrush>
+                                </StackPanel.Background>
                                 <Grid Margin="5">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition />
-                                        <ColumnDefinition />
-                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="180"/>
+                                        <ColumnDefinition Width="180"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition />
+                                        <RowDefinition Height="500"/>
+                                        <RowDefinition Height="125"/>
+                                        <RowDefinition Height="34"/>
                                     </Grid.RowDefinitions>
-                                    <Grid.Resources>
-                                        <Style TargetType="{x:Type Button}">
-                                            <Setter Property="FontSize" Value="16"/>
-                                            <Setter Property="Margin" Value="5" />
-                                            <Setter Property="Padding" Value="5" />
-                                        </Style>
-                                    </Grid.Resources>
-                                    <Button Grid.Row="0" Grid.Column="0">Add Food</Button>
-                                    <Button Grid.Row="0" Grid.Column="1">
-										<Hyperlink NavigateUri="TrackerOptions.xaml">
-											Add Activity
-										</Hyperlink>
-									</Button>
-									
-                                    <Button Grid.Row="0" Grid.Column="2">Add Sleep</Button>
+
+                                    <TextBlock Grid.Row="1" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Hyperlink TextDecorations="" NavigateUri="AddMealPage.xaml">
+                                            <Image Source="Icons\plate2.png"></Image>
+                                        </Hyperlink>
+                                    </TextBlock>
+                                    
+                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Hyperlink TextDecorations="" NavigateUri="TrackerOptions.xaml">
+                                            <Image Source="Icons\dumbbell.png" MouseDown="Image_MouseDown"/>
+                                        </Hyperlink>
+                                    </TextBlock>
+
+                                    <TextBlock Grid.Row="2" Grid.Column="0" FontSize="19" 
+                                               HorizontalAlignment="Center" VerticalAlignment="Center"
+                                               Foreground="White"> 
+                                        Quick Add Food 
+                                    </TextBlock>
+
+                                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="19" 
+                                               HorizontalAlignment="Center" VerticalAlignment="Center"
+                                               Foreground="White"> 
+                                        Quick Add Activity
+                                    </TextBlock>
+
                                 </Grid>
                             </StackPanel>
                         </Border>
-                        <Polygon Points="0,0 20,15 40,0" Stroke="Gray" Fill="Gray" HorizontalAlignment="Center" />
                     </StackPanel>
                 </Popup>
                 <Image Source="Icons/add.png" Width="55"/>
-            </StackPanel>
+            </Grid>
         </Button>
         <!--<div>Icons made by <a href="https://www.flaticon.com/authors/dinosoftlabs" title="DinosoftLabs">DinosoftLabs</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>-->
         <Button Grid.Column="3" >
