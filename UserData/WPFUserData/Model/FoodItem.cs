@@ -8,7 +8,7 @@ namespace WPFUserData.Model
 {
     public class FoodItem
     {
-        private static User user = User.getInstance();
+        
 
         public string Name { get; set; }
         public int Quantity { get; set; }
@@ -30,6 +30,8 @@ namespace WPFUserData.Model
 
         public static FoodItem getByName(String foodName)
         {
+            User user = User.getInstance();
+
             foreach (FoodItem item in user.FoodDatabase)
             {
                 if (item.Name == foodName)

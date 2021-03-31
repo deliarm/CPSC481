@@ -49,10 +49,9 @@ namespace WPFUserData.Model
             }
         }
 
-        private static User user = User.getInstance();
-
         static public List<Activity> getActivitiesByDate(DateTime date)
         {
+            User user = User.getInstance();
             List<Activity> result = new List<Activity>();
             foreach (Activity activity in user.Activities)
             {

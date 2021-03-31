@@ -78,10 +78,10 @@ namespace WPFUserData.Model
         }
 
 
-        private static User user = User.getInstance();
 
         static public List<Meal> getMealsByDate(DateTime date)
         {
+            User user = User.getInstance();
             List<Meal> meals = new List<Meal>();
             foreach(Meal m in user.Meals) {
                 if(m.Date == date.Date)
