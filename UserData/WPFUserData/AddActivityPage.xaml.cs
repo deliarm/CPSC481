@@ -56,18 +56,21 @@ namespace WPFUserData
             double minutes = 0;
             Double.TryParse(DurationMinutesTextBox.Text, out minutes);
 
-            double durationMinutes = (hours * 60) + minutes;
+            double seconds = 0;
+            Double.TryParse(DurationSecondsTextBox.Text, out seconds);
+
+            double durationSeconds = (hours * 60 * 60) + (minutes * 60) + seconds;
 
             DateTime now = DateTime.Now;
-            DateTime durationAgo = DateTime.Now.AddMinutes(-durationMinutes);
+            DateTime durationAgo = DateTime.Now.AddSeconds(-durationSeconds);
 
-            DateTime startTime = DateTime.Now.AddMinutes(-durationMinutes);
+            DateTime startTime = DateTime.Now.AddSeconds(-durationSeconds);
 
             Activity activity = new Activity
             {
                 Type = (ActivityType)ActivityTypeCombo.SelectedItem,
                 Date = startTime.Date,
-                Duration = TimeSpan.FromMinutes(durationMinutes),
+                Duration = TimeSpan.FromSeconds(durationSeconds),
                 StartTime = startTime, // Assume the activity started exactly `durationMinutes` ago
                 Distance = new Distance
                 {
@@ -108,6 +111,11 @@ namespace WPFUserData
         }
 
         private void DurationMinutesTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateCaloriesBurned();
+        }
+
+        private void DurationSecondsTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             UpdateCaloriesBurned();
         }

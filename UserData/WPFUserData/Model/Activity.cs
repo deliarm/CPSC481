@@ -38,7 +38,7 @@ namespace WPFUserData.Model
         {
             get
             {
-                return Duration.TotalMinutes + " min, " + CaloriesBurned + " cal";
+                return (int)(Duration.TotalMinutes) + " min, " + CaloriesBurned + " cal";
             }
         }
 
