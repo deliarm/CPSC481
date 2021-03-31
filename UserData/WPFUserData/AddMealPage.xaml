@@ -27,7 +27,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="70" />
         </Grid.RowDefinitions>
-        <local:HeaderControl Grid.Column="0" Grid.Row= "0" Title="Add Meal"/>
+        <local:HeaderControl Grid.Column="0" Grid.Row= "0" Title="Add Meal" BackButtonIsVisible="True"/>
 
 
         <!-- Main Content -->

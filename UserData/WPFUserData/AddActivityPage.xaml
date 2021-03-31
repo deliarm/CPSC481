@@ -36,7 +36,9 @@
         </Grid.Resources>
 
         <!--Header/Logo -->
-        <local:HeaderControl Title="Add Activity" Grid.Column="0" Grid.Row="0" />
+        <local:HeaderControl Grid.Column="0" Grid.Row="0"
+                             Title="Add Activity" 
+                             BackButtonIsVisible="True"/>
 
         <!-- Add Activity Content -->
         <ScrollViewer Grid.Column="0" Grid.Row="1" VerticalScrollBarVisibility="Hidden" Padding="10">

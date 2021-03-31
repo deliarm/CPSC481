@@ -35,7 +35,7 @@
         </Grid.Resources>
 
         <!--Header/Logo -->
-		<local:HeaderControl Title="Activity Tracker" Grid.Column="0" Grid.Row="0" />
+		<local:HeaderControl Title="Activity Tracker" Grid.Column="0" Grid.Row="0" BackButtonIsVisible="True" />
 
         <!-- Tracker Content -->
         <ScrollViewer Grid.Column="0" Grid.Row="1" VerticalScrollBarVisibility="Hidden" Padding="10">

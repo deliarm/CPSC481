@@ -6,8 +6,11 @@
              xmlns:local="clr-namespace:WPFUserData"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="360">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="VisibleIfTrueConverter" />
+    </UserControl.Resources>
     <!--Header/Logo -->
-    <Grid>
+    <Grid Background="#FF1375EA">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="*"/>
@@ -17,10 +20,10 @@
         </Grid.RowDefinitions>
 
 
-        <Button  Grid.Row="0" Grid.Column="0">
+        <Button x:Name="BackButton" Grid.Row="0" Grid.Column="0" Visibility="{Binding BackButtonIsVisible, Converter={StaticResource VisibleIfTrueConverter}}">
             <Button.Style>
                 <Style>
-                    <Setter Property="Button.Background" Value="#FF1375EA"/>
+                    <Setter Property="Button.Background" Value="Transparent"/>
                     <Setter Property="Button.BorderThickness" Value="0" />
                 </Style>
             </Button.Style>

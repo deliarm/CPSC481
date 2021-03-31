@@ -20,6 +20,7 @@ namespace WPFUserData
     /// </summary>
     public partial class HeaderControl : UserControl
     {
+        public bool BackButtonIsVisible { get; set; } = false;
         public HeaderControl()
         {
             InitializeComponent();

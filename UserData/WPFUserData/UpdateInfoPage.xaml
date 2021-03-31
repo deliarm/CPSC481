@@ -21,18 +21,7 @@
         </Grid.RowDefinitions>
 
         <!--Header/Logo -->
-        <Grid Grid.Column="0" Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
-
-            <Rectangle Fill="#FF0D2F89"/>
-            <TextBlock Style="{StaticResource HeaderBanner}" 
-                       Text="Update Profile" />
-        </Grid>
+        <local:HeaderControl Title="Update Profile" Grid.Column="0" Grid.Row="0" BackButtonIsVisible="True" />
 
         <StackPanel  Grid.Column="0" Grid.Row="1">
             <!--Age/Sex Grid-->
