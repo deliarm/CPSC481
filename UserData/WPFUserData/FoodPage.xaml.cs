@@ -55,6 +55,10 @@ namespace WPFUserData
             float fatPercentage = fat / (protein + carbs);
             float carbsPercentage = carbs / (protein + fat);
 
+            if (float.IsNaN(proteinPercentage)) proteinPercentage = 0;
+            if (float.IsNaN(fatPercentage)) fatPercentage = 0;
+            if (float.IsNaN(carbsPercentage)) carbsPercentage = 0;
+
             ProteinStr = proteinPercentage + "%";
             FatStr = fatPercentage + "%";
             CarbsStr = carbsPercentage + "%";

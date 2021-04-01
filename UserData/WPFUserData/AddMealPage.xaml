@@ -104,7 +104,7 @@
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="2*"/>
                                                 <ColumnDefinition Width="2*"/>
-                                                <ColumnDefinition Width="90"/>
+                                                <ColumnDefinition Width="80"/>
                                                 <ColumnDefinition Width="Auto"/>
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
@@ -113,20 +113,30 @@
 
                                             <!-- TODO: The margin should be a style? -->
                                             <TextBlock Grid.Row="0" Grid.Column="0" 
-                                                            Margin="16 0" 
-                                                            Style="{StaticResource BodyText}"
+                                                       Margin="8 0" 
+                                                       Style="{StaticResource BodyText}"
                                                        VerticalAlignment="Center"
-                                                            Text="{Binding Name}" />
-                                            <TextBlock Grid.Row="0" Grid.Column="1" 
+                                                       Text="{Binding Name}" />
+                                            <!--<TextBlock Grid.Row="0" Grid.Column="1" 
                                                             Margin="16 0" 
                                                             Style="{StaticResource BodyText}"
                                                        HorizontalAlignment="Right"
                                                        VerticalAlignment="Center"
-                                                            Text="{Binding QuantityStr}" />
+                                                            Text="{Binding QuantityStr}" />-->
+                                            <ComboBox Grid.Row="0" Grid.Column="1"
+                                                      Style="{StaticResource ComboBox1}"
+                                                      HorizontalAlignment="Right"
+                                                      Width="60"
+                                                      Margin="0 4"
+                                                      SelectedItem="{Binding QuantityStr}"
+                                                      ItemsSource="{Binding quantities}"
+                                                      SelectionChanged="ComboBox_SelectionChanged">
+                                            </ComboBox>
                                             <TextBlock Grid.Row="0" Grid.Column="2" 
-                                                            Margin="16 0" 
-                                                            Style="{StaticResource BodyText}"
+                                                       Margin="8 0"
+                                                       Style="{StaticResource BodyText}"
                                                        VerticalAlignment="Center"
+                                                       HorizontalAlignment="Right"
                                                             Text="{Binding CaloriesStr}" />
                                             <Button Grid.Row="0" Grid.Column="3"
                                                         Style="{StaticResource InvisibleButton}"
