@@ -32,7 +32,7 @@ namespace WPFUserData
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("AddMealPage.xaml", UriKind.Relative));
+            Switcher.Switch("AddMealPage.xaml");
         }
 
         void CancelNavigationPage_Loaded(object sender, RoutedEventArgs e)

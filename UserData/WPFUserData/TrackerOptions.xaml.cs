@@ -107,12 +107,12 @@ namespace WPFUserData
             Globals.timeMinutes = 0;  
             Globals.timeHours = 0;
             Globals.distance = 0.0;
-            this.NavigationService.Navigate(new Uri("AddActivityPage.xaml", UriKind.Relative));
+            Switcher.Switch("AddActivityPage.xaml");
         }
 
         private void FinishButton_Click(object sender, RoutedEventArgs e)
-        {      
-            this.NavigationService.Navigate(new Uri("AddActivityPage.xaml", UriKind.Relative));
+        {
+            Switcher.Switch("AddActivityPage.xaml");
         }
         /** Not sure how to do the back button
         private void BackButton_Click(object sender, RoutedEventArgs e)

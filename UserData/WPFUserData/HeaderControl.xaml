@@ -20,7 +20,10 @@
         </Grid.RowDefinitions>
 
 
-        <Button x:Name="BackButton" Grid.Row="0" Grid.Column="0" Visibility="{Binding BackButtonIsVisible, Converter={StaticResource VisibleIfTrueConverter}}">
+        <Button x:Name="BackButton" 
+                Grid.Row="0" Grid.Column="0" 
+                Visibility="{Binding BackButtonIsVisible, Converter={StaticResource VisibleIfTrueConverter}}"
+                Click="BackButton_Click">
             <Button.Style>
                 <Style>
                     <Setter Property="Button.Background" Value="Transparent"/>

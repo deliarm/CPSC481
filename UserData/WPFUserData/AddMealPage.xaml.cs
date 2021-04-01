@@ -117,7 +117,7 @@ namespace WPFUserData
 
             user.Meals.Add(meal);
 
-            this.NavigationService.Navigate(new Uri("FoodPage.xaml", UriKind.Relative));
+            Switcher.Switch("FoodPage.xaml");
         }
 
         private void CurrentFoodCancel_Click(object sender, RoutedEventArgs e)
@@ -134,7 +134,7 @@ namespace WPFUserData
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("FoodPage.xaml", UriKind.Relative));
+            Switcher.Switch("FoodPage.xaml");
         }
     }
 }

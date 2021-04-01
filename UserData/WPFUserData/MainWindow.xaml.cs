@@ -23,6 +23,8 @@ namespace WPFUserData
         public MainWindow()
         {
             InitializeComponent();
+
+            Switcher.pageSwitcher = this;
         }
     }
 }

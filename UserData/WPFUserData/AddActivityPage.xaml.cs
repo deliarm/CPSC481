@@ -45,7 +45,7 @@ namespace WPFUserData
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("ActivitiesPage.xaml", UriKind.Relative));
+            Switcher.Switch("ActivitiesPage.xaml");
         }
 
         private Activity BuildActivity()
@@ -97,7 +97,7 @@ namespace WPFUserData
             Activity activity = BuildActivity();
             User.getInstance().Activities.Add(activity);
 
-            this.NavigationService.Navigate(new Uri("ActivitiesPage.xaml", UriKind.Relative));
+            Switcher.Switch("ActivitiesPage.xaml");
         }
 
 
