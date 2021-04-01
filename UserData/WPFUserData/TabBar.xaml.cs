@@ -44,5 +44,29 @@ namespace WPFUserData
             // move image up slightly on click??
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch("MainPage.xaml");
+        }
+
+        private void FoodButton_Click(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch("FoodPage.xaml");
+        }
+        private void ActivityButton_Click(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch("ActivitiesPage.xaml");
+        }
+
+        private void ProfileButton_Click(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch("ProfilePage.xaml");
+        }
     }
 }
