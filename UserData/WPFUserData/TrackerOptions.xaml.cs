@@ -26,6 +26,7 @@ namespace WPFUserData
         public static double distance;
         public static int timeSeconds;
         public static int timeMinutes;
+        public static int timeHours;
     }
     public partial class TrackerOptions : Page
     {
@@ -55,7 +56,8 @@ namespace WPFUserData
                 TimeDisplay.Text = currentTime;
                 distanceIncrement = ts.Minutes*4+ts.Seconds/15;
                 Globals.timeSeconds = ts.Seconds;
-                Globals.timeMinutes = ts.Minutes;  
+                Globals.timeMinutes = ts.Minutes % 60;
+                Globals.timeHours = ts.Minutes / 60;
                 Globals.distance = distanceTravelled;
                 if (distanceIncrement > prevDistanceIncrement)
                 {
@@ -94,21 +96,29 @@ namespace WPFUserData
             distanceIncrement = 0;
             prevDistanceIncrement = 0;
             distanceTravelled = 0.0;
+            Globals.timeSeconds = 0;
+            Globals.timeMinutes = 0;  
+            Globals.timeHours = 0;
+            Globals.distance = 0.0;
         }
         private void ManualAddButton_Click(object sender, RoutedEventArgs e)
         {
             Globals.timeSeconds = 0;
             Globals.timeMinutes = 0;  
+            Globals.timeHours = 0;
             Globals.distance = 0.0;
             this.NavigationService.Navigate(new Uri("AddActivityPage.xaml", UriKind.Relative));
         }
 
         private void FinishButton_Click(object sender, RoutedEventArgs e)
-        {
-            
-                      
+        {      
             this.NavigationService.Navigate(new Uri("AddActivityPage.xaml", UriKind.Relative));
         }
-        
+        /** Not sure how to do the back button
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {        
+            this.NavigationService.Navigate(new Uri("ActivitiesPage.xaml", UriKind.Relative));
+        }
+        */
     }
 }

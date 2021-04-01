@@ -30,7 +30,7 @@
             <Button.Content>
                 <Image Source="Icons\baseline_keyboard_backspace_black_48.png"/>
             </Button.Content>
-        </Button>
+		</Button>
         <TextBlock 
             Grid.Row="0" Grid.Column="1" 
             Style= "{StaticResource HeaderBanner}"

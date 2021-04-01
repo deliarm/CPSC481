@@ -28,7 +28,6 @@ namespace WPFUserData
 
             Title = "Default";
         }
-
         public string Title { get; set; }
     }
 }

@@ -35,8 +35,9 @@ namespace WPFUserData
         {
             InitializeComponent();
             DistanceTextBox.Text = Globals.distance.ToString();
-            DurationHoursTextBox.Text = Globals.timeMinutes.ToString();
-            DurationMinutesTextBox.Text = Globals.timeSeconds.ToString();
+            DurationHoursTextBox.Text = Globals.timeHours.ToString();
+            DurationMinutesTextBox.Text = Globals.timeMinutes.ToString();
+            DurationSecondsTextBox.Text = Globals.timeSeconds.ToString();
             this.DataContext = this;
 
             hasFinishedSetup = true;
