@@ -5,8 +5,9 @@
     "\\RyansPages\\Project",
     "\\UserData",
     "\\UserData\\WPFUserData",
+    "\\UserData\\WPFUserData\\Icons",
     "\\WPF_proj"
   ],
-  "SelectedNode": "\\UserData\\WPFUserData\\TrackerOptions.xaml",
+  "SelectedNode": "\\UserData\\WPFUserData\\HeaderControl.xaml.cs",
   "PreviewInSolutionExplorer": false
 }

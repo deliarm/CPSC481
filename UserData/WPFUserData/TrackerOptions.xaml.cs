@@ -37,11 +37,18 @@ namespace WPFUserData
         int distanceIncrement = 0;
         int prevDistanceIncrement = 0;
         double distanceTravelled = 0.0;
+
+        int whichMap = 1;
         
 
         public TrackerOptions()
         {
             InitializeComponent();
+
+            //Map animation
+            Uri map1 = new Uri("Icons/map1.png", UriKind.Relative);
+            MapAnimation.Source = new BitmapImage(map1);
+
             dt.Tick += new EventHandler(dt_Tick);
             dt.Interval = new TimeSpan(0,0,0,0,1);
         }
@@ -66,8 +73,59 @@ namespace WPFUserData
                     if(selectedIndex == 0)
                     {
                         distanceTravelled = distanceTravelled + 0.1;
-
                         DistanceDisplay.Text = distanceTravelled.ToString();
+
+                        whichMap++;
+                        if(whichMap == 2)
+                        {
+                            Uri map2 = new Uri("Icons/map2.png", UriKind.Relative);
+                            MapAnimation.Source = new BitmapImage(map2);
+                        }
+                        else if(whichMap == 3)
+                        {
+                            Uri map3 = new Uri("Icons/map3.png", UriKind.Relative);
+                            MapAnimation.Source = new BitmapImage(map3);
+                        }
+                        else if(whichMap == 4)
+                        {
+                            Uri map4 = new Uri("Icons/map4.png", UriKind.Relative);
+                            MapAnimation.Source = new BitmapImage(map4);
+                        }
+                        else if(whichMap == 5)
+                        {
+                            Uri map5 = new Uri("Icons/map5.png", UriKind.Relative);
+                            MapAnimation.Source = new BitmapImage(map5);
+                        }
+                        else if(whichMap == 6)
+                        {
+                            Uri map6 = new Uri("Icons/map6.png", UriKind.Relative);
+                            MapAnimation.Source = new BitmapImage(map6);
+                        }
+                        else if(whichMap == 7)
+                        {
+                            Uri map7 = new Uri("Icons/map7.png", UriKind.Relative);
+                            MapAnimation.Source = new BitmapImage(map7);
+                        }
+                        else if(whichMap == 8)
+                        {
+                            Uri map8 = new Uri("Icons/map8.png", UriKind.Relative);
+                            MapAnimation.Source = new BitmapImage(map8);
+                        }
+                        else if(whichMap == 9)
+                        {
+                            Uri map9 = new Uri("Icons/map9.png", UriKind.Relative);
+                            MapAnimation.Source = new BitmapImage(map9);
+                        }
+                        else if(whichMap == 10)
+                        {
+                            Uri map10 = new Uri("Icons/map10.png", UriKind.Relative);
+                            MapAnimation.Source = new BitmapImage(map10);
+                        }
+                        else if(whichMap == 11)
+                        {
+                            Uri map11 = new Uri("Icons/map11.png", UriKind.Relative);
+                            MapAnimation.Source = new BitmapImage(map11);
+                        }
                     }
                     
                     //ImageViewer1.Source = new BitmapImage(new Uri(@"\myserver\folder1\Customer Data\sample.png"));
@@ -100,6 +158,10 @@ namespace WPFUserData
             Globals.timeMinutes = 0;  
             Globals.timeHours = 0;
             Globals.distance = 0.0;
+
+            Uri map1 = new Uri("Icons/map1.png", UriKind.Relative);
+            MapAnimation.Source = new BitmapImage(map1);
+            whichMap = 1;
         }
         private void ManualAddButton_Click(object sender, RoutedEventArgs e)
         {
