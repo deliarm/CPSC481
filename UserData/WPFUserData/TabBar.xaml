@@ -22,7 +22,7 @@
             <Style TargetType="{x:Type Button}">
                 <Setter Property="Margin" Value="0" />
                 <Setter Property="Padding" Value="0" />
-                <Setter Property="Background" Value="#FF1375EA"/>
+                <Setter Property="Background" Value="#F1DA55"/>
             </Style>
             <Style TargetType="Image">
                 <Setter Property="RenderOptions.BitmapScalingMode" Value="Fant" />

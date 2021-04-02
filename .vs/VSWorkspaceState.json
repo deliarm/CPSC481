@@ -1,13 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\RyansPages",
     "\\RyansPages\\Project",
     "\\UserData",
     "\\UserData\\WPFUserData",
-    "\\UserData\\WPFUserData\\Icons",
     "\\WPF_proj"
   ],
-  "SelectedNode": "\\UserData\\WPFUserData\\HeaderControl.xaml.cs",
+  "SelectedNode": "\\UserData\\UserData.sln",
   "PreviewInSolutionExplorer": false
 }
