@@ -35,8 +35,9 @@ namespace WPFUserData
         {
             InitializeComponent();
             DistanceTextBox.Text = Globals.distance.ToString();
-            DurationHoursTextBox.Text = Globals.timeMinutes.ToString();
-            DurationMinutesTextBox.Text = Globals.timeSeconds.ToString();
+            DurationHoursTextBox.Text = Globals.timeHours.ToString();
+            DurationMinutesTextBox.Text = Globals.timeMinutes.ToString();
+            DurationSecondsTextBox.Text = Globals.timeSeconds.ToString();
             this.DataContext = this;
 
             hasFinishedSetup = true;
@@ -44,7 +45,7 @@ namespace WPFUserData
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("ActivitiesPage.xaml", UriKind.Relative));
+            Switcher.Switch("ActivitiesPage.xaml");
         }
 
         private Activity BuildActivity()
@@ -96,7 +97,7 @@ namespace WPFUserData
             Activity activity = BuildActivity();
             User.getInstance().Activities.Add(activity);
 
-            this.NavigationService.Navigate(new Uri("ActivitiesPage.xaml", UriKind.Relative));
+            Switcher.Switch("ActivitiesPage.xaml");
         }
 
 

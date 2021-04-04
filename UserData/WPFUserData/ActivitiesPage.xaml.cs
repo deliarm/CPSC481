@@ -65,12 +65,12 @@ namespace WPFUserData
 
         private void ReportButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("ActivityReportPage.xaml", UriKind.Relative));
+            Switcher.Switch("ActivityReportPage.xaml");
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("TrackerOptions.xaml", UriKind.Relative));
+            Switcher.Switch("TrackerOptions.xaml");
         }
     }
 }

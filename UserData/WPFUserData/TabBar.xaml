@@ -22,14 +22,14 @@
             <Style TargetType="{x:Type Button}">
                 <Setter Property="Margin" Value="0" />
                 <Setter Property="Padding" Value="0" />
-                <Setter Property="Background" Value="#FF1375EA"/>
+                <Setter Property="Background" Value="#F1DA55"/>
             </Style>
             <Style TargetType="Image">
                 <Setter Property="RenderOptions.BitmapScalingMode" Value="Fant" />
             </Style>
         </Grid.Resources>
 
-        <Button Grid.Column="0" >
+        <Button Grid.Column="0" Name="HomeButton" Click="HomeButton_Click" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -41,15 +41,13 @@
                 </Grid.RowDefinitions>
                 <Image Source="Icons\home.png" Grid.Column="0" Grid.Row="0" />
                 <TextBlock Grid.Column="0" Grid.Row="1"  FontSize="16">
-                    <Hyperlink NavigateUri="MainPage.xaml">
-                        Home
-                    </Hyperlink>
+                    Home
                 </TextBlock>
             </Grid>
         </Button>
         <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/pause08" title="Pause08">Pause08</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>-->
         
-        <Button Grid.Column="1">
+        <Button Grid.Column="1" Name="FoodButton" Click="FoodButton_Click">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -61,9 +59,7 @@
                 </Grid.RowDefinitions>
                 <Image Source="Icons/dish.png" Grid.Column="0" Grid.Row="0" />
                 <TextBlock  Grid.Column="0" Grid.Row="1" FontSize="16">
-                <Hyperlink NavigateUri="FoodPage.xaml">
                     Food
-                </Hyperlink>
                 </TextBlock>
             </Grid>
         </Button>
@@ -121,7 +117,7 @@
             </Grid>
         </Button>
         <!--<div>Icons made by <a href="https://www.flaticon.com/authors/dinosoftlabs" title="DinosoftLabs">DinosoftLabs</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>-->
-        <Button Grid.Column="3" >
+        <Button Grid.Column="3" Name="ActivityButton" Click="ActivityButton_Click">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -133,14 +129,12 @@
                 </Grid.RowDefinitions>
                 <Image Source="Icons\running.png" Grid.Column="0" Grid.Row="0" />
                 <TextBlock Grid.Column="0" Grid.Row="1"  FontSize="16">
-                    <Hyperlink NavigateUri="ActivitiesPage.xaml">
-                        Activity
-                    </Hyperlink>
+                    Activity
                 </TextBlock>
             </Grid>
         </Button>
         <!--<div>Icons made by <a href="https://www.flaticon.com/authors/srip" title="srip">srip</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>-->
-        <Button Grid.Column="4" >
+        <Button Grid.Column="4" Name="ProfileButton" Click="ProfileButton_Click">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -152,9 +146,7 @@
                 </Grid.RowDefinitions>
                 <Image Source="Icons\bar-chart.png" Grid.Column="0" Grid.Row="0" />
                 <TextBlock  Grid.Column="0" Grid.Row="1"  FontSize="16">
-                    <Hyperlink NavigateUri="ProfilePage.xaml">
-                        Profile
-                    </Hyperlink>
+                    Profile
                 </TextBlock>
 
             </Grid>

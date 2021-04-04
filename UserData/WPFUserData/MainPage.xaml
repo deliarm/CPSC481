@@ -35,7 +35,7 @@
 
             <TextBlock
                 Text="U-Fit" 
-                Background="#FF1375EA"           
+                Background="#F1DA55"           
                 FontSize="36" 
                 HorizontalAlignment="Stretch" 
                 TextAlignment="Center"

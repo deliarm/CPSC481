@@ -172,7 +172,7 @@ namespace WPFUserData
 
         private void cancel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("ProfilePage.xaml", UriKind.Relative));
+            Switcher.Switch("ProfilePage.xaml");
         }
 
         private void save_Click(object sender, RoutedEventArgs e)
@@ -263,7 +263,7 @@ namespace WPFUserData
             user.WeightHistory[user.WeightHistory.Count-1] = newW;
 
             //-----------------------------------//
-            this.NavigationService.Navigate(new Uri("ProfilePage.xaml", UriKind.Relative));
+            Switcher.Switch("ProfilePage.xaml");
         }
 
     }

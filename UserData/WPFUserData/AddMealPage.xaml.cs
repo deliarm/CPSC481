@@ -26,7 +26,9 @@ namespace WPFUserData
         private List<FoodItem> FoodDatabase;
         private User user;
 
-        private String CaloriesTotal
+        
+
+    private String CaloriesTotal
         {
             get
             {
@@ -60,6 +62,9 @@ namespace WPFUserData
             CurrentFoodList.ItemsSource = CurrentFoods;
             FoodOptionsList.ItemsSource = FoodSearchList;
             CaloriesTotalText.Text = CaloriesTotal;
+
+            
+            
         }
 
         private void SearchCancelButton_Click(object sender, RoutedEventArgs e)
@@ -83,7 +88,10 @@ namespace WPFUserData
             Button b = (Button)sender;
             String foodName = (String)b.Tag;
             FoodItem selectedItem = FoodItem.getByName(foodName);
-            CurrentFoods.Add(selectedItem);
+
+            FoodItem selectedItemCopy = new FoodItem(selectedItem);
+            CurrentFoods.Add(selectedItemCopy);
+
             CurrentFoodList.Items.Refresh();
             CaloriesTotalText.Text = CaloriesTotal;
 
@@ -117,16 +125,32 @@ namespace WPFUserData
 
             user.Meals.Add(meal);
 
-            this.NavigationService.Navigate(new Uri("FoodPage.xaml", UriKind.Relative));
+            Switcher.Switch("FoodPage.xaml");
         }
 
         private void CurrentFoodCancel_Click(object sender, RoutedEventArgs e)
         {
             Button b = (Button)sender;
             String foodName = (String)b.Tag;
-            FoodItem selectedItem = FoodItem.getByName(foodName);
 
-            CurrentFoods.Remove(selectedItem);
+            List<FoodItem> toRemove = new List<FoodItem>();
+
+            foreach(FoodItem item in CurrentFoods)
+            {
+                if(item.Name == foodName)
+                {
+                    toRemove.Add(item);
+                }
+            }
+            
+            foreach(FoodItem i in toRemove)
+            {
+                CurrentFoods.Remove(i);
+            }
+            
+            
+            
+
             CurrentFoodList.Items.Refresh();
 
             CaloriesTotalText.Text = CaloriesTotal;
@@ -134,7 +158,14 @@ namespace WPFUserData
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("FoodPage.xaml", UriKind.Relative));
+            Switcher.Switch("FoodPage.xaml");
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CaloriesTotalText.Text = CaloriesTotal;
+            CurrentFoodList.Items.Refresh();
+
         }
     }
 }

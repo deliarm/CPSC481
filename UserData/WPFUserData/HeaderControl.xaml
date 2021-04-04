@@ -10,7 +10,7 @@
         <BooleanToVisibilityConverter x:Key="VisibleIfTrueConverter" />
     </UserControl.Resources>
     <!--Header/Logo -->
-    <Grid Background="#FF1375EA">
+    <Grid Background="#EED22F">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="*"/>
@@ -20,7 +20,10 @@
         </Grid.RowDefinitions>
 
 
-        <Button x:Name="BackButton" Grid.Row="0" Grid.Column="0" Visibility="{Binding BackButtonIsVisible, Converter={StaticResource VisibleIfTrueConverter}}">
+        <Button x:Name="BackButton" 
+                Grid.Row="0" Grid.Column="0" 
+                Visibility="{Binding BackButtonIsVisible, Converter={StaticResource VisibleIfTrueConverter}}"
+                Click="BackButton_Click">
             <Button.Style>
                 <Style>
                     <Setter Property="Button.Background" Value="Transparent"/>
@@ -30,7 +33,7 @@
             <Button.Content>
                 <Image Source="Icons\baseline_keyboard_backspace_black_48.png"/>
             </Button.Content>
-        </Button>
+		</Button>
         <TextBlock 
             Grid.Row="0" Grid.Column="1" 
             Style= "{StaticResource HeaderBanner}"

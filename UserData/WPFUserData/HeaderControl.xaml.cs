@@ -28,7 +28,12 @@ namespace WPFUserData
 
             Title = "Default";
         }
-
         public string Title { get; set; }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            Switcher.pageSwitcher._NavigationFrame.NavigationService.GoBack();
+        }
     }
 }

@@ -169,8 +169,7 @@ namespace WPFUserData
 
         private void updateProfileClick(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("UpdateInfoPage.xaml", UriKind.Relative));
-
+            Switcher.Switch("UpdateInfoPage.xaml");
         }
 
         private double getweightbydate(DateTime d)
