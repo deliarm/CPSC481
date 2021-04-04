@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using LiveCharts;
 using LiveCharts.Wpf;
 using WPFUserData.Model;
+using System.Globalization;
 
 namespace WPFUserData
 {
@@ -51,31 +52,42 @@ namespace WPFUserData
             {
                 DataLabels = true,
                 Title = "Week",
-                Values = new ChartValues<double> { 240, 239, 238, 237, 236, 235, 234 }
+                Values = getweekvalues()
             };
 
             month = new LineSeries
             {
                 DataLabels = true,
                 Title = "Month",
-                Values = new ChartValues<double> { 240, 240, 240}
+                Values = getmonthvalues()
             };
 
             year = new LineSeries
             {
                 DataLabels = true,
                 Title = "Year",
-                Values = new ChartValues<double> { 240, 230, 220, 230, 225, 220, 210, 205, 200, 225, 220, 210}
+                Values = getyearvalues()
             };
 
+            CultureInfo culture = CultureInfo.CreateSpecificCulture("en-US");
 
-            
-            WeekLabels = new[] { "M", "T", "W", "Th", "F", "Sa", "Su" };
-            MonthLabels = new[] { "Mar.1", "Mar.2", "Mar.3"};
-            YearLabels = new[] { "Jan", "Feb", "Mar","Apr","May","Jun","July","Aug","Sep","Oct","Nov","Dec"};
+            List<string> da = new List<string>();
+            for (int i = -6; i <= 0; i++)
+                da.Add(DateTime.Today.AddDays(i).ToString("MMM d", culture));
+            WeekLabels = da.ToArray();
+
+            List<string> monthdays = new List<string>();
+            for (int i = -21; i <= 0; i += 7)
+                monthdays.Add(DateTime.Today.AddDays(i).ToString("MMM d", culture));
+            MonthLabels = monthdays.ToArray();
+
+            List<string> y = new List<string>();
+            for (int i = -12; i < 0; i++)
+                y.Add(DateTime.Today.AddMonths(i).ToString("MMM", culture));
+            YearLabels = y.ToArray();
+
+
             CurrentLabels = WeekLabels;
-
-
             Formatter = value => value.ToString("C");
 
 
@@ -159,6 +171,65 @@ namespace WPFUserData
         {
             this.NavigationService.Navigate(new Uri("UpdateInfoPage.xaml", UriKind.Relative));
 
+        }
+
+        private double getweightbydate(DateTime d)
+        {
+            double weight = 0;
+            foreach(Weight w in user.WeightHistory)
+            {
+                if (w.Date == d.Date)
+                    return w.Number;
+            }
+            return weight;
+        }
+
+        private ChartValues<double> getweekvalues()
+        {
+            ChartValues<double> chart = new ChartValues<double>();
+
+            for (int i = -6; i <= 0; i++)
+                chart.Add(getweightbydate(DateTime.Today.AddDays(i)));
+
+            return chart;
+        }
+
+        private ChartValues<double> getmonthvalues()
+        {
+            ChartValues<double> chart = new ChartValues<double>();
+            double average = 0;
+
+            for (int i = -27; i <= 0; i++)
+            {
+                average += getweightbydate(DateTime.Today.AddDays(i));
+                if (i % 7 == 0)
+                {
+                    chart.Add(Math.Round(average / 7));
+                    average = 0;
+                }
+            }
+
+            return chart;
+        }
+
+        private ChartValues<double> getyearvalues()
+        {
+            ChartValues<double> chart = new ChartValues<double>();
+            double average = 0;
+            int dayoff = DateTime.Today.Day;
+
+            for (int i = -364-dayoff; i <= 0; i++)
+            {
+                average += getweightbydate(DateTime.Today.AddDays(i));
+                if (DateTime.Today.AddDays(i).Month != DateTime.Today.AddDays(i + 1).Month)
+                {
+                    int daysinmonth = DateTime.DaysInMonth(DateTime.Today.AddDays(i).Year, DateTime.Today.AddDays(i).Month);
+                    average /= daysinmonth;
+                    chart.Add(Math.Round(average));
+                    average = 0;
+                }
+            }
+            return chart;
         }
     }
 }

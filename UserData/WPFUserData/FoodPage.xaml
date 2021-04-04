@@ -133,6 +133,7 @@
                     </Grid.Resources>
 
                     <Button Grid.Row="0" Grid.Column="0"
+                            Click="MealReport_Click"
                             Style="{StaticResource Button1}">
                         Create Report
                     </Button>

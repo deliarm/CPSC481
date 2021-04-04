@@ -133,8 +133,8 @@ namespace WPFUserData
             {
                 dblArray[0] = 0.25;
                 dblArray[1] = 0.5;
-                dblArray[1] = 0.75;
-                dblArray[1] = 1;
+                dblArray[2] = 0.75;
+                dblArray[3] = 1;
 
             }
             return dblArray;
@@ -189,8 +189,6 @@ namespace WPFUserData
                 user.Info.Sex = BiologicalSex.Male;
             }
 
-            weightVal.Text = user.Info.Weight.Number + "";
-
             user.Info.Weight.Number = Double.Parse(weightVal.Text);
 
             if (weightUnit.SelectedItem.ToString() == WeightUnit.Pounds)
@@ -240,7 +238,7 @@ namespace WPFUserData
 
             user.Goal.Steps = Int32.Parse(stepGoalVal.Text);
 
-            if (goalCombo.SelectedValue.ToString() == "Maintain")
+            if (goalCombo.SelectedIndex == 0)
             {
                 user.Goal.Weight.Number = user.Info.Weight.Number;
                 user.Goal.WeightChange.PerWeekWeight.Number = 0.0;
@@ -248,8 +246,21 @@ namespace WPFUserData
             else
             {
                 user.Goal.Weight.Number = Double.Parse(weightGoalVal.Text);
-                user.Goal.WeightChange.PerWeekWeight.Number = Double.Parse(weightChange.SelectedItem.ToString());
+                double num = Double.Parse(weightChange.SelectedItem.ToString());
+
+                if(goalCombo.SelectedIndex == 1)
+                    user.Goal.WeightChange.PerWeekWeight.Number = -num;
+                else if(goalCombo.SelectedIndex == 2)
+                    user.Goal.WeightChange.PerWeekWeight.Number = num;
+
+                user.Goal.CalorieGoal = user.CalcTDEE();
             }
+
+            Weight newW = new Weight();
+            newW.Number = user.Info.Weight.Number;
+            newW.Unit = user.Info.Weight.Unit;
+            newW.Date = DateTime.Today;
+            user.WeightHistory[user.WeightHistory.Count-1] = newW;
 
             //-----------------------------------//
             this.NavigationService.Navigate(new Uri("ProfilePage.xaml", UriKind.Relative));

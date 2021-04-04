@@ -10,5 +10,7 @@ namespace WPFUserData.Model
     {
         public double Number { get; set; }
         public string Unit { get; set; }
+
+        public DateTime Date { get; set; }
     }
 }

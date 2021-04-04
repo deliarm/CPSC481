@@ -66,21 +66,15 @@
                         Margin="0 15 0 10" FontWeight="Bold"
                         Grid.Row="0" VerticalAlignment="Center"/>
                     </StackPanel>
-                    
-                    <Grid Grid.Row="1" Margin="10 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="Current: 1200"
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+                        <TextBlock Text="Remaining: "
                         FontSize="18" HorizontalAlignment="Center" 
-                        Margin="0 0 0 0" FontWeight="Bold"
-                        Grid.Column="0"/>
-                        <TextBlock Text="Remaining: 800"
+                        FontWeight="Bold" Grid.Column="1"/>
+                        <TextBlock x:Name="Rcal"
                         FontSize="18" HorizontalAlignment="Center" 
-                        Margin="0 0 0 0" FontWeight="Bold"
-                        Grid.Column="1"/>
-                    </Grid>
+                        FontWeight="Bold" Grid.Column="1"/>
+                    </StackPanel>
 
                     <!--Remaining Calorie-->
                     <TextBlock Text="Calorie Goal - Calorie Intake + Calories Burnt = Remaining"
@@ -91,7 +85,7 @@
                     <!--https://lvcharts.net/App/examples/v1/Wpf/Solid%20Gauge-->
                     <lvc:Gauge Grid.Row="3" Margin="10"
                        Uses360Mode="True" x:Name="Gauge"
-                       From="0" To="100" Value="60" LabelFormatter="{Binding Percent}" >
+                       From="0" To="100" LabelFormatter="{Binding Percent}" >
                         <lvc:Gauge.GaugeRenderTransform>
                             <TransformGroup>
                                 <RotateTransform Angle="90"></RotateTransform>
@@ -100,7 +94,7 @@
                         </lvc:Gauge.GaugeRenderTransform>
                     </lvc:Gauge>
 
-                    <TextBlock Text="7 Day Progress"
+                    <TextBlock Text="7 Day Calorie Intake"
                         FontSize="26" HorizontalAlignment="Center" 
                         Margin="0 5 0 6" FontWeight="Bold"
                         Grid.Row="4" VerticalAlignment="Bottom"/>
@@ -123,25 +117,25 @@
                     </Grid.RowDefinitions>
 
                     <Rectangle Fill="LightGray" Grid.Column="0" Grid.Row="0"/>
-                    <TextBlock Text="Sun" Grid.Column="0" Grid.Row="0" FontSize="15"
+                    <TextBlock x:Name="Day1" Grid.Column="0" Grid.Row="0" FontSize="11"
                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <Rectangle Fill="DarkGray" Grid.Column="1" Grid.Row="0"/>
-                    <TextBlock Text="Mon" Grid.Column="1" Grid.Row="0" FontSize="15"
+                    <TextBlock x:Name="Day2" Grid.Column="1" Grid.Row="0" FontSize="11"
                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <Rectangle Fill="LightGray" Grid.Column="2" Grid.Row="0" />
-                    <TextBlock Text="Tue" Grid.Column="2" Grid.Row="0" FontSize="15"
+                    <TextBlock x:Name="Day3" Grid.Column="2" Grid.Row="0" FontSize="11"
                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <Rectangle Fill="DarkGray" Grid.Column="3" Grid.Row="0"/>
-                    <TextBlock Text="Wed" Grid.Column="3" Grid.Row="0" FontSize="15"
+                    <TextBlock x:Name="Day4" Grid.Column="3" Grid.Row="0" FontSize="11"
                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <Rectangle Fill="LightGray" Grid.Column="4" Grid.Row="0"/>
-                    <TextBlock Text="Thu" Grid.Column="4" Grid.Row="0" FontSize="15"
+                    <TextBlock x:Name="Day5" Grid.Column="4" Grid.Row="0" FontSize="11"
                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <Rectangle Fill="DarkGray" Grid.Column="5" Grid.Row="0"/>
-                    <TextBlock Text="Fri" Grid.Column="5" Grid.Row="0" FontSize="15"
+                    <TextBlock x:Name="Day6" Grid.Column="5" Grid.Row="0" FontSize="11"
                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <Rectangle Fill="LightGray" Grid.Column="6" Grid.Row="0"/>
-                    <TextBlock Text="Sat" Grid.Column="6" Grid.Row="0" FontSize="15"
+                    <TextBlock x:Name="Day7" Grid.Column="6" Grid.Row="0" FontSize="11"
                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
                     <Line X1="0" Y1="20" Grid.Row="0"
@@ -149,26 +143,26 @@
                     Stroke="#FF8F8E8E"
                     StrokeThickness="1.1" Grid.ColumnSpan="7"/>
                     <Rectangle Fill="LightGray" Grid.Column="0" Grid.Row="1"/>
-                    <TextBlock Text="100%" Grid.Column="0" Grid.Row="1" FontSize="15"
+                    <TextBlock x:Name="day1v" Grid.Column="0" Grid.Row="1" FontSize="11" Margin="0 2"
                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <Rectangle Fill="DarkGray" Grid.Column="1" Grid.Row="1"/>
-                    <TextBlock Text="50%" Grid.Column="1" Grid.Row="1" FontSize="15"
+                    <TextBlock x:Name="day2v" Grid.Column="1" Grid.Row="1" FontSize="11" Margin="0 2"
                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <Rectangle Fill="LightGray" Grid.Column="2" Grid.Row="1" />
-                    <TextBlock Text="95%" Grid.Column="2" Grid.Row="1" FontSize="15"
+                    <TextBlock x:Name="day3v" Grid.Column="2" Grid.Row="1" FontSize="11" Margin="0 2"
                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <Rectangle Fill="DarkGray" Grid.Column="3" Grid.Row="1"/>
-                    <TextBlock Text="100%" Grid.Column="3" Grid.Row="1" FontSize="15"
+                    <TextBlock x:Name="day4v" Grid.Column="3" Grid.Row="1" FontSize="11" Margin="0 2"
                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <Rectangle Fill="LightGray" Grid.Column="4" Grid.Row="1"/>
-                    <TextBlock Text="0%" Grid.Column="4" Grid.Row="1" FontSize="15"
+                    <TextBlock x:Name="day5v" Grid.Column="4" Grid.Row="1" FontSize="11" Margin="0 2"
                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <Rectangle Fill="DarkGray" Grid.Column="5" Grid.Row="1"/>
-                    <TextBlock Text="80%" Grid.Column="5" Grid.Row="1" FontSize="15"
-                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="day6v" Grid.Column="5" Grid.Row="1" FontSize="11"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 2"/>
                     <Rectangle Fill="LightGray" Grid.Column="6" Grid.Row="1"/>
-                    <TextBlock Text="110%" Grid.Column="6" Grid.Row="1" FontSize="15"
-                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="TodayIntake" Grid.Column="6" Grid.Row="1" FontSize="11"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 2"/>
                 </Grid>
                 <Grid Margin="20 0">
                     <Grid.RowDefinitions>
@@ -178,7 +172,13 @@
 
                     <!--Steps Label-->
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Steps: 1950/3000" Grid.Row="0" FontSize="22"
+                        <TextBlock Text="Steps: " Grid.Row="0" FontSize="22"
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       FontWeight="Bold" Margin="0 10 0 0"/>
+                        <TextBlock x:Name="CStep" Grid.Row="0" FontSize="22"
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       FontWeight="Bold" Margin="0 10 0 0"/>
+                        <TextBlock x:Name="GStep" Grid.Row="0" FontSize="22"
                        HorizontalAlignment="Left" VerticalAlignment="Center"
                        FontWeight="Bold" Margin="0 10 0 0"/>
                         <TextBlock Grid.Row="0" FontSize="16"
@@ -191,8 +191,8 @@
                     </StackPanel>
                      <!--Steps Progress Bar-->
                     <ProgressBar HorizontalAlignment="Left" VerticalAlignment="Center"
-                         Grid.Row="1" Width="340" Height="40"
-                         Background="#e8f5ff" Maximum="100" Value="60" Foreground="#1564bf"/>
+                         Grid.Row="1" Width="320" Height="40" x:Name="StepProg"
+                         Background="#e8f5ff" Maximum="100" Foreground="#1564bf"/>
                 </Grid>
             </StackPanel>
         </Grid>

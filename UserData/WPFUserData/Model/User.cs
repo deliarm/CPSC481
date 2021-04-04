@@ -29,6 +29,8 @@ namespace WPFUserData.Model
 
         public List<FoodItem> FoodDatabase { get; set; }
 
+        public List<Weight> WeightHistory { get; set; }
+
         public Info Info { get; set; } = new Info();
         public Goal Goal { get; set; } = new Goal();
 
@@ -37,7 +39,7 @@ namespace WPFUserData.Model
             Meals = new List<Meal>();
             Steps = new List<Step>();
             Activities = new List<Activity>();
-
+            WeightHistory = new List<Weight>();
             FoodDatabase = new List<FoodItem>();
 
             FillFoodDatabase();
@@ -50,6 +52,7 @@ namespace WPFUserData.Model
             FillUserInfo();
             FillHistoricMeals();
             FillHistoricActivities();
+            FillHistoricWeight();
         }
 
         private void FillUserInfo()
@@ -64,6 +67,7 @@ namespace WPFUserData.Model
             this.Info.Weight = new Weight();
             this.Info.Weight.Number = 199;
             this.Info.Weight.Unit = WeightUnit.Pounds;
+            this.Info.Weight.Date = DateTime.Today;
 
 
             this.Info.ActivityLevel = ActivityLevel.None;
@@ -74,11 +78,12 @@ namespace WPFUserData.Model
 
             this.Goal.WeightChange = new WeightChange();
             this.Goal.WeightChange.PerWeekWeight = new Weight();
-            this.Goal.WeightChange.PerWeekWeight.Number = 0.5;
+            this.Goal.WeightChange.PerWeekWeight.Number = -0.5;
             this.Goal.WeightChange.PerWeekWeight.Unit = this.Info.Weight.Unit;
 
             this.Goal.CalorieGoal = CalcTDEE();
-            
+
+            this.Info.CurrSteps = 0;
             this.Goal.Steps = 6000;
 
         }
@@ -94,7 +99,7 @@ namespace WPFUserData.Model
             return 250;
         }
 
-        private int CalcTDEE ()
+        public double CalcTDEE ()
         {
             double weight = this.Info.Weight.Number;
             if (this.Info.Weight.Unit == WeightUnit.Pounds)
@@ -104,37 +109,73 @@ namespace WPFUserData.Model
             double tef = bmr * 0.1;
             double neat = GetNeat();
             double eee = 250;
+            double total = bmr + tef + neat + eee;
+            double wchange = this.Goal.WeightChange.PerWeekWeight.Number; 
 
-            return Convert.ToInt32(bmr + tef + neat + eee);   
+            total += (wchange * 200);
+
+            return total;  
         }
 
         private void FillHistoricMeals()
         {
-            for(int i = 0; i < 100; i++)
+            Random random = new Random();
+            for (int i = -400; i < 0; i++)
             {
+                
                 Meal meal = new Meal
                 {
                     Type = MealType.Breakfast,
-                    Date = new DateTime(2021, 1 + (i / 28), 1 + (i % 27) ),
+                    Date = DateTime.Today.AddDays(i),
                     FoodItems = new List<FoodItem>
                     {
-                        getRandomFoodItem(),
-                        getRandomFoodItem(),
-                        getRandomFoodItem()
+                        getRandomFoodItem(random)   
                     }
                 };
-                Meals.Add(meal);
-                Meals.Add(meal);
+                Meals.Add(meal);    
             }
         }
 
-        private FoodItem getRandomFoodItem()
+        private void FillHistoricWeight()
         {
+            Random random = new Random();
+            int currweight = Convert.ToInt32(this.Info.Weight.Number);
+            string unit = this.Info.Weight.Unit;
+            for (int i = -400; i < -1; i++)
+            {
+
+                Weight weight = new Weight
+                {
+                    Number = random.Next(currweight - 10, currweight + 10),
+                    Date = DateTime.Today.AddDays(i),
+                    Unit = unit
+                };
+                WeightHistory.Add(weight);
+            }
+            Weight w = new Weight
+            {
+                Number = this.Info.Weight.Number,
+                Date = DateTime.Today.AddDays(0),
+                Unit = unit
+            };
+            Weight yes = new Weight
+            {
+                Number = this.Info.Weight.Number,
+                Date = DateTime.Today.AddDays(-1),
+                Unit = unit
+            };
+            WeightHistory.Add(yes);
+            WeightHistory.Add(w);
+        }
+
+        private FoodItem getRandomFoodItem(Random random)
+        {
+            int calGoal = Convert.ToInt32(this.Goal.CalorieGoal);
             FoodItem item = new FoodItem
             {
                 Name = "Waffles",
                 Quantity = 2,
-                Calories = 101,
+                Calories = random.Next(calGoal-700,calGoal+700),
                 Protein = 2,
                 Fat = 3,
                 Carbs = 1
@@ -147,7 +188,7 @@ namespace WPFUserData.Model
         {
             
 
-            for (int i = 0; i > -100; i--)
+            for (int i = 0; i > -400; i--)
             {
                 int y = Math.Abs(i);
 
@@ -167,7 +208,7 @@ namespace WPFUserData.Model
             }
 
             // Add a second, different activity
-            for (int i = 1; i > -100; i--)
+            for (int i = 1; i > -400; i--)
             {
                 int y = Math.Abs(i);
 

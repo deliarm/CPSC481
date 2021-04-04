@@ -100,7 +100,7 @@
             <Grid x:Name="graph3" Height="220px" Visibility="Collapsed" Margin="20 10 20 5">
                 <lvc:CartesianChart Name="c3" Series="{Binding SeriesCollection}" >
                     <lvc:CartesianChart.AxisX>
-                        <lvc:Axis Labels="{Binding YearLabels}" >
+                        <lvc:Axis Labels="{Binding YearLabels}">
                             <lvc:Axis.Separator>
                                 <lvc:Separator Step="1" />
                             </lvc:Axis.Separator>
@@ -112,17 +112,22 @@
                 </lvc:CartesianChart>
             </Grid>
             
-            <StackPanel Margin="20 20 20 0">
-                <TextBlock Text="Average Calorie Intake:       2267 cal"
+            <StackPanel Margin="20 20 20 0" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Average Calorie Intake:    "
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="18" Margin="0 5 0 20"/>
-                <TextBlock Text="Macros"
+                <TextBlock x:Name="Average"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           FontSize="18" Margin="0 5 0 20"/>
+                
+            </StackPanel>
+            <TextBlock Text="Macros"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="24" Margin="0 5" 
                            FontWeight="Bold"/>
-            </StackPanel>
 
             <!-- Macros-->
             <StackPanel  Margin="10 0 10 0 ">
@@ -142,9 +147,9 @@
                     <Label Grid.Row="0" Grid.Column="1" HorizontalContentAlignment="Center" BorderBrush="LightGray" BorderThickness="1">Fat</Label>
                     <Label Grid.Row="0" Grid.Column="2" HorizontalContentAlignment="Center" BorderBrush="LightGray" BorderThickness="1">Carb</Label>
 
-                    <Label Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Center">35%</Label>
-                    <Label Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center">40%</Label>
-                    <Label Grid.Row="1" Grid.Column="2" HorizontalContentAlignment="Center">25%</Label>
+                    <Label Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Center" x:Name="Protein"></Label>
+                    <Label Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center" x:Name="Fat"></Label>
+                    <Label Grid.Row="1" Grid.Column="2" HorizontalContentAlignment="Center" x:Name="Carb"></Label>
                 </Grid>
             </StackPanel> 
         </StackPanel>
