@@ -175,7 +175,7 @@ namespace WPFUserData.Model
             {
                 Name = "Waffles",
                 Quantity = 2,
-                Calories = random.Next(calGoal-700,calGoal+700),
+                //Calories = random.Next(calGoal-700,calGoal+700),
                 CaloriePerItem = 101,
                 Protein = 2,
                 Fat = 3,

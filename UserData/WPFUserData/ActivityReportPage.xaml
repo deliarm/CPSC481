@@ -67,7 +67,9 @@
                 <TextBlock Text="Activity Type:" Grid.Column="0"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
-                           FontSize="20" Margin="0 10"/>
+                           Style="{StaticResource Header2}" 
+                           FontWeight="Bold"
+                           Margin="0 10"/>
 
                 <ComboBox Name="aSelect"  SelectedIndex="0" Grid.Column="1"
                           HorizontalContentAlignment="Center"
@@ -142,7 +144,9 @@
                     <TextBlock Text="Average:   " 
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
-                               FontSize="18" Margin="0 5"/>
+                               Style="{StaticResource Header2}" 
+                               FontWeight="DemiBold"
+                               Margin="0 5"/>
                     <TextBlock x:Name="Average" Grid.Row="0"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
@@ -153,7 +157,9 @@
                     <TextBlock Text="Best Entry:    " 
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
-                           FontSize="18" Margin="0 5"/>
+                           Style="{StaticResource Header2}" 
+                           FontWeight="DemiBold"
+                           Margin="0 5"/>
                     <TextBlock x:Name="Best"  Grid.Row="1"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
@@ -164,7 +170,9 @@
                     <TextBlock Text="Latest Entry:  " 
                         VerticalAlignment="Center"
                         HorizontalAlignment="Left"
-                        FontSize="18" Margin="0 5"/>
+                        Style="{StaticResource Header2}" 
+                               FontWeight="DemiBold"
+                               Margin="0 5"/>
                     <TextBlock x:Name="Latest" Grid.Row="2"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Left"

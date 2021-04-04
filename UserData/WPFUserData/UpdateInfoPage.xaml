@@ -41,7 +41,7 @@
                         Grid.Column="0" 
                         Margin="20 20 10 10" />
                 <TextBox Name ="ageVal"
-                        Width="80" Background="#eee"
+                        Width="80" 
                         Grid.Column="1" HorizontalAlignment="Left"
                         Margin="10 20 20 10">
                    
@@ -86,14 +86,14 @@
                          Grid.Column="0" Grid.Row="0"
                          Margin="20 10 10 10" />
                 <TextBox Name ="weightVal"
-                        Width="80"  Background="#eee"
+                        Width="80"  
                         Grid.Column="1" Grid.Row="0" 
                         HorizontalAlignment="Left" 
                          Margin="10,10,0,10"/>
                 <ComboBox Name ="weightUnit"
                           SelectionChanged="WeightUnit_SelectionChanged"
                           
-                        Width="70"  Background="#eee"
+                        Width="70"  
                         Grid.Column="2" Grid.Row="0" 
                         HorizontalAlignment="Right" 
                         Margin="0,10,20,10"
@@ -107,7 +107,7 @@
                         Grid.Column="0" Grid.Row="1"
                         Margin="20 10 10 10"/>
                 <TextBox Name ="heightVal"
-                        Width="80"  Background="#eee"
+                        Width="80"  
                         Grid.Column="1" Grid.Row="1" 
                         HorizontalAlignment="Left"
                          Margin="10,10,0,10"/>
@@ -179,7 +179,7 @@
                                    Grid.Column="0"
                                    Margin="10" />
                         <TextBox Name ="stepGoalVal"
-                                Width="80"  Background="#eee"
+                                Width="80" 
                         
                                  Grid.Column="1" 
                                  HorizontalAlignment="Left" 
@@ -205,7 +205,7 @@
                                        HorizontalAlignment="Left
                                        " Margin="10,18,0,0" Width="115" />
                             <TextBox Name ="weightGoalVal"
-                                Background="#eee"
+                                
                                  Grid.Column="1"
                                  Margin="10,10,16,10"/>
 
@@ -247,7 +247,7 @@
                         </Grid>
                     </StackPanel>
 
-                    <Grid Grid.Column="0" Grid.Row="1">
+                    <Grid Grid.Column="0" Grid.Row="1" Margin="10,0,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1.5*"/>
                             <ColumnDefinition Width="2*"/>
@@ -257,7 +257,7 @@
                                 FontWeight="DemiBold"
                                  Grid.Column="0" 
                                  HorizontalAlignment="Left" 
-                                 Margin="4 10  0 10"/>
+                                 Margin="0,10" Width="70"/>
 
                         
                     <!--Goal Weight Input-->

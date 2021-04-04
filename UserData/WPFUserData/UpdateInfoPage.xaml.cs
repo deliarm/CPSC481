@@ -83,12 +83,18 @@ namespace WPFUserData
                 }
             }
 
-            double[] initialWC = LoadWeigthChangeComboBoxData();
+            double[] initialWC = LoadWeigthChangeComboBoxData(user.Info.Weight.Unit);
             weightChange.ItemsSource = initialWC;
-            weightChange.SelectedIndex = Array.IndexOf(initialWC, user.Goal.WeightChange.PerWeekWeight);
 
+            double initialWCG = 0;
 
-            weightChange.Text = user.Goal.WeightChange.PerWeekWeight.Number + "";
+            if (user.Goal.WeightChange.PerWeekWeight.Number < 0) {
+                initialWCG = -(user.Goal.WeightChange.PerWeekWeight.Number);
+            } else {
+                initialWCG = (user.Goal.WeightChange.PerWeekWeight.Number);
+            }
+
+            weightChange.SelectedIndex = Array.IndexOf(initialWC, initialWCG);
 
             weightGoalVal.Text = user.Goal.Weight.Number + "";
 
@@ -126,10 +132,10 @@ namespace WPFUserData
         }
 
 
-        private double[] LoadWeigthChangeComboBoxData()
+        private double[] LoadWeigthChangeComboBoxData(string currentUnit)
         {
             double[] dblArray = { 0.5, 1.0, 1.5, 2.0};
-            if (user.Info.Weight.Unit == WeightUnit.Kilograms)
+            if (currentUnit == WeightUnit.Kilograms)
             {
                 dblArray[0] = 0.25;
                 dblArray[1] = 0.5;
@@ -143,10 +149,17 @@ namespace WPFUserData
         private void WeightUnit_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             goalUnit.Text = weightUnit.SelectedItem.ToString();
-            double[] newWC = LoadWeigthChangeComboBoxData();
+            
+
+            int currentSelectedWCIndex =  weightChange.SelectedIndex;
+
+            double[] newWC = LoadWeigthChangeComboBoxData(goalUnit.Text);
 
             weightChange.ItemsSource = newWC;
-            weightChange.SelectedIndex = Array.IndexOf(newWC, user.Goal.WeightChange.PerWeekWeight);
+            
+            weightChange.SelectedIndex = currentSelectedWCIndex;
+            
+            //Array.IndexOf(newWC, user.Goal.WeightChange.PerWeekWeight);
 
         }
 
