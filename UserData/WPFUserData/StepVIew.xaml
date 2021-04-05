@@ -119,7 +119,7 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="Total"
-                           VerticalAlignment="Cente"
+                           VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                        Style="{StaticResource Header2}"
                        FontWeight="DemiBold"
