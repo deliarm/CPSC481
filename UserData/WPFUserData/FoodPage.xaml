@@ -118,29 +118,38 @@
                     <TextBlock  Style="{StaticResource Header1}">Meals</TextBlock>
                     <ListBox Name="MealsList" 
                              HorizontalContentAlignment="Stretch"
-                             Margin ="8">
+                             BorderThickness="0"
+                             Background="#FAFAF7">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Grid HorizontalAlignment="Stretch"
-                                      Margin ="8">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition/>
-                                    </Grid.RowDefinitions>
+                                <Border 
+                                Background="White"
+                                BorderBrush="LightGray" 
+                                BorderThickness="2" 
+                                CornerRadius="2" 
+                                Margin="8">
+                                    <Grid HorizontalAlignment="Stretch"
+                                          Margin ="8">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition MinHeight="30"/>
+                                        </Grid.RowDefinitions>
 
-                                    <!-- TODO: The margin should be a style? -->
-                                    <TextBlock Grid.Row="0" Grid.Column="0" 
-                                                            Margin="16" 
-                                                            Style="{StaticResource BodyText}"
-                                                            Text="{Binding Type}" />
-                                    <TextBlock Grid.Row="0" Grid.Column="1" 
-                                                            Margin="16" 
-                                                            Style="{StaticResource BodyText}"
-                                                            Text="{Binding CaloriesStr}" />
-                                </Grid>
+                                        <!-- TODO: The margin should be a style? -->
+                                        <TextBlock Grid.Row="0" Grid.Column="0" 
+                                                                VerticalAlignment="Center" 
+                                                                Style="{StaticResource BodyText}"
+                                                                Text="{Binding Type}" />
+                                        <TextBlock Grid.Row="0" Grid.Column="1" 
+                                                                VerticalAlignment="Center"
+                                                   HorizontalAlignment="Right"
+                                                                Style="{StaticResource BodyText}"
+                                                                Text="{Binding CaloriesStr}" />
+                                    </Grid>
+                                </Border>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
