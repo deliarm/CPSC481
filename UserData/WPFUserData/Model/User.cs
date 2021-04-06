@@ -174,9 +174,8 @@ namespace WPFUserData.Model
             FoodItem item = new FoodItem
             {
                 Name = "Waffles",
-                Quantity = 2,
-                //Calories = random.Next(calGoal-700,calGoal+700),
-                CaloriePerItem = 101,
+                Quantity = 1,
+                CaloriePerItem = random.Next(calGoal - 700, calGoal + 700),
                 Protein = 2,
                 Fat = 3,
                 Carbs = 1
