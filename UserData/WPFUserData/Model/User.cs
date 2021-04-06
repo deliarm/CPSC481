@@ -120,7 +120,7 @@ namespace WPFUserData.Model
         private void FillHistoricMeals()
         {
             Random random = new Random();
-            for (int i = -400; i < 0; i++)
+            for (int i = -400; i <= 0; i++)
             {
                 
                 Meal meal = new Meal
