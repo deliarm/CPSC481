@@ -338,10 +338,10 @@
                 </Grid>
             </Border>
 
-            <Grid Margin="0 0 0 0">
+            <Grid>
                 <Button Style="{StaticResource Button1}"
                     Content="Update Profile" Width="122"
-                        Click="updateProfileClick"
+                        Click="updateProfileClick" Margin="0 6"
                         FontSize="18"/>
             </Grid>
 
