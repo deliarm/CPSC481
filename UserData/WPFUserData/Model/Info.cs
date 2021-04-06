@@ -14,20 +14,19 @@ namespace WPFUserData.Model
         public Weight Weight { get; set; }
         public Height Height { get; set; }
         public String ActivityLevel { get; set; }
+        public int CurrSteps { get; set; }
 
-        public int CalorieIntakeToday
+        public int CalorieIntakeToday(DateTime d)
         {
-            get
-            {
-                int cals = 0;
+            
+            int cals = 0;
                 
-                foreach(Meal meal in Meal.getMealsByDate(DateTime.Now.Date))
-                {
-                    cals += meal.Calories;
-                }
-
-                return cals;
+            foreach(Meal meal in Meal.getMealsByDate(d))
+            {
+                cals += meal.Calories;
             }
+
+            return cals;
         }
 
         public int CalorieBurnedToday

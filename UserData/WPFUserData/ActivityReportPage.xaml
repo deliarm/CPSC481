@@ -64,33 +64,28 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Activity:" Grid.Column="0"
+                <TextBlock Text="Activity Type:" Grid.Column="0"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
-                           FontSize="18" Margin="0 10"/>
+                           Style="{StaticResource Header2}" 
+                           FontWeight="Bold"
+                           Margin="0 10"
+                           FontSize="18"/>
 
-                <ComboBox SelectedIndex="0" Grid.Column="1"
+                <ComboBox Name="aSelect"  SelectedIndex="0" Grid.Column="1"
                           HorizontalContentAlignment="Center"
                           VerticalContentAlignment="Center"
-                          FontSize="18" Margin="0 10">
+                          FontSize="18" Margin="0 10"
+                          SelectionChanged="ActivitySelectChange">
+                    <ComboBoxItem Content="Walk"/>
                     <ComboBoxItem Content="Run"/>
-                </ComboBox>
-
-                <TextBlock Text="Unit Measure:" Grid.Column="0" Grid.Row="1"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           FontSize="18" Margin="0 10"/>
-
-                <ComboBox SelectedIndex="0" Grid.Column="1" Grid.Row="1"
-                          HorizontalContentAlignment="Center"
-                          VerticalContentAlignment="Center"
-                          HorizontalAlignment="Left"
-                          FontSize="18" Width="100" Margin="0 10">
-                    <ComboBoxItem Content="Km"/>
+                    <ComboBoxItem Content="Bike"/>
+                    <ComboBoxItem Content="Hike"/>
+                    <ComboBoxItem Content="Swim"/>
                 </ComboBox>
             </Grid>
             <!--https://lvcharts.net/App/examples/v1/Wpf/Line-->
-            <Grid x:Name="graph1" Height="220px" Visibility="Visible" Margin="20 10 20 5">
+            <Grid x:Name="graph1" Height="260px" Visibility="Visible" Margin="20 10 20 5">
                 <lvc:CartesianChart Name="c1" Series="{Binding SeriesCollection}" >
                     <lvc:CartesianChart.AxisX>
                         <lvc:Axis Labels="{Binding CurrentLabels, UpdateSourceTrigger=PropertyChanged}" >
@@ -100,7 +95,7 @@
                         </lvc:Axis>
                     </lvc:CartesianChart.AxisX>
                     <lvc:CartesianChart.AxisY>
-                        <lvc:Axis ShowLabels="True"></lvc:Axis>
+                        <lvc:Axis ShowLabels="True" Title="Distance"></lvc:Axis>
                     </lvc:CartesianChart.AxisY>
                 </lvc:CartesianChart>
             </Grid>
@@ -115,7 +110,7 @@
                         </lvc:Axis>
                     </lvc:CartesianChart.AxisX>
                     <lvc:CartesianChart.AxisY>
-                        <lvc:Axis ShowLabels="True"></lvc:Axis>
+                        <lvc:Axis ShowLabels="True" Title="Distance"></lvc:Axis>
                     </lvc:CartesianChart.AxisY>
                 </lvc:CartesianChart>
             </Grid>
@@ -130,7 +125,7 @@
                         </lvc:Axis>
                     </lvc:CartesianChart.AxisX>
                     <lvc:CartesianChart.AxisY>
-                        <lvc:Axis ShowLabels="True"></lvc:Axis>
+                        <lvc:Axis ShowLabels="True" Title="Distance"></lvc:Axis>
                     </lvc:CartesianChart.AxisY>
                 </lvc:CartesianChart>
             </Grid>
@@ -145,19 +140,45 @@
                     <RowDefinition Height="1*"/>
                     
                 </Grid.RowDefinitions>
-                
-                <TextBlock Text="Average:  8 Km" Grid.Row="0"
+
+                <StackPanel Orientation="Horizontal" Grid.Row="0">
+                    <TextBlock Text="Average:   " 
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Style="{StaticResource Header2}" 
+                               FontWeight="DemiBold"
+                               Margin="0 5"/>
+                    <TextBlock x:Name="Average" Grid.Row="0"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
-                           FontSize="18" Margin="0 5"/>
-                <TextBlock Text="Best Entry:  8 Km" Grid.Row="1"
+                           FontSize="18" Margin="0 11.5 0 5"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="1">
+                    <TextBlock Text="Best Entry:    " 
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
-                           FontSize="18" Margin="0 5"/>
-                <TextBlock Text="Latest Entry:  5 Km" Grid.Row="2"
+                           Style="{StaticResource Header2}" 
+                           FontWeight="DemiBold"
+                           Margin="0 5"/>
+                    <TextBlock x:Name="Best"  Grid.Row="1"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
-                           FontSize="18" Margin="0 5"/>
+                           FontSize="18" Margin="0 11.5 0 5"/>
+                 </StackPanel>
+
+                <StackPanel Grid.Row="2" Orientation="Horizontal">
+                    <TextBlock Text="Latest Entry:  " 
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource Header2}" 
+                               FontWeight="DemiBold"
+                               Margin="0 5"/>
+                    <TextBlock x:Name="Latest" Grid.Row="2"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        FontSize="18" Margin="0 11.5 0 5"/>
+                 </StackPanel>
             </Grid>
         </StackPanel>
         <local:TabBar Grid.Column="0" Grid.Row="2" />

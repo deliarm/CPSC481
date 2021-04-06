@@ -8,7 +8,7 @@
      d:DesignHeight="740" d:DesignWidth="360"
       Title="ActivitiesPage">
 
-    <Grid Background="White">
+    <Grid  Style="{StaticResource MainGrid}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
@@ -30,8 +30,10 @@
         </Grid.Resources>
 
         <!--Header/Logo -->
-        <local:HeaderControl Title="Activities" Grid.Column="0" Grid.Row="0" />
-
+        <!--<local:HeaderControl Title="Activities" Grid.Column="0" Grid.Row="0" />-->
+        <TextBlock Text="Activities" 
+                   Style="{StaticResource HeaderBanner}"
+                    Grid.Column="0" Grid.Row="0" />
         <!-- Activities Content -->
         <ScrollViewer Grid.Column="0" Grid.Row="1" VerticalScrollBarVisibility="Hidden" Padding="10">
             <StackPanel>
@@ -46,7 +48,8 @@
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Grid.Column="0"
                                Style="{StaticResource Header2}"
-                               VerticalAlignment="Center">
+                               VerticalAlignment="Center"
+                               FontWeight="Bold">
                         Date
                     </TextBlock>
 
@@ -60,7 +63,8 @@
 
                     <TextBlock  Grid.Row="1" Grid.Column="0"
                                Style="{StaticResource Header2}"
-                                Margin="0 16 0 0">
+                                Margin="0 16 0 0"
+                                 FontWeight="Bold">
                         Burned Calories:
                     </TextBlock>
                     <TextBlock Grid.Row="1" Grid.Column="1"
@@ -84,12 +88,13 @@
                 </TextBlock>
                 <ListBox Name="CurrentActivitiesList" 
                          ItemsSource="{Binding CurrentActivities}"
-                         
+                          Background="#FAFAF7"
                          HorizontalContentAlignment="Stretch"
                          BorderThickness="0">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Border 
+                                Background="White"
                                 BorderBrush="LightGray" 
                                 BorderThickness="2" 
                                 CornerRadius="2" 

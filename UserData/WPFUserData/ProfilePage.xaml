@@ -88,7 +88,7 @@
                         </lvc:Axis>
                     </lvc:CartesianChart.AxisX>
                     <lvc:CartesianChart.AxisY>
-                        <lvc:Axis ShowLabels="True" Title="Lbs"></lvc:Axis>
+                        <lvc:Axis ShowLabels="True" Title="Weight"></lvc:Axis>
                     </lvc:CartesianChart.AxisY>
                 </lvc:CartesianChart>
             </Grid>
@@ -103,7 +103,7 @@
                         </lvc:Axis>
                     </lvc:CartesianChart.AxisX>
                     <lvc:CartesianChart.AxisY>
-                        <lvc:Axis ShowLabels="True" Title="Lbs"></lvc:Axis>
+                        <lvc:Axis ShowLabels="True" Title="Weight"></lvc:Axis>
                     </lvc:CartesianChart.AxisY>
                 </lvc:CartesianChart>
             </Grid>
@@ -118,7 +118,7 @@
                         </lvc:Axis>
                     </lvc:CartesianChart.AxisX>
                     <lvc:CartesianChart.AxisY>
-                        <lvc:Axis ShowLabels="True" Title="Lbs"></lvc:Axis>
+                        <lvc:Axis ShowLabels="True" Title="Weight"></lvc:Axis>
                     </lvc:CartesianChart.AxisY>
                 </lvc:CartesianChart>
             </Grid>
@@ -338,10 +338,10 @@
                 </Grid>
             </Border>
 
-            <Grid Margin="0 0 0 0">
+            <Grid>
                 <Button Style="{StaticResource Button1}"
                     Content="Update Profile" Width="122"
-                        Click="updateProfileClick"
+                        Click="updateProfileClick" Margin="0 6"
                         FontSize="18"/>
             </Grid>
 

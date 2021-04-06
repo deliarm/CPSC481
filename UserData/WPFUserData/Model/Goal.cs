@@ -11,6 +11,6 @@ namespace WPFUserData.Model
         public int Steps { get; set; }
         public Weight Weight { get; set; }
         public WeightChange WeightChange { get; set; }
-        public int CalorieGoal { get; set; }
+        public double CalorieGoal { get; set; }
     }
 }

@@ -10,7 +10,7 @@
 
    
 
-<Grid>
+<Grid Style="{StaticResource MainGrid}">
     <Grid.ColumnDefinitions>
         <ColumnDefinition />
     </Grid.ColumnDefinitions>
@@ -121,27 +121,35 @@
             <TextBlock Text="Total"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
-                           FontSize="18" Margin="0 5"/>
+                       Style="{StaticResource Header2}"
+                       FontWeight="DemiBold"
+                       Margin="0 5"/>
 
             <TextBlock Text="4242" Grid.Column="1"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
-                           FontSize="18" Margin="0 5"/>
+                           FontSize="18" 
+                       Margin="0 5"/>
 
             <TextBlock Text="Remaining" Grid.Row="1"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
-                           FontSize="18" Margin="0 5"/>
+                           Style="{StaticResource Header2}"
+                       FontWeight="DemiBold" 
+                       Margin="0 5"/>
 
             <TextBlock Text="758" Grid.Column="1" Grid.Row="1"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
-                           FontSize="18" Margin="0 5"/>
+                           FontSize="18" 
+                       Margin="0 5"/>
 
             <TextBlock Text="Goal " Grid.Row="2"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
-                           FontSize="20" Margin="0 5"/>
+                           Style="{StaticResource Header2}"
+                       FontWeight="Bold"
+                       Margin="0 5"/>
 
             <TextBlock Text="5000" Grid.Column="1" Grid.Row="2"
                            VerticalAlignment="Center"

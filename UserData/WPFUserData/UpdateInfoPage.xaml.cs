@@ -83,12 +83,18 @@ namespace WPFUserData
                 }
             }
 
-            double[] initialWC = LoadWeigthChangeComboBoxData();
+            double[] initialWC = LoadWeigthChangeComboBoxData(user.Info.Weight.Unit);
             weightChange.ItemsSource = initialWC;
-            weightChange.SelectedIndex = Array.IndexOf(initialWC, user.Goal.WeightChange.PerWeekWeight);
 
+            double initialWCG = 0;
 
-            weightChange.Text = user.Goal.WeightChange.PerWeekWeight.Number + "";
+            if (user.Goal.WeightChange.PerWeekWeight.Number < 0) {
+                initialWCG = -(user.Goal.WeightChange.PerWeekWeight.Number);
+            } else {
+                initialWCG = (user.Goal.WeightChange.PerWeekWeight.Number);
+            }
+
+            weightChange.SelectedIndex = Array.IndexOf(initialWC, initialWCG);
 
             weightGoalVal.Text = user.Goal.Weight.Number + "";
 
@@ -126,15 +132,15 @@ namespace WPFUserData
         }
 
 
-        private double[] LoadWeigthChangeComboBoxData()
+        private double[] LoadWeigthChangeComboBoxData(string currentUnit)
         {
             double[] dblArray = { 0.5, 1.0, 1.5, 2.0};
-            if (user.Info.Weight.Unit == WeightUnit.Kilograms)
+            if (currentUnit == WeightUnit.Kilograms)
             {
                 dblArray[0] = 0.25;
                 dblArray[1] = 0.5;
-                dblArray[1] = 0.75;
-                dblArray[1] = 1;
+                dblArray[2] = 0.75;
+                dblArray[3] = 1;
 
             }
             return dblArray;
@@ -143,10 +149,17 @@ namespace WPFUserData
         private void WeightUnit_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             goalUnit.Text = weightUnit.SelectedItem.ToString();
-            double[] newWC = LoadWeigthChangeComboBoxData();
+            
+
+            int currentSelectedWCIndex =  weightChange.SelectedIndex;
+
+            double[] newWC = LoadWeigthChangeComboBoxData(goalUnit.Text);
 
             weightChange.ItemsSource = newWC;
-            weightChange.SelectedIndex = Array.IndexOf(newWC, user.Goal.WeightChange.PerWeekWeight);
+            
+            weightChange.SelectedIndex = currentSelectedWCIndex;
+            
+            //Array.IndexOf(newWC, user.Goal.WeightChange.PerWeekWeight);
 
         }
 
@@ -188,8 +201,6 @@ namespace WPFUserData
             {
                 user.Info.Sex = BiologicalSex.Male;
             }
-
-            weightVal.Text = user.Info.Weight.Number + "";
 
             user.Info.Weight.Number = Double.Parse(weightVal.Text);
 
@@ -240,7 +251,7 @@ namespace WPFUserData
 
             user.Goal.Steps = Int32.Parse(stepGoalVal.Text);
 
-            if (goalCombo.SelectedValue.ToString() == "Maintain")
+            if (goalCombo.SelectedIndex == 0)
             {
                 user.Goal.Weight.Number = user.Info.Weight.Number;
                 user.Goal.WeightChange.PerWeekWeight.Number = 0.0;
@@ -248,8 +259,21 @@ namespace WPFUserData
             else
             {
                 user.Goal.Weight.Number = Double.Parse(weightGoalVal.Text);
-                user.Goal.WeightChange.PerWeekWeight.Number = Double.Parse(weightChange.SelectedItem.ToString());
+                double num = Double.Parse(weightChange.SelectedItem.ToString());
+
+                if(goalCombo.SelectedIndex == 1)
+                    user.Goal.WeightChange.PerWeekWeight.Number = -num;
+                else if(goalCombo.SelectedIndex == 2)
+                    user.Goal.WeightChange.PerWeekWeight.Number = num;
+
+                user.Goal.CalorieGoal = user.CalcTDEE();
             }
+
+            Weight newW = new Weight();
+            newW.Number = user.Info.Weight.Number;
+            newW.Unit = user.Info.Weight.Unit;
+            newW.Date = DateTime.Today;
+            user.WeightHistory[user.WeightHistory.Count-1] = newW;
 
             //-----------------------------------//
             Switcher.Switch("ProfilePage.xaml");

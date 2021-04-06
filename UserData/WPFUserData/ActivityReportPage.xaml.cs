@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LiveCharts;
 using LiveCharts.Wpf;
+using System.Globalization;
+using WPFUserData.Model;
 
 namespace WPFUserData
 {
@@ -22,6 +24,7 @@ namespace WPFUserData
     /// </summary>
     public partial class ActivityReportPage : Page
     {
+        User user = User.getInstance();
         public ActivityReportPage()
         {
             InitializeComponent();
@@ -30,33 +33,43 @@ namespace WPFUserData
             {
                 DataLabels = true,
                 Title = "Week",
-                Values = new ChartValues<double> { 240, 239, 238, 237, 236, 235, 234 }
+                Values = getweekvalues(ActivityType.Walk)
             };
 
             month = new LineSeries
             {
                 DataLabels = true,
                 Title = "Month",
-                Values = new ChartValues<double> { 240, 240, 240 }
+                Values = getmonthvalues(ActivityType.Walk)
             };
 
             year = new LineSeries
             {
                 DataLabels = true,
                 Title = "Year",
-                Values = new ChartValues<double> { 240, 230, 220, 230, 225, 220, 210, 205, 200, 225, 220, 210 }
+                Values = getyearvalues(ActivityType.Walk)
             };
 
+            CultureInfo culture = CultureInfo.CreateSpecificCulture("en-US");
+
+            List<string> da = new List<string>();
+            for (int i = -6; i <= 0; i++)
+                da.Add(DateTime.Today.AddDays(i).ToString("MMM d", culture));
+            WeekLabels = da.ToArray();
+
+            List<string> monthdays = new List<string>();
+            for (int i = -21; i <= 0; i += 7)
+                monthdays.Add(DateTime.Today.AddDays(i).ToString("MMM d", culture));
+            MonthLabels = monthdays.ToArray();
+
+            List<string> y = new List<string>();
+            for (int i = -12; i < 0; i++)
+                y.Add(DateTime.Today.AddMonths(i).ToString("MMM", culture));
+            YearLabels = y.ToArray();
 
 
-            WeekLabels = new[] { "M", "T", "W", "Th", "F", "Sa", "Su" };
-            MonthLabels = new[] { "Mar.1", "Mar.2", "Mar.3" };
-            YearLabels = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov", "Dec" };
             CurrentLabels = WeekLabels;
-
-
             Formatter = value => value.ToString("C");
-
 
             c1.Series = new SeriesCollection
             {
@@ -76,6 +89,8 @@ namespace WPFUserData
             };
             c3.Series.Add(year);
 
+            setBottomData(ActivityType.Walk, 6);
+
             DataContext = this;
         }
         public SeriesCollection SeriesCollection { get; set; }
@@ -92,11 +107,202 @@ namespace WPFUserData
         public LineSeries month { get; set; }
         public LineSeries year { get; set; }
 
+        private ChartValues<double> getweekvalues(ActivityType activity)
+        {
+            ChartValues<double> values = new ChartValues<double>();
+            double num = 0;
+            
+            for(int j= -6;j<=0;j++)
+            {
+                List<Activity> act = new List<Activity>();
+                act.AddRange(Activity.getActivitiesByDate(DateTime.Today.AddDays(j)));
+                foreach(Activity a in act)
+                {
+                    if (a.Type == activity)
+                        num += a.Distance.Number;
+                }
+                values.Add(num);
+                num = 0;
+                act.Clear();
+            }
+
+            setBottomData(activity, 6);
+
+            return values;
+        }
+
+        private ChartValues<double> getmonthvalues(ActivityType activity)
+        {
+            ChartValues<double> values = new ChartValues<double>();
+            double num = 0;
+
+            for (int i = -27; i <= 0; i++)
+            {
+                List<Activity> act = new List<Activity>();
+                act.AddRange(Activity.getActivitiesByDate(DateTime.Today.AddDays(i)));
+                foreach (Activity a in act)
+                {
+                    if (a.Type == activity)
+                        num += a.Distance.Number;
+                }
+                if(i%7==0)
+                {
+                    values.Add(num);
+                    num = 0;
+                }
+                act.Clear();
+            }
+
+            setBottomData(activity, 27);
+            return values;
+        }
+
+        private ChartValues<double> getyearvalues(ActivityType activity)
+        {
+            ChartValues<double> values = new ChartValues<double>();
+            double num = 0;
+            int dayoff = DateTime.Today.Day;
+           
+            for (int i = -364-dayoff; i <= 0; i++)
+            {
+                List<Activity> act = new List<Activity>();
+                act.AddRange(Activity.getActivitiesByDate(DateTime.Today.AddDays(i)));
+                foreach (Activity a in act)
+                {
+                    if (a.Type == activity)
+                        num += a.Distance.Number;
+                            
+                }
+                if (DateTime.Today.AddDays(i).Month != DateTime.Today.AddDays(i + 1).Month)
+                {
+                    values.Add(num);
+                    num = 0;
+                }
+                act.Clear();
+            }
+
+            setBottomData(activity, 364);
+
+            return values;
+        }
+
+        private void setBottomData (ActivityType activity, int j)
+        {
+            
+            double best = 0;
+            double latest = 0;
+            double average = 0;
+            string unit = "";
+            int count = 0;
+
+            for (int i = -j; i <= 0; i++)
+            {
+                List<Activity> act = new List<Activity>();
+                act.AddRange(Activity.getActivitiesByDate(DateTime.Today.AddDays(i)));
+                foreach (Activity a in act)
+                {
+                    if (a.Type == activity)
+                    {
+                        count++;
+                        average += a.Distance.Number;
+                        latest = a.Distance.Number;
+                        unit = a.Distance.Unit;
+                        if (best < a.Distance.Number)
+                            best = a.Distance.Number;
+                    }
+                }
+                act.Clear();
+            }
+
+            average /= count;
+            Latest.Text = latest.ToString() + " " + unit;
+            Average.Text = average.ToString("N2") + " " + unit;
+            Best.Text = best.ToString() + " " + unit;
+        }
+
+        private void ActivitySelectChange (object sender, SelectionChangedEventArgs e)
+        {
+            if (!this.IsLoaded)
+                return;
+
+            if (IsUserVisible(c1, graph1))
+            {
+                if (aSelect.SelectedIndex == 0)
+                {
+                    week.Values = getweekvalues(ActivityType.Walk);
+                }
+                else if (aSelect.SelectedIndex == 1)
+                {
+                    week.Values = getweekvalues(ActivityType.Run);
+                }
+                else if (aSelect.SelectedIndex == 2)
+                {
+                    week.Values = getweekvalues(ActivityType.Bike);
+                }
+                else if (aSelect.SelectedIndex == 3)
+                {
+                    week.Values = getweekvalues(ActivityType.Hike);
+                }
+                else if (aSelect.SelectedIndex == 4)
+                {
+                    week.Values = getweekvalues(ActivityType.Swim);
+                }
+            }
+            else if(IsUserVisible(c2, graph2))
+            {
+                if (aSelect.SelectedIndex == 0)
+                {
+                    month.Values = getmonthvalues(ActivityType.Walk);
+                }
+                else if (aSelect.SelectedIndex == 1)
+                {
+                    month.Values = getmonthvalues(ActivityType.Run);
+                }
+                else if (aSelect.SelectedIndex == 2)
+                {
+                    month.Values = getmonthvalues(ActivityType.Bike);
+                }
+                else if (aSelect.SelectedIndex == 3)
+                {
+                    month.Values = getmonthvalues(ActivityType.Hike);
+                }
+                else
+                {
+                    month.Values = getmonthvalues(ActivityType.Swim);
+                }
+
+            }
+            else if(IsUserVisible(c3, graph3))
+            {
+                if (aSelect.SelectedIndex == 0)
+                {
+                    year.Values = getyearvalues(ActivityType.Walk);
+                }
+                else if (aSelect.SelectedIndex == 1)
+                {
+                    year.Values = getyearvalues(ActivityType.Run);
+                }
+                else if (aSelect.SelectedIndex == 2)
+                {
+                    year.Values = getyearvalues(ActivityType.Bike);
+                }
+                else if (aSelect.SelectedIndex == 3)
+                {
+                    year.Values = getyearvalues(ActivityType.Hike);
+                }
+                else
+                {
+                    year.Values = getyearvalues(ActivityType.Swim);
+                }
+            }
+        }
 
         private void month_view(object sender, RoutedEventArgs e)
         {
             if (!IsUserVisible(c2, graph2))
             {
+                aSelect.SelectedIndex = 0;
+                setBottomData(ActivityType.Walk, 27);
                 graph1.Visibility = Visibility.Collapsed;
                 graph2.Visibility = Visibility.Visible;
                 graph3.Visibility = Visibility.Collapsed;
@@ -108,6 +314,8 @@ namespace WPFUserData
         {
             if (!IsUserVisible(c1, graph1))
             {
+                setBottomData(ActivityType.Walk, 6);
+                aSelect.SelectedIndex = 0;
                 graph1.Visibility = Visibility.Visible;
                 graph2.Visibility = Visibility.Collapsed;
                 graph3.Visibility = Visibility.Collapsed;
@@ -117,6 +325,8 @@ namespace WPFUserData
         {
             if (!IsUserVisible(c3, graph3))
             {
+                setBottomData(ActivityType.Walk, 364);
+                aSelect.SelectedIndex = 0;
                 graph1.Visibility = Visibility.Collapsed;
                 graph2.Visibility = Visibility.Collapsed;
                 graph3.Visibility = Visibility.Visible;
