@@ -73,7 +73,7 @@
                     <lvc:CartesianChart.AxisX>
                         <lvc:Axis Labels="{Binding CurrentLabels, UpdateSourceTrigger=PropertyChanged}" >
                             <lvc:Axis.Separator>
-                                <lvc:Separator Step="1" />
+                                <lvc:Separator Step="1" StrokeThickness="1" IsEnabled="False"/>
                             </lvc:Axis.Separator>
                         </lvc:Axis>
                     </lvc:CartesianChart.AxisX>
@@ -88,7 +88,7 @@
                     <lvc:CartesianChart.AxisX>
                         <lvc:Axis Labels="{Binding MonthLabels}" >
                             <lvc:Axis.Separator>
-                                <lvc:Separator Step="1" />
+                                <lvc:Separator Step="1" StrokeThickness="1" IsEnabled="False"/>
                             </lvc:Axis.Separator>
                         </lvc:Axis>
                     </lvc:CartesianChart.AxisX>
@@ -103,7 +103,7 @@
                     <lvc:CartesianChart.AxisX>
                         <lvc:Axis Labels="{Binding YearLabels}">
                             <lvc:Axis.Separator>
-                                <lvc:Separator Step="1" />
+                                <lvc:Separator Step="1" StrokeThickness="1" IsEnabled="False"/>
                             </lvc:Axis.Separator>
                         </lvc:Axis>
                     </lvc:CartesianChart.AxisX>

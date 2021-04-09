@@ -151,7 +151,7 @@
                        FontWeight="Bold"
                        Margin="0 5"/>
 
-            <TextBlock Text="5000" Grid.Column="1" Grid.Row="2"
+            <TextBlock Text="6000" Grid.Column="1" Grid.Row="2"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="20" Margin="0 5"/>
