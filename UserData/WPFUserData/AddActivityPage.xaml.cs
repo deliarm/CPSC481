@@ -75,7 +75,7 @@ namespace WPFUserData
                 StartTime = startTime, // Assume the activity started exactly `durationMinutes` ago
                 Distance = new Distance
                 {
-                    Number = Double.Parse(DistanceTextBox.Text), //TODO: Error handling
+                    Number = DistanceTextBox.Text.Trim() == "" ? 0 : Double.Parse(DistanceTextBox.Text), //TODO: Error handling
                     Unit = (string)DistanceUnitComboBox.SelectedItem
                 }
             };
