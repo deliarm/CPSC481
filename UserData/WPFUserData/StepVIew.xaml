@@ -25,7 +25,7 @@
 
 
     <!-- Header -->
-    <local:HeaderControl Grid.Column="0" Grid.Row= "0" Title="Steps"/>
+        <local:HeaderControl Grid.Column="0" Grid.Row= "0" Title="Steps" BackButtonIsVisible="True"/>
 
 
     <!-- Time Select -->
@@ -125,7 +125,7 @@
                        FontWeight="DemiBold"
                        Margin="0 5"/>
 
-            <TextBlock Text="4242" Grid.Column="1"
+            <TextBlock x:Name="Tcal" Grid.Column="1"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="18" 
@@ -138,7 +138,7 @@
                        FontWeight="DemiBold" 
                        Margin="0 5"/>
 
-            <TextBlock Text="758" Grid.Column="1" Grid.Row="1"
+            <TextBlock x:Name="Rcal" Grid.Column="1" Grid.Row="1"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="18" 
@@ -151,7 +151,7 @@
                        FontWeight="Bold"
                        Margin="0 5"/>
 
-            <TextBlock Text="6000" Grid.Column="1" Grid.Row="2"
+            <TextBlock x:Name="Cgoal" Grid.Column="1" Grid.Row="2"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="20" Margin="0 5"/>

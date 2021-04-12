@@ -14,13 +14,14 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LiveCharts;
 using LiveCharts.Wpf;
+using WPFUserData.Model;
 
 namespace WPFUserData
 {
 
     public partial class StepView : Page
     {
-
+        public User user = User.getInstance();
         public StepView()
         {
             InitializeComponent();
@@ -51,7 +52,9 @@ namespace WPFUserData
             WeekLabels = new[] { "M", "T", "W", "Th", "F", "Sa", "Su" };
             MonthLabels = new[] { "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr" };
             CurrentLabels = DayLabels;
-
+            Tcal.Text = user.Info.CurrSteps.ToString();
+            Cgoal.Text = user.Goal.Steps.ToString();
+            Rcal.Text = (user.Goal.Steps - user.Info.CurrSteps).ToString;
 
             Formatter = value => value.ToString("C");
 
