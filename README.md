@@ -11,4 +11,6 @@
 **Technologies Used**
 1) C#
 2) Windows Presentation Foundation (WPF)
-3) Git - Version Control
+3) Git - Version Control  
+
+**Walkthrough**  
