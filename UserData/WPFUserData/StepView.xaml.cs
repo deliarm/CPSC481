@@ -54,7 +54,7 @@ namespace WPFUserData
             CurrentLabels = DayLabels;
             Tcal.Text = user.Info.CurrSteps.ToString();
             Cgoal.Text = user.Goal.Steps.ToString();
-            Rcal.Text = (user.Goal.Steps - user.Info.CurrSteps).ToString;
+            Rcal.Text = (user.Goal.Steps - user.Info.CurrSteps).ToString();
 
             Formatter = value => value.ToString("C");
 
